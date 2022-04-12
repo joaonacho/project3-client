@@ -1,44 +1,58 @@
 import React, { useState, useEffect } from "react";
-import { getAllProjects } from "../api";
+import {
+  getAllProjects,
+  getUpcomingMovies,
+  getMovieDetails,
+  getSimilarMovies,
+} from "../api";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 export const ListProjects = () => {
-  const [projects, setProjects] = useState([]);
+  // const [projects, setProjects] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      const response = await getAllProjects();
-      setProjects(response.data);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await getAllProjects();
+  //     setProjects(response.data);
+  //   })();
+  // }, []);
 
+  //GET List of Upcoming movies
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=d8030aaaaf0512a8717930690f78c10b&language=en-US&page=1`
-      );
+      const response = await getUpcomingMovies();
       setMovies(response.data.results);
-      console.log(response.data.results);
+      // console.log(response.data.results);
     })();
   }, []);
 
-  const [popular, setPopular] = useState([]);
+  //GET One Movie by ID
+  const [oneMovie, setOneMovie] = useState({});
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/now_playing?api_key=d8030aaaaf0512a8717930690f78c10b&language=en-US&page=1"
-      );
-      setPopular(response.data.results);
+      const response = await getMovieDetails(675353);
+      setOneMovie(response.data);
+      // console.log(response.data);
+    })();
+  }, []);
+
+  //GET Similar movies
+  const [similarMovies, setSimilarMovies] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await getSimilarMovies(675353);
+      setSimilarMovies(response.data.results);
+      console.log(response.data.results);
     })();
   }, []);
 
   return (
     <div>
-      <ul>
+      {/* <ul>
         {projects.map((project) => {
           return (
             <li key={project._id}>
@@ -46,9 +60,33 @@ export const ListProjects = () => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
 
-      {movies &&
+      {/* {oneMovie && (
+        <div>
+          <img
+            src={`https://image.tmdb.org/t/p/w200${oneMovie.poster_path}`}
+            alt="poster"
+          />
+        </div>
+      )} */}
+
+      {similarMovies &&
+        similarMovies.map((movie) => {
+          return (
+            <div>
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt="poster"
+              />
+              <h3>{movie.title}</h3>
+              <p>Release date: {movie.release_date}</p>
+              {/* <p>{movie.overview}</p> */}
+            </div>
+          );
+        })}
+
+      {/* {movies &&
         movies.map((movie) => {
           return (
             <div key={movie.id}>
@@ -61,7 +99,7 @@ export const ListProjects = () => {
               <p>{movie.overview}</p>
             </div>
           );
-        })}
+        })} */}
 
       {/* {popular &&
         popular.map((pop) => {
