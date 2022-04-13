@@ -18,15 +18,15 @@ export const ListProjects = () => {
   // }, []);
 
   //GET List of Upcoming movies
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      const response = await getUpcomingMovies();
-      setMovies(response.data.results);
-      // console.log(response.data.results);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await getUpcomingMovies();
+  //     setMovies(response.data.results);
+  //     // console.log(response.data.results);
+  //   })();
+  // }, []);
 
   //GET One Movie by ID
   const [oneMovie, setOneMovie] = useState({});
@@ -35,7 +35,7 @@ export const ListProjects = () => {
     (async () => {
       const response = await getMovieDetails(675353);
       setOneMovie(response.data);
-      // console.log(response.data);
+      console.log(response.data);
     })();
   }, []);
 
@@ -54,22 +54,22 @@ export const ListProjects = () => {
     <div>
       {/* <ul>
         {projects.map((project) => {
-          return (
-            <li key={project._id}>
-              <Link to={`/projects/${project._id}`}>{project.title}</Link>
-            </li>
-          );
-        })}
-      </ul> */}
+    //       return (
+    //         <li key={project._id}>
+    //           <Link to={`/projects/${project._id}`}>{project.title}</Link>
+    //         </li>
+    //       );
+    //     })}
+    //   </ul> */}
 
-      {/* {oneMovie && (
+      {oneMovie && (
         <div>
           <img
             src={`https://image.tmdb.org/t/p/w200${oneMovie.poster_path}`}
             alt="poster"
           />
         </div>
-      )} */}
+      )}
 
       {similarMovies &&
         similarMovies.map((movie) => {

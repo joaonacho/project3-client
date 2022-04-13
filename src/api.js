@@ -1,8 +1,8 @@
 import axios from "axios";
 const baseURL = `${process.env.REACT_APP_PROJECTS_API}/api`;
 
-export const getAllProjects = () => {
-  return axios.get(`${baseURL}/projects`);
+export const getAllMovies = () => {
+  return axios.get(`${baseURL}/movies`);
 };
 
 export const getProject = (id) => {
