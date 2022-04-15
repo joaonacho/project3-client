@@ -24,6 +24,7 @@ export const Signup = () => {
         <label>Username</label>
         <input
           type="text"
+          required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -31,6 +32,8 @@ export const Signup = () => {
         <label>password</label>
         <input
           type="password"
+          required
+          minLength="6"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -38,6 +41,7 @@ export const Signup = () => {
         <label>Email</label>
         <input
           type="email"
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />

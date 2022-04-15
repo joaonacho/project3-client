@@ -48,6 +48,15 @@ export const Navbar = () => {
           >
             Add project
           </NavLink>
+
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-active" : "nav-inactive"
+            }
+            to="/profile/:userId"
+          >
+            Profile
+          </NavLink>
         </>
       )}
     </nav>

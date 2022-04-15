@@ -19,7 +19,7 @@ export const Login = () => {
     const response = await logIn({ username, password });
     storeToken(response.data.authToken);
     authenticateUser();
-    navigate("/");
+    navigate("/profile/:userId");
   };
 
   return (
@@ -29,6 +29,7 @@ export const Login = () => {
         <label>Username</label>
         <input
           type="text"
+          required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -36,6 +37,8 @@ export const Login = () => {
         <label>password</label>
         <input
           type="password"
+          required
+          minLength="6"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />

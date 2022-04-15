@@ -87,3 +87,7 @@ export const trendingWeekMovies = () => {
     "https://api.themoviedb.org/3/trending/movie/week?api_key=d8030aaaaf0512a8717930690f78c10b"
   );
 };
+
+export const getUser = (userId) => {
+  return axios.get(`${baseURL}/profile/${userId}`);
+};
