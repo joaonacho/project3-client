@@ -14,7 +14,7 @@ export const Profile = () => {
   // const userId = useParams();
   // console.log(userId.userId);
   const { user } = useContext(UserContext);
-  // const [newUser, setUser] = useState({});
+  const [newUser, setUser] = useState({});
 
   // useEffect(() => {
   //   (async () => {
