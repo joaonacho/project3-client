@@ -1,6 +1,7 @@
 import axios from "axios";
 const baseURL = `${process.env.REACT_APP_PROJECTS_API}/api`;
 
+//Movies
 export const getAllMovies = () => {
   return axios.get(`${baseURL}/movies`);
 };
@@ -39,7 +40,7 @@ export const upload = (uploadData) => {
   return axios.post(`${baseURL}/upload`, uploadData);
 };
 
-//MOVIE API
+//MOVIE external API
 export const getUpcomingMovies = () => {
   return axios.get(
     "https://api.themoviedb.org/3/movie/upcoming?api_key=d8030aaaaf0512a8717930690f78c10b&language=en-US&page=1"
@@ -88,6 +89,11 @@ export const trendingWeekMovies = () => {
   );
 };
 
-export const getUser = (userId) => {
-  return axios.get(`${baseURL}/profile/${userId}`);
+//User
+export const getUser = (username) => {
+  return axios.get(`${baseURL}/profile/${username}`);
+};
+
+export const updateUser = (username) => {
+  return axios.put(`${baseURL}/profile/${username}`);
 };

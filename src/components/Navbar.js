@@ -53,7 +53,7 @@ export const Navbar = () => {
             className={({ isActive }) =>
               isActive ? "nav-active" : "nav-inactive"
             }
-            to="/profile/:userId"
+            to={`/profile/${user.username}`}
           >
             Profile
           </NavLink>

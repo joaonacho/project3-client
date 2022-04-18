@@ -19,7 +19,7 @@ export const Login = () => {
     const response = await logIn({ username, password });
     storeToken(response.data.authToken);
     authenticateUser();
-    navigate("/profile/:userId");
+    navigate(`/profile/${username}`);
   };
 
   return (

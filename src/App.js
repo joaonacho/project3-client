@@ -32,7 +32,7 @@ function App() {
         <Route path="/projects/:projectId/edit" element={<EditProject />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile/:userId" element={<Profile />} />
+        <Route path="/profile/:username" element={<Profile />} />
       </Routes>
     </div>
   );
