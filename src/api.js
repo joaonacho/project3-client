@@ -94,6 +94,6 @@ export const getUser = (username) => {
   return axios.get(`${baseURL}/profile/${username}`);
 };
 
-export const updateUser = (username) => {
-  return axios.put(`${baseURL}/profile/${username}`);
+export const updateUser = (username, user) => {
+  return axios.put(`${baseURL}/profile/${username}/edit`, user);
 };

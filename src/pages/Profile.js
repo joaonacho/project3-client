@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getUser, updateUser } from "../api";
-import { EditUser } from "../components/EditUser";
+import { getUser } from "../api";
+import { Link } from "react-router-dom";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 import { format } from "timeago.js";
@@ -16,19 +16,9 @@ export const Profile = () => {
     (async () => {
       const foundUser = await getUser(username);
       setUser(foundUser.data);
-      console.log(foundUser.data);
+      // console.log(foundUser.data);
     })();
-  }, [username]);
-
-  const [genres, setGenres] = useState([...newUser.genres]);
-
-  useEffect(() => {
-    (async () => {
-      const updatedUser = await updateUser(username);
-      // setUser(updatedUser.data)
-      console.log(updatedUser);
-    })();
-  }, [username]);
+  }, []);
 
   return (
     <div>
@@ -37,7 +27,7 @@ export const Profile = () => {
         <>
           <img src={newUser.profileImg} alt="profilepic" />
           <h2>{newUser.username}'s profile</h2>
-          <h3>Email adress: {newUser.email}</h3>
+          <h3>{newUser.about}</h3>
           {newUser.country ? (
             <p>{newUser.country}</p>
           ) : (
@@ -54,8 +44,9 @@ export const Profile = () => {
             })}
         </>
       )}
-
-      <form></form>
+      <Link to={`/profile/${newUser.username}/edit`}>
+        <p>Edit profile</p>
+      </Link>
     </div>
   );
 };

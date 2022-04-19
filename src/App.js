@@ -11,6 +11,7 @@ import { Signup } from "./pages/Signup";
 import { Login } from "./pages/Login";
 import { IsPrivate } from "./components/IsPrivate";
 import { Profile } from "./pages/Profile";
+import { EditUser } from "./components/EditUser";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile/:username" element={<Profile />} />
+        <Route path="/profile/:username/edit" element={<EditUser />} />
       </Routes>
     </div>
   );

@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { verify } from "../api";
+import { useNavigate } from "react-router";
 
 const UserContext = createContext();
 
@@ -42,9 +43,12 @@ function UserProviderWrapper({ children }) {
     }
   };
 
+  const navigate = useNavigate();
+
   const logoutUser = () => {
     removeToken();
     authenticateUser();
+    navigate("/");
   };
 
   useEffect(() => {
