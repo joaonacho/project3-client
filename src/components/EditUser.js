@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { updateUser, getUser } from "../api";
+import { updateUser, getUser, upload } from "../api";
 import Select from "react-select";
+import { toast } from "react-toastify";
 
 export const EditUser = () => {
   const { username } = useParams();
@@ -10,6 +11,7 @@ export const EditUser = () => {
   const [user, setUser] = useState({});
   const [country, setCountry] = useState("");
   const [about, setAbout] = useState("");
+  const [image, setImage] = useState();
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
@@ -49,7 +51,24 @@ export const EditUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await updateUser(username, { genres, country, about });
+    let profileImg =
+      "https://res.cloudinary.com/dxxmsbtrt/image/upload/v1650390383/MovieScreen/Users/avatar-profile_af3anp.webp";
+
+    if (image) {
+      const uploadData = new FormData();
+
+      uploadData.append("file", image);
+      const response = await upload(uploadData);
+      profileImg = response.data.fileUrl;
+    }
+
+    await updateUser(username, {
+      genres,
+      country,
+      about,
+      profileImg,
+    });
+    toast.success("User saved");
     navigate(`/profile/${username}`);
   };
 
@@ -57,6 +76,11 @@ export const EditUser = () => {
     <div>
       {user && (
         <>
+          <img
+            src={user.profileImg}
+            alt="profilepicture"
+            style={{ width: "200px", borderRadius: "50%" }}
+          />
           <h2>{user.username}</h2>
           <form onSubmit={handleSubmit}>
             <label>Country</label>
@@ -68,13 +92,15 @@ export const EditUser = () => {
 
             <label>About me:</label>
 
-            <textArea
+            <textarea
               cols="30"
               rows="5"
+              value={about}
               onChange={(e) => setAbout(e.target.value)}
-            >
-              {about}
-            </textArea>
+            ></textarea>
+
+            <label labelFor="image">Profile picture:</label>
+            <input type="file" onChange={(e) => setImage(e.target.files[0])} />
 
             <label>Movie genres:</label>
             <Select

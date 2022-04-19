@@ -1,7 +1,8 @@
-import { signUp } from "../api";
+import { signUp, upload } from "../api";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import Select from "react-select";
 
 import React from "react";
@@ -12,6 +13,7 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const [country, setCountry] = useState("");
   const [genres, setGenres] = useState([]);
+  const [image, setImage] = useState();
   const navigate = useNavigate();
 
   const options = [
@@ -40,8 +42,26 @@ export const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signUp({ username, email, password, genres, country });
-    navigate("/");
+    let profileImg;
+
+    if (image) {
+      const uploadData = new FormData();
+
+      uploadData.append("file", image);
+      const response = await upload(uploadData);
+      profileImg = response.data.fileUrl;
+    }
+
+    await signUp({
+      username,
+      email,
+      password,
+      genres,
+      country,
+      profileImg,
+    });
+    toast.success("A new account was created! Please log in.");
+    navigate("/login");
   };
 
   return (
@@ -80,6 +100,9 @@ export const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
+        <label labelFor="image">Profile picture:</label>
+        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+
         <label>Movie genres:</label>
         <Select
           id="options"
@@ -88,7 +111,7 @@ export const Signup = () => {
           name="genres"
           className="basic-multi-select"
           classNamePrefix="select"
-          placeholder="Select your favourite genres"
+          placeholder="Select your favourite movie genres"
           value={options.filter((obj) => genres.includes(obj.value))}
           onChange={handleGenres}
         />

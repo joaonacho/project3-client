@@ -8,7 +8,6 @@ import { format } from "timeago.js";
 //To use just use format(something.createdAt) -> comes from timestamps
 
 export const Profile = () => {
-  //is it better to have every info in context or just the id and search in DB?
   const { username } = useParams();
   const [newUser, setUser] = useState({});
 
@@ -16,32 +15,34 @@ export const Profile = () => {
     (async () => {
       const foundUser = await getUser(username);
       setUser(foundUser.data);
-      // console.log(foundUser.data);
     })();
   }, []);
 
   return (
     <div>
-      <h3>Welcome</h3>
       {newUser && (
         <>
-          <img src={newUser.profileImg} alt="profilepic" />
+          <img
+            src={newUser.profileImg}
+            alt="profilepic"
+            style={{ width: "200px", borderRadius: "50%" }}
+          />
           <h2>{newUser.username}'s profile</h2>
-          <h3>{newUser.about}</h3>
+          <h4>About me:</h4>
+          <p>{newUser.about}</p>
           {newUser.country ? (
             <p>{newUser.country}</p>
           ) : (
             <p>Where are you from?</p>
           )}
 
-          {newUser.genres &&
-            newUser.genres.map((genre) => {
-              return (
-                <ul>
-                  <li>{genre}</li>
-                </ul>
-              );
-            })}
+          <h4>Favourite movie genres:</h4>
+          <ul style={{ listStyle: "none" }}>
+            {newUser.genres &&
+              newUser.genres.map((genre, index) => {
+                return <li key={index}>{genre}</li>;
+              })}
+          </ul>
         </>
       )}
       <Link to={`/profile/${newUser.username}/edit`}>
