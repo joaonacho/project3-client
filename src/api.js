@@ -22,14 +22,6 @@ export const updateProject = (updatedProject) => {
   return axios.put(`${baseURL}/projects/${updatedProject._id}`, updatedProject);
 };
 
-export const signUp = (user) => {
-  return axios.post(`${baseURL}/signup`, user);
-};
-
-export const logIn = (user) => {
-  return axios.post(`${baseURL}/login`, user);
-};
-
 export const verify = (storedToken) => {
   return axios.get(`${baseURL}/verify`, {
     headers: { Authorization: `Bearer ${storedToken}` },
@@ -90,10 +82,22 @@ export const trendingWeekMovies = () => {
 };
 
 //User
+//GET user info
 export const getUser = (username) => {
   return axios.get(`${baseURL}/profile/${username}`);
 };
 
+//PUT edit user info
 export const updateUser = (username, user) => {
   return axios.put(`${baseURL}/profile/${username}/edit`, user);
+};
+
+//POST signup
+export const signUp = (user) => {
+  return axios.post(`${baseURL}/signup`, user);
+};
+
+//POST login
+export const logIn = (user) => {
+  return axios.post(`${baseURL}/login`, user);
 };

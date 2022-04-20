@@ -25,7 +25,7 @@ export const Profile = () => {
           <img
             src={newUser.profileImg}
             alt="profilepic"
-            style={{ width: "200px", borderRadius: "50%" }}
+            style={{ width: "200px", height: "200px", borderRadius: "50%" }}
           />
           <h2>{newUser.username}'s profile</h2>
           <h4>About me:</h4>

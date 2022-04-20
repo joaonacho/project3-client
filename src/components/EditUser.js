@@ -12,6 +12,7 @@ export const EditUser = () => {
   const [country, setCountry] = useState("");
   const [about, setAbout] = useState("");
   const [image, setImage] = useState();
+  const [newImage, setNewImage] = useState();
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export const EditUser = () => {
       setGenres(foundUser.data.genres);
       setCountry(foundUser.data.country);
       setAbout(foundUser.data.about);
+      setImage(foundUser.data.profileImg);
     })();
   }, [username]);
 
@@ -50,16 +52,15 @@ export const EditUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let profileImg;
 
-    let profileImg =
-      "https://res.cloudinary.com/dxxmsbtrt/image/upload/v1650390383/MovieScreen/Users/avatar-profile_af3anp.webp";
-
-    if (image) {
+    if (newImage) {
       const uploadData = new FormData();
-
-      uploadData.append("file", image);
+      uploadData.append("file", newImage);
       const response = await upload(uploadData);
       profileImg = response.data.fileUrl;
+    } else {
+      profileImg = image;
     }
 
     await updateUser(username, {
@@ -79,7 +80,7 @@ export const EditUser = () => {
           <img
             src={user.profileImg}
             alt="profilepicture"
-            style={{ width: "200px", borderRadius: "50%" }}
+            style={{ width: "200px", height: "200px", borderRadius: "50%" }}
           />
           <h2>{user.username}</h2>
           <form onSubmit={handleSubmit}>
@@ -91,7 +92,6 @@ export const EditUser = () => {
             />
 
             <label>About me:</label>
-
             <textarea
               cols="30"
               rows="5"
@@ -100,7 +100,10 @@ export const EditUser = () => {
             ></textarea>
 
             <label labelFor="image">Profile picture:</label>
-            <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+            <input
+              type="file"
+              onChange={(e) => setNewImage(e.target.files[0])}
+            />
 
             <label>Movie genres:</label>
             <Select

@@ -1,10 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
 
 export const Navbar = () => {
   const { isLoggedIn, user, logoutUser } = useContext(UserContext);
+  let location = useLocation();
 
   return (
     <nav>
@@ -38,7 +39,16 @@ export const Navbar = () => {
 
       {isLoggedIn && (
         <>
-          <div>Welcome {user && user.username}</div>
+          {location.pathname !== `/profile/${user.username}` &&
+            location.pathname !== `/profile/${user.username}/edit` && (
+              <div>
+                <img
+                  src={user.profileImg}
+                  alt="profilepic"
+                  style={{ width: "80px", height: "80px", borderRadius: "50%" }}
+                />
+              </div>
+            )}
           <button onClick={logoutUser}>Logout</button>
           <NavLink
             className={({ isActive }) =>

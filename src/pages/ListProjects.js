@@ -35,7 +35,7 @@ export const ListProjects = () => {
     (async () => {
       const response = await getMovieDetails(675353);
       setOneMovie(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     })();
   }, []);
 
@@ -46,7 +46,7 @@ export const ListProjects = () => {
     (async () => {
       const response = await getSimilarMovies(675353);
       setSimilarMovies(response.data.results);
-      console.log(response.data.results);
+      // console.log(response.data.results);
     })();
   }, []);
 
