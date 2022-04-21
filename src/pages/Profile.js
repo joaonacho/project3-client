@@ -55,6 +55,35 @@ export const Profile = () => {
                 return <li key={index}>{genre}</li>;
               })}
           </ul>
+
+          <h4>Favourite movie list:</h4>
+
+          {newUser.favourites && (
+            <>
+              <ul style={{ listStyle: "none" }}>
+                {newUser.favourites.map((fav) => {
+                  return (
+                    <li key={fav._id}>
+                      {fav.poster_path ? (
+                        <img
+                          src={`https://image.tmdb.org/t/p/w200${fav.poster_path}`}
+                          alt="movieposter"
+                        />
+                      ) : (
+                        <img
+                          src={
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                          }
+                          alt="movieposter"
+                        />
+                      )}
+                      {fav.title}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          )}
         </>
       )}
 

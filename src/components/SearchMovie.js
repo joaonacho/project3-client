@@ -22,6 +22,11 @@ export const SearchMovie = () => {
     }, 1500);
   };
 
+  const cleanUp = () => {
+    setMovie([]);
+    setQuery("");
+  };
+
   return (
     <div
       style={{
@@ -53,7 +58,7 @@ export const SearchMovie = () => {
                       flexDirection: "row",
                       justifyContent: "space-between",
                     }}
-                    onClick={() => setMovie([])}
+                    onClick={cleanUp}
                   >
                     {found.poster_path ? (
                       <>

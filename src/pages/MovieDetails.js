@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getMovieDetails, getSimilarMovies } from "../api";
+import { getMovieDetails, getSimilarMovies, addToFavourites } from "../api";
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -21,6 +21,11 @@ export const MovieDetails = () => {
       console.log(getSimilar.data.results);
     })();
   }, [movieId]);
+
+  const addMovie = (e) => {
+    e.preventDefault();
+    addToFavourites(movie);
+  };
 
   return (
     <div>
@@ -74,6 +79,7 @@ export const MovieDetails = () => {
               </p>
             </div>
             <p>{movie.overview}</p>
+            <button onClick={addMovie}>Add to favourites</button>
           </article>
         </>
       )}
@@ -89,7 +95,7 @@ export const MovieDetails = () => {
         {similarMovies &&
           similarMovies.map((similar) => {
             return (
-              <Link to={`/movies/${similar.id}`}>
+              <Link to={`/movies/${similar.id}`} key={similar.id}>
                 <article style={{ margin: "15px" }}>
                   {similar.poster_path ? (
                     <img

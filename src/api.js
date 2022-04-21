@@ -106,3 +106,10 @@ export const logIn = (user) => {
 export const randomFive = () => {
   return axios.get(`${baseURL}/random-users`);
 };
+
+//PUT add movie to favourites
+export const addToFavourites = (movie) => {
+  return axios.put(`${baseURL}/movies/add`, movie, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+  });
+};
