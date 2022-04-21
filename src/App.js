@@ -12,12 +12,15 @@ import { Login } from "./pages/Login";
 import { IsPrivate } from "./components/IsPrivate";
 import { Profile } from "./pages/Profile";
 import { EditUser } from "./components/EditUser";
+import { SearchMovie } from "./components/SearchMovie";
+import { MovieDetails } from "./pages/MovieDetails";
 
 function App() {
   return (
     <div className="App">
       <ToastContainer />
       <Navbar />
+      <SearchMovie />
       <Routes>
         <Route path="/" element={<ListProjects />} />
         <Route path="/projects" element={<ListProjects />} />
@@ -42,6 +45,7 @@ function App() {
             </IsPrivate>
           }
         />
+        <Route path="/movies/:movieId" element={<MovieDetails />} />
       </Routes>
     </div>
   );

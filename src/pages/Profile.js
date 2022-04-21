@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getUser } from "../api";
+import { getUser, randomFive } from "../api";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 
@@ -20,6 +20,15 @@ export const Profile = () => {
       setUser(foundUser.data);
     })();
   }, [username]);
+
+  const [fiveUsers, setFiveUsers] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const randomUsers = await randomFive();
+      setFiveUsers(randomUsers.data);
+    })();
+  }, []);
 
   return (
     <div>
@@ -54,6 +63,20 @@ export const Profile = () => {
           <p>Edit profile</p>
         </Link>
       )}
+
+      {fiveUsers &&
+        fiveUsers.map((user) => {
+          return (
+            <div key={user._id}>
+              <img
+                src={user.profileImg}
+                alt="profilepic"
+                style={{ width: "60px", height: "60px", borderRadius: "50%" }}
+              />
+              <p style={{ fontSize: "0.6rem" }}>{user.username}</p>
+            </div>
+          );
+        })}
     </div>
   );
 };

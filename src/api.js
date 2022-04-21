@@ -101,3 +101,8 @@ export const signUp = (user) => {
 export const logIn = (user) => {
   return axios.post(`${baseURL}/login`, user);
 };
+
+//GET random 5 users
+export const randomFive = () => {
+  return axios.get(`${baseURL}/random-users`);
+};
