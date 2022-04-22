@@ -51,7 +51,10 @@ export const SearchMovie = () => {
               <>
                 <hr />
 
-                <Link to={`/movies/${found.id}`}>
+                <Link
+                  to={`/movies/${found.id}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <div
                     style={{
                       display: "flex",

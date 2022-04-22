@@ -113,3 +113,10 @@ export const addToFavourites = (movie) => {
     headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
   });
 };
+
+//PUT remove movie from favourites
+export const removeFromFavourites = (movieId, user) => {
+  return axios.put(`${baseURL}/movies/${movieId}/remove`, user, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+  });
+};

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getMovieDetails, getSimilarMovies, addToFavourites } from "../api";
+import { toast } from "react-toastify";
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -25,6 +26,11 @@ export const MovieDetails = () => {
   const addMovie = (e) => {
     e.preventDefault();
     addToFavourites(movie);
+    toast.success("Movie added to favourites");
+  };
+
+  const redirectToImdb = (movieId) => {
+    window.location.href = `https://www.imdb.com/title/${movieId}/`;
   };
 
   return (
@@ -79,7 +85,21 @@ export const MovieDetails = () => {
               </p>
             </div>
             <p>{movie.overview}</p>
-            <button onClick={addMovie}>Add to favourites</button>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-evenly",
+              }}
+            >
+              <button onClick={addMovie}>Add to favourites</button>
+
+              <img
+                src="https://bit.ly/3rIDSxM"
+                alt="imdblogo"
+                style={{ width: "60px" }}
+                onClick={() => redirectToImdb(movie.imdb_id)}
+              />
+            </div>
           </article>
         </>
       )}
@@ -95,7 +115,11 @@ export const MovieDetails = () => {
         {similarMovies &&
           similarMovies.map((similar) => {
             return (
-              <Link to={`/movies/${similar.id}`} key={similar.id}>
+              <Link
+                to={`/movies/${similar.id}`}
+                key={similar.id}
+                style={{ textDecoration: "none" }}
+              >
                 <article style={{ margin: "15px" }}>
                   {similar.poster_path ? (
                     <img

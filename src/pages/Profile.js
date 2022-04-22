@@ -1,18 +1,22 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getUser, randomFive } from "../api";
+import { getUser, randomFive, removeFromFavourites } from "../api";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
+import { toast } from "react-toastify";
+// import { useNavigate } from "react-router";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
-import { format } from "timeago.js";
+// import { format } from "timeago.js";
 //To use just use format(something.createdAt) -> comes from timestamps
 
 export const Profile = () => {
+  // const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
   const { username } = useParams();
   const [newUser, setUser] = useState({});
+  const [favList, setFavList] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -21,14 +25,29 @@ export const Profile = () => {
     })();
   }, [username]);
 
-  const [fiveUsers, setFiveUsers] = useState([]);
+  //Five users to be displayed in homepage - just a test in profile page
+  // const [fiveUsers, setFiveUsers] = useState([]);
+  // useEffect(() => {
+  //   (async () => {
+  //     const randomUsers = await randomFive();
+  //     setFiveUsers(randomUsers.data);
+  //   })();
+  // }, []);
 
   useEffect(() => {
     (async () => {
-      const randomUsers = await randomFive();
-      setFiveUsers(randomUsers.data);
+      setFavList(newUser.favourites);
     })();
-  }, []);
+  }, [newUser.favourites]);
+
+  const removeMovie = async (movieId, user) => {
+    removeFromFavourites(movieId, user);
+    const position = favList.indexOf(movieId);
+    const movieRemoved = favList.splice(position, 1);
+    let newList = [...favList];
+    setFavList(newList);
+    toast.warning(`${movieRemoved[0].title} was removed from favourites`);
+  };
 
   return (
     <div>
@@ -56,44 +75,59 @@ export const Profile = () => {
               })}
           </ul>
 
-          <h4>Favourite movie list:</h4>
-
-          {newUser.favourites && (
+          {favList && (
             <>
-              <ul style={{ listStyle: "none" }}>
-                {newUser.favourites.map((fav) => {
+              <h4>Favourite movie list:</h4>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-around",
+                }}
+              >
+                {favList.map((fav) => {
                   return (
-                    <li key={fav._id}>
-                      {fav.poster_path ? (
-                        <img
-                          src={`https://image.tmdb.org/t/p/w200${fav.poster_path}`}
-                          alt="movieposter"
-                        />
-                      ) : (
-                        <img
-                          src={
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
-                          }
-                          alt="movieposter"
-                        />
-                      )}
-                      {fav.title}
-                    </li>
+                    <article key={fav._id}>
+                      <Link to={`/movies/${fav.id}`}>
+                        {fav.poster_path ? (
+                          <img
+                            src={`https://image.tmdb.org/t/p/w200${fav.poster_path}`}
+                            alt="movieposter"
+                            style={{ width: "60px" }}
+                          />
+                        ) : (
+                          <img
+                            src={
+                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                            }
+                            alt="movieposter"
+                            style={{ width: "60px" }}
+                          />
+                        )}
+                        <h4>{fav.title}</h4>
+                      </Link>
+
+                      <button onClick={() => removeMovie(fav.id, user)}>
+                        Remove from favourites
+                      </button>
+                    </article>
                   );
                 })}
-              </ul>
+              </div>
             </>
           )}
         </>
       )}
 
       {user && user.username === newUser.username && (
-        <Link to={`/profile/${newUser.username}/edit`}>
+        <Link
+          to={`/profile/${newUser.username}/edit`}
+          style={{ textDecoration: "none" }}
+        >
           <p>Edit profile</p>
         </Link>
       )}
 
-      {fiveUsers &&
+      {/* {fiveUsers &&
         fiveUsers.map((user) => {
           return (
             <div key={user._id}>
@@ -105,7 +139,7 @@ export const Profile = () => {
               <p style={{ fontSize: "0.6rem" }}>{user.username}</p>
             </div>
           );
-        })}
+        })} */}
     </div>
   );
 };
