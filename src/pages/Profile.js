@@ -4,14 +4,12 @@ import { getUser, randomFive, removeFromFavourites } from "../api";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
-// import { useNavigate } from "react-router";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 // import { format } from "timeago.js";
 //To use just use format(something.createdAt) -> comes from timestamps
 
 export const Profile = () => {
-  // const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
   const { username } = useParams();
