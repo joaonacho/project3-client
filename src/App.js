@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { ListProjects } from "./pages/ListProjects";
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
