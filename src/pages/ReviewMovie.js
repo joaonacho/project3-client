@@ -1,7 +1,7 @@
-import React, { useParams } from "react";
+import React from "react";
 
 export const ReviewMovie = () => {
-  const { movieId } = useParams();
+  //   const { movieId } = useParams();
 
   return <div>ReviewMovie</div>;
 };

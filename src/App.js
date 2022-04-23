@@ -14,8 +14,6 @@ import { Profile } from "./pages/Profile";
 import { EditUser } from "./components/EditUser";
 import { SearchMovie } from "./components/SearchMovie";
 import { MovieDetails } from "./pages/MovieDetails";
-import { ReviewMovie } from "./pages/ReviewMovie";
-import { Children } from "react";
 
 function App() {
   return (
