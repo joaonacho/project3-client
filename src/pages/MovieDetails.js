@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getMovieDetails, getSimilarMovies, addToFavourites } from "../api";
+import {
+  getMovieDetails,
+  getSimilarMovies,
+  addToFavourites,
+  movieReview,
+} from "../api";
+import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
+import { useContext } from "react";
 
 export const MovieDetails = () => {
+  const { user } = useContext(UserContext);
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const [similarMovies, setSimilarMovies] = useState([]);
+  const [review, setReview] = useState();
+  const [rating, setRating] = useState();
+  const [form, setForm] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -19,18 +30,41 @@ export const MovieDetails = () => {
     (async () => {
       const getSimilar = await getSimilarMovies(movieId);
       setSimilarMovies(getSimilar.data.results);
-      console.log(getSimilar.data.results);
     })();
   }, [movieId]);
 
   const addMovie = (e) => {
     e.preventDefault();
     addToFavourites(movie);
-    toast.success("Movie added to favourites");
+    toast.success(`${movie.title} was added to favourites`);
   };
 
   const redirectToImdb = (movieId) => {
     window.location.href = `https://www.imdb.com/title/${movieId}/`;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const fullReview = {
+      review,
+      rating,
+      author: user._id,
+      title: movie.title,
+      genres: movie.genres,
+      poster_path: movie.poster_path,
+      tagline: movie.tagline,
+      overview: movie.overview,
+      vote_average: movie.vote_average,
+      release_date: movie.release_date,
+      runtime: movie.runtime,
+      id: movie.id,
+      imdb_id: movie.imdb_id,
+    };
+    await movieReview(movieId, fullReview);
+    setForm(false);
+    setReview();
+    setRating();
+    toast.success("Your rating was submited");
   };
 
   return (
@@ -56,6 +90,9 @@ export const MovieDetails = () => {
             <h3>
               <i>{movie.tagline}</i>
             </h3>
+            <p>
+              <small>Runtime: {movie.runtime} mins</small>
+            </p>
             <div>
               <ul
                 style={{
@@ -91,12 +128,43 @@ export const MovieDetails = () => {
                 justifyContent: "space-evenly",
               }}
             >
-              <button onClick={addMovie}>Add to favourites</button>
+              <button onClick={addMovie} style={{ height: "20px" }}>
+                Add to favourites
+              </button>
+
+              <div>
+                <button onClick={() => setForm(true)}>Make a review</button>
+                {form ? (
+                  <form
+                    style={{ display: "flex", flexDirection: "column" }}
+                    onSubmit={handleSubmit}
+                  >
+                    <label>Rating:</label>
+                    <input
+                      type="number"
+                      min="0"
+                      max="10"
+                      value={rating}
+                      onChange={(e) => setRating(e.target.value)}
+                    />
+                    <label>Review:</label>
+                    <textarea
+                      cols="30"
+                      rows="5"
+                      value={review}
+                      onChange={(e) => setReview(e.target.value)}
+                    ></textarea>
+                    <button type="submit">Submit</button>
+                  </form>
+                ) : (
+                  <></>
+                )}
+              </div>
 
               <img
                 src="https://bit.ly/3rIDSxM"
                 alt="imdblogo"
-                style={{ width: "60px" }}
+                style={{ width: "60px", height: "45px" }}
                 onClick={() => redirectToImdb(movie.imdb_id)}
               />
             </div>

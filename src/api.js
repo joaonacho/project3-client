@@ -120,3 +120,11 @@ export const removeFromFavourites = (movieId, user) => {
     headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
   });
 };
+
+//REVIEWS
+//POST create a movie review
+export const movieReview = (movieId, review) => {
+  return axios.post(`${baseURL}/movies/${movieId}/review`, review, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+  });
+};

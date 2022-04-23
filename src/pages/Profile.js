@@ -39,10 +39,16 @@ export const Profile = () => {
   }, [newUser.favourites]);
 
   const removeMovie = async (movieId, user) => {
-    removeFromFavourites(movieId, user);
-    const position = favList.indexOf(movieId);
-    const movieRemoved = favList.splice(position, 1);
-    let newList = [...favList];
+    await removeFromFavourites(movieId, user);
+
+    const movieRemoved = favList.filter((movie) => {
+      return movie.id === movieId;
+    });
+
+    const newList = favList.filter((movie) => {
+      return movie.id !== movieId;
+    });
+
     setFavList(newList);
     toast.warning(`${movieRemoved[0].title} was removed from favourites`);
   };
@@ -75,7 +81,7 @@ export const Profile = () => {
 
           {favList && (
             <>
-              <h4>Favourite movie list:</h4>
+              <h4>Favourites movie list:</h4>
               <div
                 style={{
                   display: "flex",
