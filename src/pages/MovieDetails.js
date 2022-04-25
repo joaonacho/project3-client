@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 
 export const MovieDetails = () => {
-  const { user } = useContext(UserContext);
+  const { user, isLoggedIn } = useContext(UserContext);
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -43,6 +43,10 @@ export const MovieDetails = () => {
     window.location.href = `https://www.imdb.com/title/${movieId}/`;
   };
 
+  const handleForm = () => {
+    form ? setForm(false) : setForm(true);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const fullReview = {
@@ -71,12 +75,17 @@ export const MovieDetails = () => {
     <div>
       {movie && (
         <>
-          <article>
+          <article
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             {movie.poster_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                 alt="movieposter"
-                style={{ width: "200px" }}
+                style={{ width: "200px", alignSelf: "center" }}
               />
             ) : (
               <img
@@ -84,6 +93,7 @@ export const MovieDetails = () => {
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
                 }
                 alt="movieposter"
+                style={{ width: "200px", alignSelf: "center" }}
               />
             )}
             <h1>{movie.title}</h1>
@@ -122,52 +132,61 @@ export const MovieDetails = () => {
               </p>
             </div>
             <p>{movie.overview}</p>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-evenly",
-              }}
-            >
-              <button onClick={addMovie} style={{ height: "20px" }}>
-                Add to favourites
-              </button>
 
-              <div>
-                <button onClick={() => setForm(true)}>Make a review</button>
-                {form ? (
-                  <form
-                    style={{ display: "flex", flexDirection: "column" }}
-                    onSubmit={handleSubmit}
-                  >
-                    <label>Rating:</label>
-                    <input
-                      type="number"
-                      min="0"
-                      max="10"
-                      value={rating}
-                      onChange={(e) => setRating(e.target.value)}
-                    />
-                    <label>Review:</label>
-                    <textarea
-                      cols="30"
-                      rows="5"
-                      value={review}
-                      onChange={(e) => setReview(e.target.value)}
-                    ></textarea>
-                    <button type="submit">Submit</button>
-                  </form>
-                ) : (
-                  <></>
-                )}
+            {isLoggedIn && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                }}
+              >
+                <button onClick={addMovie} style={{ height: "30px" }}>
+                  Add to favourites
+                </button>
+
+                <div>
+                  <button onClick={handleForm}>Make a review</button>
+                  {form ? (
+                    <form
+                      style={{ display: "flex", flexDirection: "column" }}
+                      onSubmit={handleSubmit}
+                    >
+                      <label>Rating:</label>
+                      <input
+                        required
+                        type="number"
+                        min="0"
+                        max="10"
+                        value={rating}
+                        onChange={(e) => setRating(e.target.value)}
+                      />
+                      <label>Review:</label>
+                      <textarea
+                        required
+                        cols="30"
+                        rows="5"
+                        value={review}
+                        onChange={(e) => setReview(e.target.value)}
+                      ></textarea>
+                      <button type="submit">Submit</button>
+                    </form>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+
+                <img
+                  src="https://bit.ly/3rIDSxM"
+                  alt="imdblogo"
+                  style={{
+                    width: "60px",
+                    height: "45px",
+                    borderRadius: "6px",
+                  }}
+                  onClick={() => redirectToImdb(movie.imdb_id)}
+                />
               </div>
-
-              <img
-                src="https://bit.ly/3rIDSxM"
-                alt="imdblogo"
-                style={{ width: "60px", height: "45px" }}
-                onClick={() => redirectToImdb(movie.imdb_id)}
-              />
-            </div>
+            )}
           </article>
         </>
       )}
@@ -188,12 +207,18 @@ export const MovieDetails = () => {
                 key={similar.id}
                 style={{ textDecoration: "none" }}
               >
-                <article style={{ margin: "15px" }}>
+                <article
+                  style={{
+                    margin: "15px",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
                   {similar.poster_path ? (
                     <img
                       src={`https://image.tmdb.org/t/p/w200${similar.poster_path}`}
                       alt="movieposter"
-                      style={{ width: "70px" }}
+                      style={{ width: "70px", alignSelf: "center" }}
                     />
                   ) : (
                     <img
@@ -201,7 +226,7 @@ export const MovieDetails = () => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
                       }
                       alt="movieposter"
-                      style={{ width: "70px" }}
+                      style={{ width: "70px", alignSelf: "center" }}
                     />
                   )}
                   <h4>

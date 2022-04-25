@@ -85,18 +85,31 @@ export const Profile = () => {
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "space-around",
+                  justifyContent: "space-evenly",
+                  flexWrap: "wrap",
+                  flexDirection: "row",
                 }}
               >
                 {favList.map((fav) => {
                   return (
-                    <article key={fav._id}>
-                      <Link to={`/movies/${fav.id}`}>
+                    <article
+                      key={fav._id}
+                      style={{
+                        width: "15%",
+                        display: "flex",
+                        flexDirection: "column",
+                        margin: "15px",
+                      }}
+                    >
+                      <Link
+                        to={`/movies/${fav.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
                         {fav.poster_path ? (
                           <img
                             src={`https://image.tmdb.org/t/p/w200${fav.poster_path}`}
                             alt="movieposter"
-                            style={{ width: "60px" }}
+                            style={{ width: "60px", marginLeft: "37%" }}
                           />
                         ) : (
                           <img
@@ -104,15 +117,17 @@ export const Profile = () => {
                               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
                             }
                             alt="movieposter"
-                            style={{ width: "60px" }}
+                            style={{ width: "60px", marginLeft: "37%" }}
                           />
                         )}
                         <h4>{fav.title}</h4>
                       </Link>
 
-                      <button onClick={() => removeMovie(fav.id, user)}>
-                        Remove from favourites
-                      </button>
+                      {user && user.username === newUser.username && (
+                        <button onClick={() => removeMovie(fav.id, user)}>
+                          Remove from favourites
+                        </button>
+                      )}
                     </article>
                   );
                 })}
