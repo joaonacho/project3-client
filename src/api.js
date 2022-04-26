@@ -128,3 +128,13 @@ export const movieReview = (movieId, review) => {
     headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
   });
 };
+
+//GET reviews from user
+export const getUserReviews = (username) => {
+  return axios.get(`${baseURL}/profile/${username}/reviews`);
+};
+
+//PUT edit review
+export const editReview = (reviewId, movie) => {
+  return axios.put(`${baseURL}/profile/${reviewId}/edit`, movie);
+};

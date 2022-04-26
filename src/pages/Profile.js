@@ -79,6 +79,10 @@ export const Profile = () => {
               })}
           </ul>
 
+          <Link to={`/profile/${newUser.username}/reviews`}>
+            <button>See all reviews</button>
+          </Link>
+
           {favList && (
             <>
               <h4>Favourites movie list:</h4>

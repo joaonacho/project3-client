@@ -132,6 +132,17 @@ export const MovieDetails = () => {
               </p>
             </div>
             <p>{movie.overview}</p>
+            <img
+              src="https://bit.ly/3rIDSxM"
+              alt="imdblogo"
+              style={{
+                width: "60px",
+                height: "45px",
+                borderRadius: "6px",
+                alignSelf: "center",
+              }}
+              onClick={() => redirectToImdb(movie.imdb_id)}
+            />
 
             {isLoggedIn && (
               <div
@@ -174,17 +185,6 @@ export const MovieDetails = () => {
                     <></>
                   )}
                 </div>
-
-                <img
-                  src="https://bit.ly/3rIDSxM"
-                  alt="imdblogo"
-                  style={{
-                    width: "60px",
-                    height: "45px",
-                    borderRadius: "6px",
-                  }}
-                  onClick={() => redirectToImdb(movie.imdb_id)}
-                />
               </div>
             )}
           </article>

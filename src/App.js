@@ -14,6 +14,7 @@ import { Profile } from "./pages/Profile";
 import { EditUser } from "./components/EditUser";
 import { SearchMovie } from "./components/SearchMovie";
 import { MovieDetails } from "./pages/MovieDetails";
+import { UserReviews } from "./pages/UserReviews";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
             </IsPrivate>
           }
         />
+        <Route path="/profile/:username/reviews" element={<UserReviews />} />
+
         <Route path="/movies/:movieId" element={<MovieDetails />} />
       </Routes>
     </div>
