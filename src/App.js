@@ -1,5 +1,5 @@
 import "./App.scss";
-import { ListProjects } from "./pages/ListProjects";
+import { LandingPage } from "./pages/LandingPage";
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { AddProject } from "./pages/AddProject";
@@ -23,8 +23,8 @@ function App() {
       <Navbar />
       <SearchMovie />
       <Routes>
-        <Route path="/" element={<ListProjects />} />
-        <Route path="/projects" element={<ListProjects />} />
+        <Route path="/" element={<LandingPage />} />
+        {/* <Route path="/projects" element={<ListProjects />} /> */}
         <Route
           path="/projects/add"
           element={

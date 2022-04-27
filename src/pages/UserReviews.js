@@ -45,6 +45,7 @@ export const UserReviews = () => {
 
   const handleDelete = async (reviewId) => {
     await deleteReview(reviewId);
+    toast.error("Review deleted!");
     setRenderAgain(!renderAgain);
   };
 

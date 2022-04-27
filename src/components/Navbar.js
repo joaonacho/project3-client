@@ -18,7 +18,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="container">
-        <NavLink className="navbar-icons navbar-logo" to="/homepage">
+        <NavLink className="navbar-icons navbar-logo" to="/">
           <h1>
             <span>
               <BsFillHouseFill />
