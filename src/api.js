@@ -136,5 +136,12 @@ export const getUserReviews = (username) => {
 
 //PUT edit review
 export const editReview = (reviewId, movie) => {
-  return axios.put(`${baseURL}/profile/${reviewId}/edit`, movie);
+  return axios.put(`${baseURL}/${reviewId}/edit`, movie, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+  });
+};
+
+//DLETE review
+export const deleteReview = (reviewId) => {
+  return axios.delete(`${baseURL}/${reviewId}/delete`);
 };

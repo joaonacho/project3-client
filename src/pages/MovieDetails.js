@@ -96,11 +96,11 @@ export const MovieDetails = () => {
                 style={{ width: "200px", alignSelf: "center" }}
               />
             )}
-            <h1>{movie.title}</h1>
-            <h3>
+            <h1 style={{ alignSelf: "center" }}>{movie.title}</h1>
+            <h3 style={{ alignSelf: "center" }}>
               <i>{movie.tagline}</i>
             </h3>
-            <p>
+            <p style={{ alignSelf: "center" }}>
               <small>Runtime: {movie.runtime} mins</small>
             </p>
             <div>
@@ -131,7 +131,7 @@ export const MovieDetails = () => {
                 <small>Release date: {movie.release_date}</small>
               </p>
             </div>
-            <p>{movie.overview}</p>
+            <p style={{ alignSelf: "center" }}>{movie.overview}</p>
             <img
               src="https://bit.ly/3rIDSxM"
               alt="imdblogo"
@@ -155,12 +155,22 @@ export const MovieDetails = () => {
                   Add to favourites
                 </button>
 
-                <div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
                   <button onClick={handleForm}>Make a review</button>
                   {form ? (
                     <form
-                      style={{ display: "flex", flexDirection: "column" }}
                       onSubmit={handleSubmit}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
                     >
                       <label>Rating:</label>
                       <input
@@ -191,7 +201,7 @@ export const MovieDetails = () => {
         </>
       )}
 
-      <h3>Similar Movies:</h3>
+      <h3 style={{ textAlign: "center" }}>Similar Movies:</h3>
       <div
         style={{
           display: "flex",

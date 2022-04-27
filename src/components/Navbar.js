@@ -36,7 +36,7 @@ export const Navbar = () => {
                 <NavLink to="/projects">Feed</NavLink>
               </li>
               <li>
-                <NavLink to="/projects">My Profile</NavLink>
+                <NavLink to={`/profile/${user.username}`}>My Profile</NavLink>
               </li>
               <li>
                 <NavLink to="/projects">Explore</NavLink>

@@ -1,16 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getUserReviews, editReview } from "../api";
+import { getUserReviews, editReview, deleteReview } from "../api";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/user.context";
+
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 import { format } from "timeago.js";
 //To use just use format(something.createdAt) -> comes from timestamps
 
 export const UserReviews = () => {
-  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
   const [reviews, setReviews] = useState([]);
   const { username } = useParams();
   const [editingMovie, setEditingMovie] = useState([]);
@@ -36,10 +37,15 @@ export const UserReviews = () => {
 
   const handleSubmit = async (e, reviewId) => {
     e.preventDefault();
-    await editReview(reviewId, editingMovie);
+    await editReview(reviewId, { editingMovie });
     setEditingMovie([]);
     setRenderAgain(!renderAgain);
     toast.success("Review saved!");
+  };
+
+  const handleDelete = async (reviewId) => {
+    await deleteReview(reviewId);
+    setRenderAgain(!renderAgain);
   };
 
   return (
@@ -123,8 +129,6 @@ export const UserReviews = () => {
                           })
                         }
                       />
-
-                      <label>Review:</label>
                     </>
                     <button type="submit">Save</button>
                   </form>
@@ -140,28 +144,20 @@ export const UserReviews = () => {
                     </p>
                   </>
                 )}
-
-                {/* <form
-                  style={{ display: "flex", flexDirection: "column" }}
-                  onSubmit={handleSubmit}
-                >
-                  <label>Rating:</label>
-                  <textarea
-                    required
-                    type="number"
-                    min="0"
-                    max="10"
-                    value={rating}
-                    onChange={(e) => setRating(e.target.value)}
-                  ></textarea>
-                  <label>Review:</label>
-                </form> */}
               </div>
               <p>
                 <small>{format(review.createdAt)}</small>
               </p>
-
-              <button onClick={() => handleForm(review._id)}>Edit</button>
+              {user && user.username === username && (
+                <>
+                  <button onClick={() => handleForm(review._id)}>Edit</button>
+                  {editingMovie._id === review._id && (
+                    <button onClick={() => handleDelete(review._id)}>
+                      Delete
+                    </button>
+                  )}
+                </>
+              )}
             </article>
           );
         })}
