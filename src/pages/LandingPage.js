@@ -1,47 +1,85 @@
 import React from "react";
+// import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
-  randomFive,
+  // randomFive,
   getUpcomingMovies,
   getInTheatres,
   getPopularMovies,
   getTopRated,
   trendingWeekMovies,
 } from "../api";
-
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Carousel } from "../components/Carousel";
 
 export const LandingPage = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [toggle, setToggle] = useState(false);
 
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [inTheatres, setInTheatres] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const findPopular = await getPopularMovies();
+      setPopularMovies(findPopular.data.results);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const findTrending = await trendingWeekMovies();
+      setTrendingMovies(findTrending.data.results);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const findTopRated = await getTopRated();
+      setTopRatedMovies(findTopRated.data.results);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const findInTheatres = await getInTheatres();
+      setInTheatres(findInTheatres.data.results);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const findUpcoming = await getUpcomingMovies();
+      setUpcomingMovies(findUpcoming.data.results);
+    })();
+  }, []);
+
   const handleList = async (list) => {
+    setToggle(!toggle);
     if (list === "popular") {
-      setToggle(!toggle);
       const findPopular = await getPopularMovies();
       setMoviesList(findPopular.data.results);
     }
 
     if (list === "trending") {
-      setToggle(!toggle);
       const findTrending = await trendingWeekMovies();
       setMoviesList(findTrending.data.results);
     }
 
-    if (list === "top rated") {
-      setToggle(!toggle);
+    if (list === "top rated" && toggle) {
       const findTopRated = await getTopRated();
       setMoviesList(findTopRated.data.results);
     }
 
     if (list === "in theatres") {
-      setToggle(!toggle);
       const findInTheatres = await getInTheatres();
       setMoviesList(findInTheatres.data.results);
     }
 
     if (list === "upcoming") {
-      setToggle(!toggle);
       const findUpcoming = await getUpcomingMovies();
       setMoviesList(findUpcoming.data.results);
     }
@@ -49,7 +87,7 @@ export const LandingPage = () => {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      {/* <div style={{ display: "flex", justifyContent: "center" }}>
         <button onClick={() => handleList("popular")}>Popular Movies</button>
         <button onClick={() => handleList("trending")}>Trending Movies</button>
         <button onClick={() => handleList("top rated")}>
@@ -111,7 +149,16 @@ export const LandingPage = () => {
             })}
           </section>
         )}
-      </>
+      </> */}
+      <div>
+        <h3>Popular Movies:</h3>
+        {popularMovies.length && <Carousel movies={popularMovies} />}
+      </div>
+
+      <div>
+        <h3>Trending Movies:</h3>
+        {trendingMovies.length && <Carousel movies={trendingMovies} />}
+      </div>
     </div>
   );
 };

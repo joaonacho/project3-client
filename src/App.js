@@ -2,11 +2,8 @@ import "./App.scss";
 import { LandingPage } from "./pages/LandingPage";
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { AddProject } from "./pages/AddProject";
-import { ProjectDetail } from "./pages/ProjectDetail";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { EditProject } from "./pages/EditProject";
 import { Signup } from "./pages/Signup";
 import { Login } from "./pages/Login";
 import { IsPrivate } from "./components/IsPrivate";
@@ -15,6 +12,8 @@ import { EditUser } from "./components/EditUser";
 import { SearchMovie } from "./components/SearchMovie";
 import { MovieDetails } from "./pages/MovieDetails";
 import { UserReviews } from "./pages/UserReviews";
+import { Children } from "react";
+import { Carousel } from "./components/Carousel";
 
 function App() {
   return (
@@ -23,18 +22,14 @@ function App() {
       <Navbar />
       <SearchMovie />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        {/* <Route path="/projects" element={<ListProjects />} /> */}
         <Route
-          path="/projects/add"
+          path="/"
           element={
-            <IsPrivate>
-              <AddProject />
-            </IsPrivate>
+            <LandingPage>
+              <Carousel />
+            </LandingPage>
           }
         />
-        <Route path="/projects/:projectId" element={<ProjectDetail />} />
-        <Route path="/projects/:projectId/edit" element={<EditProject />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile/:username" element={<Profile />} />
@@ -47,7 +42,6 @@ function App() {
           }
         />
         <Route path="/profile/:username/reviews" element={<UserReviews />} />
-
         <Route path="/movies/:movieId" element={<MovieDetails />} />
       </Routes>
     </div>
