@@ -11,7 +11,7 @@ export const Carousel = ({ movies }) => {
       <AutoplaySlider
         play={true}
         cancelOnInteraction={false}
-        interval={3000}
+        interval={Math.round(Math.random() * 3000) + 1500}
         style={{
           width: "400px",
           height: "270px",

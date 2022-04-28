@@ -145,3 +145,8 @@ export const editReview = (reviewId, movie) => {
 export const deleteReview = (reviewId) => {
   return axios.delete(`${baseURL}/${reviewId}/delete`);
 };
+
+//GET random 3 reviews
+export const randomReviews = () => {
+  return axios.get(`${baseURL}/random-reviews`);
+};

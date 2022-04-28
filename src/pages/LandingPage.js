@@ -1,26 +1,35 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
   // randomFive,
+  randomReviews,
   getUpcomingMovies,
   getInTheatres,
   getPopularMovies,
   getTopRated,
   trendingWeekMovies,
 } from "../api";
-import { Link } from "react-router-dom";
 import { Carousel } from "../components/Carousel";
+import { format } from "timeago.js";
 
 export const LandingPage = () => {
-  const [moviesList, setMoviesList] = useState([]);
-  const [toggle, setToggle] = useState(false);
+  // const [moviesList, setMoviesList] = useState([]);
+  // const [toggle, setToggle] = useState(false);
+  const [threeReviews, setThreeReviews] = useState([]);
 
   const [popularMovies, setPopularMovies] = useState([]);
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [inTheatres, setInTheatres] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const reviews = await randomReviews();
+      setThreeReviews(reviews.data);
+      console.log(reviews.data);
+    })();
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -57,33 +66,33 @@ export const LandingPage = () => {
     })();
   }, []);
 
-  const handleList = async (list) => {
-    setToggle(!toggle);
-    if (list === "popular") {
-      const findPopular = await getPopularMovies();
-      setMoviesList(findPopular.data.results);
-    }
+  // const handleList = async (list) => {
+  //   setToggle(!toggle);
+  //   if (list === "popular") {
+  //     const findPopular = await getPopularMovies();
+  //     setMoviesList(findPopular.data.results);
+  //   }
 
-    if (list === "trending") {
-      const findTrending = await trendingWeekMovies();
-      setMoviesList(findTrending.data.results);
-    }
+  //   if (list === "trending") {
+  //     const findTrending = await trendingWeekMovies();
+  //     setMoviesList(findTrending.data.results);
+  //   }
 
-    if (list === "top rated" && toggle) {
-      const findTopRated = await getTopRated();
-      setMoviesList(findTopRated.data.results);
-    }
+  //   if (list === "top rated" && toggle) {
+  //     const findTopRated = await getTopRated();
+  //     setMoviesList(findTopRated.data.results);
+  //   }
 
-    if (list === "in theatres") {
-      const findInTheatres = await getInTheatres();
-      setMoviesList(findInTheatres.data.results);
-    }
+  //   if (list === "in theatres") {
+  //     const findInTheatres = await getInTheatres();
+  //     setMoviesList(findInTheatres.data.results);
+  //   }
 
-    if (list === "upcoming") {
-      const findUpcoming = await getUpcomingMovies();
-      setMoviesList(findUpcoming.data.results);
-    }
-  };
+  //   if (list === "upcoming") {
+  //     const findUpcoming = await getUpcomingMovies();
+  //     setMoviesList(findUpcoming.data.results);
+  //   }
+  // };
 
   return (
     <div>
@@ -150,15 +159,99 @@ export const LandingPage = () => {
           </section>
         )}
       </> */}
-      <div>
-        <h3>Popular Movies:</h3>
-        {popularMovies.length && <Carousel movies={popularMovies} />}
-      </div>
+      <section
+        style={{
+          // width: "30%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+        }}
+      >
+        {threeReviews && (
+          <>
+            {threeReviews.map((review) => {
+              return (
+                <div style={{ width: "25%" }}>
+                  <p>
+                    <i>"{review.review}"</i>
+                  </p>
+                  <p>
+                    <strong>{review.rating}</strong> <small> /10</small>
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <p>
+                      <small>
+                        {review.author.username} about
+                        <strong> {review.movie.title}</strong>
+                      </small>
+                    </p>
 
-      <div>
-        <h3>Trending Movies:</h3>
-        {trendingMovies.length && <Carousel movies={trendingMovies} />}
-      </div>
+                    <p>
+                      <small>{format(review.createdAt)}</small>
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </>
+        )}
+      </section>
+
+      <section
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <div>
+          {trendingMovies.length && (
+            <>
+              <h3>Trending Movies:</h3> <Carousel movies={trendingMovies} />
+            </>
+          )}
+        </div>
+
+        <div>
+          {upcomingMovies.length && (
+            <>
+              <h3>Upcoming Movies:</h3> <Carousel movies={upcomingMovies} />
+            </>
+          )}
+        </div>
+
+        <div>
+          {inTheatres.length && (
+            <>
+              <h3>In theatres:</h3> <Carousel movies={inTheatres} />
+            </>
+          )}
+        </div>
+
+        <div>
+          {topRatedMovies.length && (
+            <>
+              <h3>Top Rated Movies:</h3> <Carousel movies={topRatedMovies} />
+            </>
+          )}
+        </div>
+
+        <div>
+          {popularMovies.length && (
+            <>
+              <h3>Popular Movies:</h3>
+              <Carousel movies={popularMovies} />
+            </>
+          )}
+        </div>
+      </section>
     </div>
   );
 };

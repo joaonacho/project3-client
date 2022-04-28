@@ -12,7 +12,6 @@ import { EditUser } from "./components/EditUser";
 import { SearchMovie } from "./components/SearchMovie";
 import { MovieDetails } from "./pages/MovieDetails";
 import { UserReviews } from "./pages/UserReviews";
-import { Children } from "react";
 import { Carousel } from "./components/Carousel";
 
 function App() {
