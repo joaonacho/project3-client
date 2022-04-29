@@ -14,6 +14,7 @@ import { UserReviews } from "./pages/UserReviews";
 import { Carousel } from "./components/Carousel";
 import { SearchMovie } from "./components/SearchMovie";
 import { Explore } from "./pages/Explore";
+import { FindFriends } from "./pages/FindFriends";
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
             </Explore>
           }
         />
+
+        <Route path="/find-friends" element={<FindFriends />} />
+
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile/:username" element={<Profile />} />

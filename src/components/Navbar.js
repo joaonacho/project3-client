@@ -56,7 +56,7 @@ export const Navbar = () => {
               </li>
 
               <li>
-                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                <NavLink to="/find-friends" style={{ textDecoration: "none" }}>
                   Find Friends
                 </NavLink>
               </li>

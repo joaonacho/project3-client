@@ -8,6 +8,7 @@ import {
 } from "../api";
 import { Carousel } from "../components/Carousel";
 import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 
 export const LandingPage = () => {
   const [threeReviews, setThreeReviews] = useState([]);
@@ -165,7 +166,48 @@ export const LandingPage = () => {
         )}
       </section>
 
-      <section>{randomUsers}</section>
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-around",
+          alignItems: "center",
+          height: "350px",
+          backgroundColor: "ghostwhite",
+        }}
+      >
+        <h1 style={{ textAlign: "center" }}>We love Cinema</h1>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
+          {randomUsers.length &&
+            randomUsers.map((user) => {
+              return (
+                <article key={user._id}>
+                  <Link to={`/profile/${user.username}`}>
+                    <img
+                      src={user.profileImg}
+                      alt="userimage"
+                      style={{
+                        borderRadius: "50%",
+                        width: "100px",
+                        height: "100px",
+                        boxShadow: "10px 10px 15px lightgrey",
+                      }}
+                    />
+                  </Link>
+                </article>
+              );
+            })}
+        </div>
+        <h1 style={{ textAlign: "center" }}>
+          <em>And our users too!</em>
+        </h1>
+      </section>
     </div>
   );
 };

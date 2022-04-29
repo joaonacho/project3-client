@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getUser, randomFive, removeFromFavourites } from "../api";
+import { getUser, removeFromFavourites } from "../api";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
@@ -24,15 +24,6 @@ export const Profile = () => {
       setUser(foundUser.data);
     })();
   }, [username]);
-
-  //Five users to be displayed in homepage - just a test in profile page
-  // const [fiveUsers, setFiveUsers] = useState([]);
-  // useEffect(() => {
-  //   (async () => {
-  //     const randomUsers = await randomFive();
-  //     setFiveUsers(randomUsers.data);
-  //   })();
-  // }, []);
 
   useEffect(() => {
     (async () => {
