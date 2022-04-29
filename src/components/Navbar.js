@@ -5,7 +5,6 @@ import { UserContext } from "../context/user.context";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { BsFillHouseFill } from "react-icons/bs";
-
 import "./navbar.scss";
 
 export const Navbar = () => {
@@ -18,41 +17,62 @@ export const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="container">
-        <NavLink className="navbar-icons navbar-logo" to="/">
+        <NavLink
+          className="navbar-icons navbar-logo"
+          style={{ textDecoration: "none" }}
+          to="/"
+        >
           <h1>
             <span>
               <BsFillHouseFill />
               Movie
             </span>
-            Friends
+            Screen
           </h1>
         </NavLink>
 
         {isLoggedIn && <button onClick={logoutUser}>Logout</button>}
         <ul className={click ? "nav-menu active" : "nav-menu"}>
+          <li>
+            <NavLink to="/explore" style={{ textDecoration: "none" }}>
+              Explore
+            </NavLink>
+          </li>
+
           {isLoggedIn && (
             <>
               <li>
-                <NavLink to="/projects">Feed</NavLink>
+                <NavLink to="/feed" style={{ textDecoration: "none" }}>
+                  Feed
+                </NavLink>
               </li>
               <li>
-                <NavLink to={`/profile/${user.username}`}>My Profile</NavLink>
+                <NavLink
+                  to={`/profile/${user.username}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  My Profile
+                </NavLink>
               </li>
+
               <li>
-                <NavLink to="/projects">Explore</NavLink>
-              </li>
-              <li>
-                <NavLink to="/projects">Find Friends</NavLink>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  Find Friends
+                </NavLink>
               </li>
             </>
           )}
           {!isLoggedIn && (
             <>
               <li>
-                <NavLink to="/login">Log in</NavLink>
+                <NavLink to="/login" style={{ textDecoration: "none" }}>
+                  Log in
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/signup">Sign Up</NavLink>
+                <NavLink to="/signup" style={{ textDecoration: "none" }}>
+                  Sign Up
+                </NavLink>
               </li>
             </>
           )}
