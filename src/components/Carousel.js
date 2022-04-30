@@ -33,13 +33,13 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <div>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
               <p
                 style={{
                   fontSize: "1.2rem",
@@ -67,22 +67,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[1].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[1].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -100,22 +102,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[2].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[2].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -133,22 +137,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[3].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[3].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -166,22 +172,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[4].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[4].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -199,22 +207,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[5].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[5].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -232,22 +242,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[6].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[6].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -265,22 +277,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[7].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[7].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -298,22 +312,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[8].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[8].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -331,22 +347,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[9].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[9].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -364,22 +382,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[10].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[10].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -397,22 +417,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[11].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[11].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -430,22 +452,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[12].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[12].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -463,22 +487,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[13].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[13].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -496,22 +522,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[14].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[14].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -529,22 +557,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[15].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[15].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -562,22 +592,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[16].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[16].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -595,22 +627,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[17].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[17].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -628,22 +662,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[18].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[18].title}
+              </p>
+            </div>
           </Link>
         </div>
 
@@ -661,22 +697,24 @@ export const Carousel = ({ movies }) => {
             ) : (
               <img
                 src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                  "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
                 alt="movieposter"
-                style={{ width: "400px" }}
+                style={{ width: "400px", height: "225px" }}
               />
             )}
-            <p
-              style={{
-                fontSize: "1.2rem",
-                color: "white",
-                textAlign: "center",
-                marginBottom: "17px",
-              }}
-            >
-              {movies[19].title}
-            </p>
+            <div style={{ backgroundColor: "purple", height: "43px" }}>
+              <p
+                style={{
+                  fontSize: "1.2rem",
+                  color: "white",
+                  textAlign: "center",
+                  marginBottom: "17px",
+                }}
+              >
+                {movies[19].title}
+              </p>
+            </div>
           </Link>
         </div>
       </AutoplaySlider>
