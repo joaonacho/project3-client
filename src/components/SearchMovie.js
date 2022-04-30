@@ -37,7 +37,7 @@ export const SearchMovie = () => {
     >
       <input
         type="text"
-        placeholder="Search movies..."
+        placeholder="Search movies"
         onChange={filterMovieList}
         value={query}
         style={{

@@ -103,8 +103,8 @@ export const removeFromFavourites = (movieId, user) => {
 };
 
 //GET search users
-export const searchUsers = () => {
-  return axios.get(`${baseURL}/search-users`);
+export const searchUsers = (query) => {
+  return axios.get(`${baseURL}/search-users/${query}`);
 };
 
 //REVIEWS
