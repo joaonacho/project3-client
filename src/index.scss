@@ -62,12 +62,16 @@ p {
   font-weight: 400;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* set up the body */
 body {
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
-  color: hsl(var(--clr-dark));
-  background-color: hsl(var(--clr-white));
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-dark));
   line-height: 1.5;
   min-height: 100vh;
   max-width: 100vw;
@@ -134,7 +138,7 @@ select {
 .container {
   padding-inline: 2em;
   margin-inline: auto;
-  max-width: 80rem;
+  max-width: 80vw;
 }
 .container-color {
   width: 40%;

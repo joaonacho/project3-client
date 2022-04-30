@@ -49,10 +49,14 @@ export const Navbar = () => {
           {!isLoggedIn && (
             <>
               <li>
-                <NavLink to="/login">Log in</NavLink>
+                <NavLink className={"btn-login"} to="/login">
+                  Log in
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/signup">Sign Up</NavLink>
+                <NavLink className={"btn-signup"} to="/signup">
+                  Sign Up
+                </NavLink>
               </li>
             </>
           )}
