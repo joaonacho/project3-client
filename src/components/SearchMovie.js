@@ -30,7 +30,6 @@ export const SearchMovie = () => {
   return (
     <div
       style={{
-        width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -41,16 +40,25 @@ export const SearchMovie = () => {
         placeholder="Search movies..."
         onChange={filterMovieList}
         value={query}
-        style={{ width: "20%", fontSize: "1rem", alignSelf: "center" }}
+        style={{
+          width: "20%",
+          fontSize: "1rem",
+          alignSelf: "center",
+        }}
       />
 
-      <div style={{ alignSelf: "center", width: "40%" }}>
+      <div
+        style={{
+          alignSelf: "center",
+          width: "40%",
+          backgroundColor: "whitesmoke",
+          marginTop: "20px",
+        }}
+      >
         {movie &&
           movie.map((found) => {
             return (
               <>
-                <hr />
-
                 <Link
                   to={`/movies/${found.id}`}
                   style={{ textDecoration: "none" }}
@@ -60,6 +68,7 @@ export const SearchMovie = () => {
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
+                      border: "1px solid grey",
                     }}
                     onClick={cleanUp}
                   >
@@ -68,7 +77,7 @@ export const SearchMovie = () => {
                         <img
                           src={`https://image.tmdb.org/t/p/w200${found.poster_path}`}
                           alt="poster"
-                          style={{ width: "100px" }}
+                          style={{ width: "100px", padding: "5px" }}
                         />
                       </>
                     ) : (
@@ -78,11 +87,17 @@ export const SearchMovie = () => {
                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
                           }
                           alt="poster"
-                          style={{ width: "100px" }}
+                          style={{ width: "100px", padding: "5px" }}
                         />
                       </>
                     )}
-                    <div style={{ textAlign: "right" }}>
+                    <div
+                      style={{
+                        textAlign: "right",
+                        padding: "5px",
+                        color: "purple",
+                      }}
+                    >
                       <h2>
                         <i>{found.title}</i>
                       </h2>
@@ -95,7 +110,6 @@ export const SearchMovie = () => {
                     </div>
                   </div>
                 </Link>
-                <hr />
               </>
             );
           })}

@@ -9,18 +9,19 @@ import { Login } from "./pages/Login";
 import { IsPrivate } from "./components/IsPrivate";
 import { Profile } from "./pages/Profile";
 import { EditUser } from "./components/EditUser";
-import { SearchMovie } from "./components/SearchMovie";
 import { MovieDetails } from "./pages/MovieDetails";
 import { UserReviews } from "./pages/UserReviews";
-import { Children } from "react";
 import { Carousel } from "./components/Carousel";
+import { SearchMovie } from "./components/SearchMovie";
+import { Explore } from "./pages/Explore";
+import { FindFriends } from "./pages/FindFriends";
 
 function App() {
   return (
     <div className="App">
       <ToastContainer />
       <Navbar />
-      <SearchMovie />
+
       <Routes>
         <Route
           path="/"
@@ -30,6 +31,18 @@ function App() {
             </LandingPage>
           }
         />
+        <Route
+          path="/explore"
+          element={
+            <Explore>
+              <SearchMovie />
+              <Carousel />
+            </Explore>
+          }
+        />
+
+        <Route path="/find-friends" element={<FindFriends />} />
+
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile/:username" element={<Profile />} />

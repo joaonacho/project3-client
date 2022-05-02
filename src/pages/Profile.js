@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getUser, randomFive, removeFromFavourites } from "../api";
+import { getUser, removeFromFavourites } from "../api";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
+import { BsFillPencilFill } from "react-icons/bs";
+import { BsFillXCircleFill } from "react-icons/bs";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 // import { format } from "timeago.js";
@@ -22,15 +24,6 @@ export const Profile = () => {
       setUser(foundUser.data);
     })();
   }, [username]);
-
-  //Five users to be displayed in homepage - just a test in profile page
-  // const [fiveUsers, setFiveUsers] = useState([]);
-  // useEffect(() => {
-  //   (async () => {
-  //     const randomUsers = await randomFive();
-  //     setFiveUsers(randomUsers.data);
-  //   })();
-  // }, []);
 
   useEffect(() => {
     (async () => {
@@ -62,6 +55,11 @@ export const Profile = () => {
             alt="profilepic"
             style={{ width: "200px", height: "200px", borderRadius: "50%" }}
           />
+          {user && user.username === newUser.username && (
+            <Link to={`/profile/${newUser.username}/edit`}>
+              <BsFillPencilFill style={{ marginLeft: "300px" }} />
+            </Link>
+          )}
           <h2>{newUser.username}'s profile</h2>
           <h4>About me:</h4>
           <p>{newUser.about}</p>
@@ -89,9 +87,7 @@ export const Profile = () => {
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "space-evenly",
                   flexWrap: "wrap",
-                  flexDirection: "row",
                 }}
               >
                 {favList.map((fav) => {
@@ -99,39 +95,44 @@ export const Profile = () => {
                     <article
                       key={fav._id}
                       style={{
-                        width: "15%",
+                        width: "30%",
                         display: "flex",
                         flexDirection: "column",
-                        margin: "15px",
+                        alignItems: "center",
+                        marginTop: "25px",
                       }}
                     >
-                      <Link
-                        to={`/movies/${fav.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        {fav.poster_path ? (
-                          <img
-                            src={`https://image.tmdb.org/t/p/w200${fav.poster_path}`}
-                            alt="movieposter"
-                            style={{ width: "60px", marginLeft: "37%" }}
-                          />
-                        ) : (
-                          <img
-                            src={
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
-                            }
-                            alt="movieposter"
-                            style={{ width: "60px", marginLeft: "37%" }}
-                          />
+                      <div style={{ width: "30%" }}>
+                        {user && user.username === newUser.username && (
+                          <>
+                            <BsFillXCircleFill
+                              onClick={() => removeMovie(fav.id, user)}
+                              style={{
+                                color: "red",
+                              }}
+                            />
+                          </>
                         )}
-                        <h4>{fav.title}</h4>
-                      </Link>
-
-                      {user && user.username === newUser.username && (
-                        <button onClick={() => removeMovie(fav.id, user)}>
-                          Remove from favourites
-                        </button>
-                      )}
+                        <Link
+                          to={`/movies/${fav.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          {fav.poster_path ? (
+                            <img
+                              src={`https://image.tmdb.org/t/p/w200${fav.poster_path}`}
+                              alt="movieposter"
+                            />
+                          ) : (
+                            <img
+                              src={
+                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
+                              }
+                              alt="movieposter"
+                            />
+                          )}
+                          <h3 style={{ textAlign: "center" }}>{fav.title}</h3>
+                        </Link>
+                      </div>
                     </article>
                   );
                 })}
@@ -140,29 +141,6 @@ export const Profile = () => {
           )}
         </>
       )}
-
-      {user && user.username === newUser.username && (
-        <Link
-          to={`/profile/${newUser.username}/edit`}
-          style={{ textDecoration: "none" }}
-        >
-          <p>Edit profile</p>
-        </Link>
-      )}
-
-      {/* {fiveUsers &&
-        fiveUsers.map((user) => {
-          return (
-            <div key={user._id}>
-              <img
-                src={user.profileImg}
-                alt="profilepic"
-                style={{ width: "60px", height: "60px", borderRadius: "50%" }}
-              />
-              <p style={{ fontSize: "0.6rem" }}>{user.username}</p>
-            </div>
-          );
-        })} */}
     </div>
   );
 };

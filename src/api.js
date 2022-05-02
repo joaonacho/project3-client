@@ -2,25 +2,6 @@ import axios from "axios";
 const baseURL = `${process.env.REACT_APP_PROJECTS_API}/api`;
 
 //Movies
-export const getAllMovies = () => {
-  return axios.get(`${baseURL}/movies`);
-};
-
-export const getProject = (id) => {
-  return axios.get(`${baseURL}/projects/${id}`);
-};
-
-export const deleteProject = (id) => {
-  return axios.delete(`${baseURL}/projects/${id}`);
-};
-
-export const addProject = (project) => {
-  return axios.post(`${baseURL}/projects`, project);
-};
-
-export const updateProject = (updatedProject) => {
-  return axios.put(`${baseURL}/projects/${updatedProject._id}`, updatedProject);
-};
 
 export const verify = (storedToken) => {
   return axios.get(`${baseURL}/verify`, {
@@ -121,6 +102,11 @@ export const removeFromFavourites = (movieId, user) => {
   });
 };
 
+//GET search users
+export const searchUsers = () => {
+  return axios.get(`${baseURL}/search-users`);
+};
+
 //REVIEWS
 //POST create a movie review
 export const movieReview = (movieId, review) => {
@@ -144,4 +130,9 @@ export const editReview = (reviewId, movie) => {
 //DLETE review
 export const deleteReview = (reviewId) => {
   return axios.delete(`${baseURL}/${reviewId}/delete`);
+};
+
+//GET random 3 reviews
+export const randomReviews = () => {
+  return axios.get(`${baseURL}/random-reviews`);
 };
