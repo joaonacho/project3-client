@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getUser, removeFromFavourites } from "../api";
+import {
+  getUser,
+  removeFromFavourites,
+  followUser,
+  unfollowUser,
+} from "../api";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
@@ -13,17 +18,17 @@ import { BsFillXCircleFill } from "react-icons/bs";
 
 export const Profile = () => {
   const { user } = useContext(UserContext);
-
   const { username } = useParams();
   const [newUser, setUser] = useState({});
   const [favList, setFavList] = useState([]);
+  const [renderAgain, setRenderAgain] = useState(false);
 
   useEffect(() => {
     (async () => {
       const foundUser = await getUser(username);
       setUser(foundUser.data);
     })();
-  }, [username]);
+  }, [username, renderAgain]);
 
   useEffect(() => {
     (async () => {
@@ -46,10 +51,35 @@ export const Profile = () => {
     toast.warning(`${movieRemoved[0].title} was removed from favourites`);
   };
 
+  const handleFollow = async (name) => {
+    await followUser(name, { user });
+    toast.success(`You're following ${newUser.username}`);
+    setRenderAgain(!renderAgain);
+  };
+
+  const handleUnfollow = async (name) => {
+    await unfollowUser(name, { user });
+    toast.warn(`You're unfollowing ${newUser.username}`);
+    setRenderAgain(!renderAgain);
+  };
+
   return (
     <div>
       {newUser && (
         <>
+          {user && user.username !== newUser.username && newUser.followers && (
+            <>
+              {!newUser.followers.includes(user._id) ? (
+                <button onClick={() => handleFollow(newUser.username)}>
+                  Follow
+                </button>
+              ) : (
+                <button onClick={() => handleUnfollow(newUser.username)}>
+                  Unfollow
+                </button>
+              )}
+            </>
+          )}
           <img
             src={newUser.profileImg}
             alt="profilepic"
@@ -61,29 +91,29 @@ export const Profile = () => {
             </Link>
           )}
           <h2>{newUser.username}'s profile</h2>
-          <h4>About me:</h4>
+          <p>{newUser.country}</p>
           <p>{newUser.about}</p>
-          {newUser.country ? (
-            <p>{newUser.country}</p>
-          ) : (
-            <p>Where are you from?</p>
+
+          {newUser.genres && newUser.genres.length > 1 && (
+            <>
+              <h3>Favourite movie genres:</h3>
+              <ul style={{ listStyle: "none" }}>
+                {newUser.genres.map((genre, index) => {
+                  return <li key={index}>{genre}</li>;
+                })}
+              </ul>
+            </>
           )}
 
-          <h4>Favourite movie genres:</h4>
-          <ul style={{ listStyle: "none" }}>
-            {newUser.genres &&
-              newUser.genres.map((genre, index) => {
-                return <li key={index}>{genre}</li>;
-              })}
-          </ul>
+          {newUser.reviews && newUser.reviews.length > 1 && (
+            <Link to={`/profile/${newUser.username}/reviews`}>
+              <button>See reviews</button>
+            </Link>
+          )}
 
-          <Link to={`/profile/${newUser.username}/reviews`}>
-            <button>See all reviews</button>
-          </Link>
-
-          {favList && (
+          {favList && favList.length > 1 && (
             <>
-              <h4>Favourites movie list:</h4>
+              <h3>Favourites:</h3>
               <div
                 style={{
                   display: "flex",

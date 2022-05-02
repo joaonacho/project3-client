@@ -1,42 +1,113 @@
 import React from "react";
 import { searchUsers } from "../api";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
+import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export const FindFriends = () => {
   const { user } = useContext(UserContext);
   const [users, setUsers] = useState([]);
-  const [foundUsers, setFoundUsers] = useState([]);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    (async () => {
-      const foundUsers = await searchUsers();
-      setUsers(foundUsers.data);
-    })();
-  }, [user.username]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newQuery = query.toLowerCase().replace(" ", "");
 
-  const filteredUsers = users.filter((client) => {
-    return client._id !== user._id;
-  });
-
-  console.log(filteredUsers);
-
-  //WIP
-  const filterUsersList = (e) => {
-    setQuery(e.target.value);
-
-    if (e.target.value === "") {
-      setFoundUsers([]);
+    if (!newQuery.length) {
+      setUsers([]);
     }
 
-    const newUsers = filteredUsers.filter((person) => {
-      return person.username === query || person.username.includes(query);
+    const usersInDb = await searchUsers(newQuery);
+    const filterUser = usersInDb.data.filter((person) => {
+      return person.username !== user.username;
     });
 
-    setFoundUsers(newUsers);
+    setUsers(filterUser);
   };
 
-  return <div>FindFriends</div>;
+  const handleQuery = (e) => {
+    setQuery(e.target.value);
+    setTimeout(() => {
+      handleSubmit(e);
+    }, 500);
+  };
+
+  return (
+    <main
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          alignSelf: "center",
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <BsSearch style={{ marginRight: "5px" }} />
+          <input
+            name={query}
+            type="text"
+            onChange={(e) => handleQuery(e)}
+            placeholder="Search users"
+          />
+        </form>
+      </div>
+      <div
+        style={{
+          alignSelf: "center",
+          backgroundColor: "whitesmoke",
+          width: "40%",
+          marginTop: "20px",
+        }}
+      >
+        {users.length > 0 &&
+          users.map((person) => {
+            return (
+              <Link
+                to={`/profile/${person.username}`}
+                style={{ textDecoration: "none" }}
+                key={person._id}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    border: "1px solid grey",
+                  }}
+                >
+                  <img
+                    src={person.profileImg}
+                    alt="profilepic"
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      borderRadius: "50%",
+                      padding: "5px",
+                    }}
+                  />
+                  <div
+                    style={{
+                      textAlign: "right",
+                      padding: "5px",
+                      color: "purple",
+                    }}
+                  >
+                    <h2>{person.username}</h2>
+                    <p>
+                      <small>{person.country}</small>
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+      </div>
+    </main>
+  );
 };

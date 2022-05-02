@@ -141,7 +141,10 @@ export const UserReviews = () => {
                       <i>"{review.review}"</i>
                     </p>
                     <p style={{ textAlign: "right" }}>
-                      <strong>{review.rating}</strong> <small>/10</small>
+                      <strong style={{ color: "gold", fontSize: "1.8rem" }}>
+                        {review.rating}
+                      </strong>
+                      <small>/10</small>
                     </p>
                   </>
                 )}
