@@ -42,7 +42,10 @@ export const Navbar = () => {
           {isLoggedIn && (
             <>
               <li>
-                <NavLink to="/feed" style={{ textDecoration: "none" }}>
+                <NavLink
+                  to={`/feed/${user.username}`}
+                  style={{ textDecoration: "none" }}
+                >
                   Feed
                 </NavLink>
               </li>

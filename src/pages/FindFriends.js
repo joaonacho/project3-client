@@ -71,9 +71,9 @@ export const FindFriends = () => {
               <Link
                 to={`/profile/${person.username}`}
                 style={{ textDecoration: "none" }}
+                key={person._id}
               >
                 <div
-                  key={person._id}
                   style={{
                     display: "flex",
                     flexDirection: "row",

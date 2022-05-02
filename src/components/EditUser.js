@@ -99,7 +99,7 @@ export const EditUser = () => {
               onChange={(e) => setAbout(e.target.value)}
             ></textarea>
 
-            <label labelFor="image">Profile picture:</label>
+            <label labelfor="image">Profile picture:</label>
             <input
               type="file"
               onChange={(e) => setNewImage(e.target.files[0])}

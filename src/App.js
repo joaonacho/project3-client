@@ -15,6 +15,7 @@ import { Carousel } from "./components/Carousel";
 import { SearchMovie } from "./components/SearchMovie";
 import { Explore } from "./pages/Explore";
 import { FindFriends } from "./pages/FindFriends";
+import { Feed } from "./pages/Feed";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/feed/:username" element={<Feed />} />
         <Route path="/profile/:username" element={<Profile />} />
         <Route
           path="/profile/:username/edit"

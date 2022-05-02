@@ -20,7 +20,6 @@ export const LandingPage = () => {
     (async () => {
       const fiveUsers = await randomFive();
       setRandomUsers(fiveUsers.data);
-      console.log(fiveUsers.data);
     })();
   }, []);
 
@@ -128,7 +127,7 @@ export const LandingPage = () => {
           <>
             {threeReviews.map((review) => {
               return (
-                <div style={{ width: "20%" }}>
+                <div style={{ width: "20%" }} key={review._id}>
                   <p style={{ fontSize: "1.2rem" }}>
                     <i>"{review.review}"</i>
                   </p>

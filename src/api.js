@@ -2,7 +2,6 @@ import axios from "axios";
 const baseURL = `${process.env.REACT_APP_PROJECTS_API}/api`;
 
 //Movies
-
 export const verify = (storedToken) => {
   return axios.get(`${baseURL}/verify`, {
     headers: { Authorization: `Bearer ${storedToken}` },
@@ -107,6 +106,20 @@ export const searchUsers = (query) => {
   return axios.get(`${baseURL}/search-users/${query}`);
 };
 
+//PUT follow users
+export const followUser = (username, user) => {
+  return axios.put(`${baseURL}/profile/${username}/follow`, user, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+  });
+};
+
+//PUT unfollow users
+export const unfollowUser = (username, user) => {
+  return axios.put(`${baseURL}/profile/${username}/unfollow`, user, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+  });
+};
+
 //REVIEWS
 //POST create a movie review
 export const movieReview = (movieId, review) => {
@@ -127,7 +140,7 @@ export const editReview = (reviewId, movie) => {
   });
 };
 
-//DLETE review
+//DELETE review
 export const deleteReview = (reviewId) => {
   return axios.delete(`${baseURL}/${reviewId}/delete`);
 };
@@ -135,4 +148,15 @@ export const deleteReview = (reviewId) => {
 //GET random 3 reviews
 export const randomReviews = () => {
   return axios.get(`${baseURL}/random-reviews`);
+};
+
+//Feed
+//GET user's posts
+export const getFeed = (username) => {
+  return axios.get(`${baseURL}/feed/${username}`);
+};
+
+//POST create posts
+export const createPost = (post) => {
+  return axios.post(`${baseURL}/create-post`, post);
 };
