@@ -95,7 +95,6 @@ export const Feed = () => {
             );
           })}
       </section>
-      HELLO
     </div>
   );
 };
