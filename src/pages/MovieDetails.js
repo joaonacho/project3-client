@@ -39,10 +39,6 @@ export const MovieDetails = () => {
     toast.success(`${movie.title} was added to favourites`);
   };
 
-  const redirectToImdb = (movieId) => {
-    window.location.href = `https://www.imdb.com/title/${movieId}/`;
-  };
-
   const handleForm = () => {
     form ? setForm(false) : setForm(true);
   };
@@ -132,17 +128,22 @@ export const MovieDetails = () => {
               </p>
             </div>
             <p style={{ alignSelf: "center" }}>{movie.overview}</p>
-            <img
-              src="https://bit.ly/3rIDSxM"
-              alt="imdblogo"
-              style={{
-                width: "60px",
-                height: "45px",
-                borderRadius: "6px",
-                alignSelf: "center",
-              }}
-              onClick={() => redirectToImdb(movie.imdb_id)}
-            />
+
+            <a
+              href={`https://www.imdb.com/title/${movie.imdb_id}/`}
+              target="blank"
+              style={{ alignSelf: "center" }}
+            >
+              <img
+                src="https://bit.ly/3rIDSxM"
+                alt="imdblogo"
+                style={{
+                  width: "60px",
+                  height: "45px",
+                  borderRadius: "6px",
+                }}
+              />
+            </a>
 
             {isLoggedIn && (
               <div
