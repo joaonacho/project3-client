@@ -1,0 +1,34 @@
+.container-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  padding-inline: 2em;
+  margin-inline: auto;
+  border: 5px solid red;
+}
+
+@media only screen and (min-width: 600px) {
+  .container-multiple-carousels {
+    border: 1px solid red;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.container-multiple-carousels {
+  border: 1px solid red;
+  width: 100%;
+}
+.container-carousel {
+  width: inherit;
+  height: inherit;
+}
+
+// .container-carousel {
+//   background-color: purple;
+//   height: ;
+//   color: whitesmoke;
+//   border-radius: 8px 8px 0 0;
+// }

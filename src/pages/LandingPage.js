@@ -9,6 +9,7 @@ import {
 import { Carousel } from "../components/Carousel";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import "./LandingPage.scss";
 
 export const LandingPage = () => {
   const [threeReviews, setThreeReviews] = useState([]);
@@ -45,40 +46,21 @@ export const LandingPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="bg-dark">
       <section
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          flexDirection: "row-reverse",
-          backgroundColor: "black",
-        }}
+        className="container-section"
+        // style={{
+        //   display: "flex",
+        //   flexWrap: "wrap",
+        //   flexDirection: "row-reverse",
+        //   backgroundColor: "black",
+        // }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
-            marginRight: "15%",
-            marginBottom: "40px",
-          }}
-        >
-          <div
-            style={{
-              marginTop: "40px",
-              textAlign: "center",
-            }}
-          >
+        <div className="container-multiple-carousels">
+          <div className="container-carousel">
             {trendingMovies.length && (
               <>
-                <div
-                  style={{
-                    backgroundColor: "purple",
-                    height: "35px",
-                    color: "whitesmoke",
-                    borderRadius: "8px 8px 0 0",
-                  }}
-                >
+                <div>
                   <h2>Trending Movies</h2>
                 </div>
                 <Carousel movies={trendingMovies} />
@@ -86,22 +68,10 @@ export const LandingPage = () => {
             )}
           </div>
 
-          <div
-            style={{
-              marginTop: "40px",
-              textAlign: "center",
-              color: "whitesmoke",
-            }}
-          >
+          <div className="container-carousel">
             {upcomingMovies.length && (
               <>
-                <div
-                  style={{
-                    backgroundColor: "purple",
-                    height: "35px",
-                    borderRadius: "8px 8px 0 0",
-                  }}
-                >
+                <div>
                   <h2>Upcoming Movies</h2>
                 </div>
                 <Carousel movies={upcomingMovies} />

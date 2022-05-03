@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Select from "react-select";
+import "./Signup.scss";
 
 import React from "react";
 
@@ -65,7 +66,7 @@ export const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="signup-box container">
       <h1>Sign up</h1>
       <form onSubmit={handleSubmit}>
         <label>Username</label>
