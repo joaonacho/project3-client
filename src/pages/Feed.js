@@ -3,8 +3,7 @@ import { getFeed } from "../api";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/user.context";
 import { CreatePost } from "../components/CreatePost";
-import { format } from "timeago.js";
-import { Link } from "react-router-dom";
+import { Post } from "../components/Post";
 
 export const Feed = () => {
   const { user } = useContext(UserContext);
@@ -35,64 +34,7 @@ export const Feed = () => {
       >
         {feed &&
           feed.map((post) => {
-            return (
-              <article
-                key={post._id}
-                style={{
-                  marginTop: "30px",
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <div
-                  style={{
-                    width: "25%",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignSelf: "center",
-                  }}
-                >
-                  <img
-                    src={post.author.profileImg}
-                    alt="profilepicture"
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "50%",
-                    }}
-                  />
-                  <Link
-                    to={`/profile/${post.author.username}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <p style={{ marginLeft: "10px", marginTop: "8px" }}>
-                      <strong>{post.author.username}</strong>
-                    </p>
-                  </Link>
-                </div>
-                <img
-                  src={post.poster}
-                  alt="coverimage"
-                  style={{
-                    width: "25%",
-                    maxHeight: "3000px",
-                    marginTop: "10px",
-                    alignSelf: "center",
-                  }}
-                />
-                <div style={{ width: "25%", alignSelf: "center" }}>
-                  <p style={{ marginTop: "10px", textAlign: "left" }}>
-                    {post.content}
-                  </p>
-                  <p style={{ textAlign: "right" }}>
-                    <small>
-                      <i>{format(post.createdAt)}</i>
-                    </small>
-                  </p>
-                </div>
-              </article>
-            );
+            return <Post key={post._id} post={post} />;
           })}
       </section>
     </div>

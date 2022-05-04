@@ -17,6 +17,7 @@ import { Explore } from "./pages/Explore";
 import { FindFriends } from "./pages/FindFriends";
 import { Feed } from "./pages/Feed";
 import { CreatePost } from "./components/CreatePost";
+import { Post } from "./components/Post";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           element={
             <Feed>
               <CreatePost />
+              <Post />
             </Feed>
           }
         />

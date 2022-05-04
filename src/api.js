@@ -160,3 +160,19 @@ export const getFeed = (username) => {
 export const createPost = (post) => {
   return axios.post(`${baseURL}/create-post`, post);
 };
+
+//DELETE delete posts
+export const deletePost = (postId) => {
+  return axios.delete(`${baseURL}/delete/${postId}`);
+};
+
+//COMMENTS
+//POST create comment
+export const createComment = (postId, comment) => {
+  return axios.post(`${baseURL}/comment/${postId}`, { comment });
+};
+
+//GET comments in post
+export const getComments = (postId) => {
+  return axios.get(`${baseURL}/comment/${postId}`);
+};
