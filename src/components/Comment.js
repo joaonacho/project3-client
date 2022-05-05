@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../context/user.context";
 import { format } from "timeago.js";
 import { toast } from "react-toastify";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 export const Comment = ({ postId }) => {
   const { user } = useContext(UserContext);
@@ -91,6 +92,11 @@ export const Comment = ({ postId }) => {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
+
+          <FaRegPaperPlane
+            style={{ color: "lightgreen", fontSize: "1.2rem" }}
+          />
+
           <button type="submit">comment</button>
         </form>
       </div>

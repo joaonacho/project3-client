@@ -176,3 +176,13 @@ export const createComment = (postId, comment) => {
 export const getComments = (postId) => {
   return axios.get(`${baseURL}/comment/${postId}`);
 };
+
+//PUT like a post
+export const likePost = (postId, userId) => {
+  return axios.put(`${baseURL}/like/${postId}`, { userId });
+};
+
+//PUT dislike a post
+export const dislikePost = (postId, userId) => {
+  return axios.put(`${baseURL}/dislike/${postId}`, { userId });
+};

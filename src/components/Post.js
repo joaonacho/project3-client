@@ -3,7 +3,8 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { Comment } from "./Comment";
 import { BsCursor } from "react-icons/bs";
-import { deletePost } from "../api";
+import { BsHeart, BsHeartFill, BsFillXCircleFill } from "react-icons/bs";
+import { deletePost, likePost, dislikePost } from "../api";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
@@ -53,6 +54,7 @@ export const Post = ({ post }) => {
               </p>
             </Link>
           </div>
+
           <img
             src={post.poster}
             alt="coverimage"
@@ -72,13 +74,56 @@ export const Post = ({ post }) => {
                 <i>{format(post.createdAt)}</i>
               </small>
             </p>
-            {user && (
-              <>
-                {user.username === post.author.username && (
-                  <button onClick={() => handleDelete(post._id)}>delete</button>
+
+            <div
+              style={{
+                marginTop: "10px",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "flex-start",
+                }}
+              >
+                {!post.likes.includes(user._id) && (
+                  <BsHeart
+                    id="likeBtn"
+                    onClick={() => likePost(post._id, user._id)}
+                    style={{ fontSize: "1.5rem" }}
+                  />
                 )}
-              </>
-            )}
+
+                {post.likes.includes(user._id) && (
+                  <BsHeartFill
+                    onClick={() => dislikePost(post._id, user._id)}
+                    style={{ color: "red", fontSize: "1.5rem" }}
+                  />
+                )}
+                {post.likes.length === 1 ? (
+                  <p style={{ marginLeft: "5px" }}>{post.likes.length} like</p>
+                ) : (
+                  <p style={{ marginLeft: "5px" }}>{post.likes.length} likes</p>
+                )}
+              </div>
+
+              {user && (
+                <>
+                  {user.username === post.author.username && (
+                    <BsFillXCircleFill
+                      style={{
+                        color: "red",
+                        fontSize: "1.2rem",
+                      }}
+                      onClick={() => handleDelete(post._id)}
+                    />
+                  )}
+                </>
+              )}
+            </div>
           </div>
           <div
             style={{
