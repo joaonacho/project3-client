@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
 
-export const Post = ({ post }) => {
+export const Post = ({ post, addLike, removeLike, removePost }) => {
   const { user } = useContext(UserContext);
 
   const handleDelete = async (postId) => {
@@ -92,14 +92,20 @@ export const Post = ({ post }) => {
                 {!post.likes.includes(user._id) && (
                   <BsHeart
                     id="likeBtn"
-                    onClick={() => likePost(post._id, user._id)}
-                    style={{ fontSize: "1.5rem" }}
+                    onClick={() => {
+                      addLike(post._id, user._id);
+                      likePost(post._id, user._id);
+                    }}
+                    style={{ fontSize: "1.2rem" }}
                   />
                 )}
 
                 {post.likes.includes(user._id) && (
                   <BsHeartFill
-                    onClick={() => dislikePost(post._id, user._id)}
+                    onClick={() => {
+                      removeLike(post._id, user._id);
+                      dislikePost(post._id, user._id);
+                    }}
                     style={{ color: "red", fontSize: "1.5rem" }}
                   />
                 )}
@@ -118,7 +124,10 @@ export const Post = ({ post }) => {
                         color: "red",
                         fontSize: "1.2rem",
                       }}
-                      onClick={() => handleDelete(post._id)}
+                      onClick={() => {
+                        removePost(post._id);
+                        handleDelete(post._id);
+                      }}
                     />
                   )}
                 </>

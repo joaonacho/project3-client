@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
 
-export const CreatePost = () => {
+export const CreatePost = ({ addPost }) => {
   const { user } = useContext(UserContext);
   const [image, setImage] = useState("");
   const [content, setContent] = useState("");
@@ -27,7 +27,8 @@ export const CreatePost = () => {
       likes: [],
       comments: [],
     };
-    await createPost({ post });
+    const response = await createPost({ post });
+    addPost(response.data);
     toast.success("Posted!");
     setContent("");
     setImage("");

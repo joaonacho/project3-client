@@ -10,6 +10,33 @@ export const Feed = () => {
   const [feed, setFeed] = useState([]);
   const [makePost, setMakePost] = useState(false);
 
+  const addPost = (post) => {
+    setFeed([post, ...feed]);
+  };
+
+  const removePost = (post) => {
+    const newFeed = feed.filter((removed) => {
+      return removed._id !== post;
+    });
+    setFeed(newFeed);
+  };
+
+  const addLike = (postId, userId) => {
+    const newFeed = [...feed];
+    const postToLike = newFeed.find((post) => post._id === postId);
+    postToLike.likes = postToLike.likes.concat(userId);
+
+    setFeed(newFeed);
+  };
+
+  const removeLike = (postId, userId) => {
+    const newFeed = [...feed];
+    const postToLike = newFeed.find((post) => post._id === postId);
+    postToLike.likes = postToLike.likes.filter((user) => user !== userId);
+
+    setFeed(newFeed);
+  };
+
   useEffect(() => {
     (async () => {
       const userFeed = await getFeed(user.username);
@@ -25,7 +52,7 @@ export const Feed = () => {
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <button onClick={() => setMakePost(!makePost)}>Make a post!</button>
-      {makePost && <CreatePost />}
+      {makePost && <CreatePost addPost={addPost} />}
       <section
         style={{
           display: "flex",
@@ -34,7 +61,15 @@ export const Feed = () => {
       >
         {feed &&
           feed.map((post) => {
-            return <Post key={post._id} post={post} />;
+            return (
+              <Post
+                removePost={removePost}
+                removeLike={removeLike}
+                addLike={addLike}
+                key={post._id}
+                post={post}
+              />
+            );
           })}
       </section>
     </div>
