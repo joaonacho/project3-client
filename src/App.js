@@ -16,6 +16,8 @@ import { SearchMovie } from "./components/SearchMovie";
 import { Explore } from "./pages/Explore";
 import { FindFriends } from "./pages/FindFriends";
 import { Feed } from "./pages/Feed";
+import { CreatePost } from "./components/CreatePost";
+import { Post } from "./components/Post";
 
 function App() {
   return (
@@ -46,7 +48,15 @@ function App() {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/feed/:username" element={<Feed />} />
+        <Route
+          path="/feed/:username"
+          element={
+            <Feed>
+              <CreatePost />
+              <Post />
+            </Feed>
+          }
+        />
         <Route path="/profile/:username" element={<Profile />} />
         <Route
           path="/profile/:username/edit"

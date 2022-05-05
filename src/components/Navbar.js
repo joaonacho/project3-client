@@ -31,9 +31,9 @@ export const Navbar = () => {
           <>
             <li>
               <NavLink
+                to={`/feed/${user.username}`}
                 className="navlink"
                 onClick={() => setClick(false)}
-                to="/feed"
               >
                 Feed
               </NavLink>
