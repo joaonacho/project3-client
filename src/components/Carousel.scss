@@ -3,19 +3,29 @@
   //   min-height: 50%;
   border: 1px solid blue;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
   img {
     object-fit: cover;
     width: 100%;
   }
 }
 
-img {
+.img {
   object-fit: cover;
 }
 
+.p {
+  display: flex;
+  align-items: center;
+  align-content: stretch;
+  justify-content: center;
+  height: fit-content;
+  text-decoration: none;
+  color: aliceblue;
+  padding-top: 1em;
+}
+
 .awssld__content {
-  background-color: green;
   overflow: hidden;
   display: block;
   align-items: center;

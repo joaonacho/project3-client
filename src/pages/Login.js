@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
+import "./Login.scss";
 
 import React from "react";
 
@@ -21,33 +22,44 @@ export const Login = () => {
     authenticateUser();
     navigate(`/profile/${username}`);
   };
+  const FormInput = (props) => (
+    <div class="row">
+      <label>{props.description}</label>
+      <input type={props.type} placeholder={props.placeholder} />
+    </div>
+  );
+  const FormButton = (props) => (
+    <div id="button" class="row">
+      <button type="submit">{props.title}</button>
+    </div>
+  );
 
   return (
-    <div>
-      <h1>Log in</h1>
+    <div id="loginform">
+      <h1 id="headerTitle">Log in</h1>
       <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input
+        <FormInput
+          description="Username"
+          placeholder="Enter your username"
           type="text"
           required
-          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-
-        <label>password</label>
-        <input
-          type="password"
+        <FormInput
+          description="Password"
+          placeholder="Enter your password"
+          type="text"
           required
           minLength="6"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
-        <button type="submit">Log in</button>
+        <FormButton title="Log in" />
       </form>
 
-      <p>Don't have an account?</p>
-      <Link to="/signup">Sign up</Link>
+      <p className="DontHaveAnAccount">
+        Don't have an account? <Link to="/signup">Sign up</Link>
+      </p>
     </div>
   );
 };
