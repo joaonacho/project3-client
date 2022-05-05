@@ -28,11 +28,6 @@ export const Login = () => {
       <input type={props.type} placeholder={props.placeholder} />
     </div>
   );
-  const FormButton = (props) => (
-    <div id="button" class="row">
-      <button type="submit">{props.title}</button>
-    </div>
-  );
 
   return (
     <div id="loginform">
@@ -48,13 +43,15 @@ export const Login = () => {
         <FormInput
           description="Password"
           placeholder="Enter your password"
-          type="text"
+          type="password"
           required
           minLength="6"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <FormButton title="Log in" />
+        <div id="button" class="row">
+          <button type="submit"></button>
+        </div>
       </form>
 
       <p className="DontHaveAnAccount">
