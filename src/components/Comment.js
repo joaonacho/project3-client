@@ -5,6 +5,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../context/user.context";
 import { format } from "timeago.js";
 import { FaRegPaperPlane } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Comment = ({ postId }) => {
   const { user } = useContext(UserContext);
@@ -21,6 +22,11 @@ export const Comment = ({ postId }) => {
 
   const handleSubmit = async (e, post) => {
     e.preventDefault();
+
+    if (comment === "") {
+      return;
+    }
+
     const submitComment = { comment: comment, user: user._id };
     await createComment(post, submitComment);
     setRender(!render);
@@ -60,9 +66,20 @@ export const Comment = ({ postId }) => {
                     marginLeft: "5px",
                   }}
                 />
-                <p style={{ marginTop: "8px", marginLeft: "10px" }}>
-                  <small>{comment.author.username}</small>
-                </p>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/profile/${comment.author.username}`}
+                >
+                  <p
+                    style={{
+                      marginTop: "8px",
+                      marginLeft: "10px",
+                      color: "whitesmoke",
+                    }}
+                  >
+                    <small>{comment.author.username}</small>
+                  </p>
+                </Link>
               </div>
               <div
                 style={{

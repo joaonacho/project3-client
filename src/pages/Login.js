@@ -23,18 +23,12 @@ export const Login = () => {
     navigate(`/profile/${username}`);
   };
 
-  // const FormInput = (props) => (
-  //   <div className="row">
-  //     <label>{props.description}</label>
-  //     <input type={props.type} placeholder={props.placeholder} />
-  //   </div>
-  // );
-
   return (
     <div id="loginform">
       <h1 id="headerTitle">Log in</h1>
       <form onSubmit={handleSubmit}>
         <input
+          className="row"
           description="Username"
           placeholder="Enter your username"
           type="text"
@@ -43,6 +37,7 @@ export const Login = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
+          className="row"
           description="Password"
           placeholder="Enter your password"
           type="password"

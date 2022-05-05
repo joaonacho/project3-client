@@ -9,6 +9,7 @@ import {
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
 import { useContext } from "react";
+import { FaImdb } from "react-icons/fa";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -134,15 +135,7 @@ export const MovieDetails = () => {
               target="blank"
               style={{ alignSelf: "center" }}
             >
-              <img
-                src="https://bit.ly/3rIDSxM"
-                alt="imdblogo"
-                style={{
-                  width: "60px",
-                  height: "45px",
-                  borderRadius: "6px",
-                }}
-              />
+              <FaImdb style={{ color: "gold", fontSize: "3rem" }} />
             </a>
 
             {isLoggedIn && (

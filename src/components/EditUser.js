@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { updateUser, getUser, upload } from "../api";
 import Select from "react-select";
 import { toast } from "react-toastify";
+import { FaCheck } from "react-icons/fa";
 
 export const EditUser = () => {
   const { username } = useParams();
@@ -83,43 +84,46 @@ export const EditUser = () => {
             style={{ width: "200px", height: "200px", borderRadius: "50%" }}
           />
           <h2>{user.username}</h2>
-          <form onSubmit={handleSubmit}>
-            <label>Country</label>
-            <input
-              type="text"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            />
 
-            <label>About me:</label>
-            <textarea
-              cols="30"
-              rows="5"
-              value={about}
-              onChange={(e) => setAbout(e.target.value)}
-            ></textarea>
+          <label>Country</label>
+          <input
+            type="text"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+          />
 
-            <label labelfor="image">Profile picture:</label>
-            <input
-              type="file"
-              onChange={(e) => setNewImage(e.target.files[0])}
-            />
+          <label>About me:</label>
+          <textarea
+            cols="30"
+            rows="5"
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+          ></textarea>
 
-            <label>Movie genres:</label>
-            <Select
-              id="options"
-              options={options}
-              isMulti
-              name="genres"
-              className="basic-multi-select"
-              classNamePrefix="select"
-              placeholder="Select your favourite genres"
-              value={options.filter((obj) => genres.includes(obj.value))}
-              onChange={handleGenres}
-            />
+          <label labelfor="image">Profile picture:</label>
+          <input type="file" onChange={(e) => setNewImage(e.target.files[0])} />
 
-            <button type="submit">Save changes</button>
-          </form>
+          <label>Movie genres:</label>
+          <Select
+            id="options"
+            options={options}
+            isMulti
+            name="genres"
+            className="basic-multi-select"
+            classNamePrefix="select"
+            placeholder="Select your favourite genres"
+            value={options.filter((obj) => genres.includes(obj.value))}
+            onChange={handleGenres}
+          />
+
+          <FaCheck
+            style={{
+              fontSize: "2rem",
+              color: "lightgreen",
+              marginLeft: "10px",
+            }}
+            onClick={handleSubmit}
+          />
         </>
       )}
     </div>
