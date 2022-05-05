@@ -22,39 +22,38 @@ export const Login = () => {
     authenticateUser();
     navigate(`/profile/${username}`);
   };
-  const FormInput = (props) => (
-    <div class="row">
-      <label>{props.description}</label>
-      <input type={props.type} placeholder={props.placeholder} />
-    </div>
-  );
-  const FormButton = (props) => (
-    <div id="button" class="row">
-      <button type="submit">{props.title}</button>
-    </div>
-  );
+
+  // const FormInput = (props) => (
+  //   <div className="row">
+  //     <label>{props.description}</label>
+  //     <input type={props.type} placeholder={props.placeholder} />
+  //   </div>
+  // );
 
   return (
     <div id="loginform">
       <h1 id="headerTitle">Log in</h1>
       <form onSubmit={handleSubmit}>
-        <FormInput
+        <input
           description="Username"
           placeholder="Enter your username"
           type="text"
+          value={username}
           required
           onChange={(e) => setUsername(e.target.value)}
         />
-        <FormInput
+        <input
           description="Password"
           placeholder="Enter your password"
-          type="text"
+          type="password"
           required
           minLength="6"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <FormButton title="Log in" />
+        <div id="button" className="row">
+          <button type="submit">Log in</button>
+        </div>
       </form>
 
       <p className="DontHaveAnAccount">
