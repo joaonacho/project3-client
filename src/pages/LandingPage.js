@@ -20,7 +20,7 @@ export const LandingPage = () => {
   useEffect(() => {
     (async () => {
       const sixUsers = await randomSix();
-      setRandomUsers(sixUsers.data);
+      setRandomUsers(sixUsers.data.slice(0, 3));
     })();
   }, []);
 

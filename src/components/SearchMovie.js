@@ -56,7 +56,7 @@ export const SearchMovie = () => {
         }}
       >
         {movie &&
-          movie.map((found) => {
+          movie.map((found, index) => {
             return (
               <>
                 <Link
@@ -64,6 +64,7 @@ export const SearchMovie = () => {
                   style={{ textDecoration: "none" }}
                 >
                   <div
+                    key={index}
                     style={{
                       display: "flex",
                       flexDirection: "row",

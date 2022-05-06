@@ -5,11 +5,14 @@ import {
   getSimilarMovies,
   addToFavourites,
   movieReview,
+  getUser,
+  removeFromFavourites,
 } from "../api";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { FaImdb } from "react-icons/fa";
+import { BsBookmarkHeartFill, BsBookmarkCheckFill } from "react-icons/bs";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -19,6 +22,18 @@ export const MovieDetails = () => {
   const [review, setReview] = useState();
   const [rating, setRating] = useState();
   const [form, setForm] = useState(false);
+  const [userInSession, setUserInSession] = useState({});
+  const [userFavourites, setUserFavourites] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const userData = await getUser(user.username);
+      setUserInSession(userData.data);
+      setUserFavourites(userData.data.favourites);
+    })();
+  }, [user]);
+
+  console.log(userFavourites);
 
   useEffect(() => {
     (async () => {
@@ -37,8 +52,20 @@ export const MovieDetails = () => {
   const addMovie = (e) => {
     e.preventDefault();
     addToFavourites(movie);
+    // setUserFavourites(...userFavourites, movie);
     toast.success(`${movie.title} was added to favourites`);
   };
+
+  // const removeMovie = async (movieId, user) => {
+  //   await removeFromFavourites(movieId, user);
+
+  //   const filteredFav = userFavourites.filter((movie) => {
+  //     return movie.id !== movieId;
+  //   });
+  //   setUserFavourites(...filteredFav);
+
+  //   toast.warning(`${movie.title} was removed from favourites`);
+  // };
 
   const handleForm = () => {
     form ? setForm(false) : setForm(true);
@@ -76,8 +103,37 @@ export const MovieDetails = () => {
             style={{
               display: "flex",
               flexDirection: "column",
+              marginTop: "30px",
             }}
           >
+            {/* {isLoggedIn &&
+              userFavourites.length &&
+              (userFavourites.includes(movieId) ? (
+                <BsBookmarkHeartFill
+                  onClick={addMovie}
+                  style={{
+                    fontSize: "2.3rem",
+                    alignSelf: "center",
+                    color: "purple",
+                    marginLeft: "90px",
+                    marginTop: "-3px",
+                    position: "absolute",
+                  }}
+                />
+              ) : (
+                <BsBookmarkCheckFill
+                  onClick={() => removeMovie(movieId, userInSession)}
+                  style={{
+                    fontSize: "2.3rem",
+                    alignSelf: "center",
+                    color: "lightgreen",
+                    marginLeft: "90px",
+                    marginTop: "-3px",
+                    position: "absolute",
+                  }}
+                />
+              ))} */}
+
             {movie.poster_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
