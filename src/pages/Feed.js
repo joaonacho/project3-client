@@ -4,7 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/user.context";
 import { CreatePost } from "../components/CreatePost";
 import { Post } from "../components/Post";
-import { FaCommentAlt } from "react-icons/fa";
+// import { FaCommentAlt } from "react-icons/fa";
 
 export const Feed = () => {
   const { user } = useContext(UserContext);

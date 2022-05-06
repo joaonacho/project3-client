@@ -4,7 +4,7 @@ import {
   randomReviews,
   getUpcomingMovies,
   trendingWeekMovies,
-  randomFive,
+  randomSix,
 } from "../api";
 import { Carousel } from "../components/Carousel";
 import { format } from "timeago.js";
@@ -19,8 +19,8 @@ export const LandingPage = () => {
 
   useEffect(() => {
     (async () => {
-      const fiveUsers = await randomFive();
-      setRandomUsers(fiveUsers.data);
+      const sixUsers = await randomSix();
+      setRandomUsers(sixUsers.data);
     })();
   }, []);
 
