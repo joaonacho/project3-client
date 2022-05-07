@@ -68,54 +68,7 @@ export const Signup = () => {
   return (
     // <div className="signup-box container">
     //   <h1>Sign up</h1>
-    //   <form onSubmit={handleSubmit}>
-    //     <label>Username</label>
-    //     <input
-    //       type="text"
-    //       required
-    //       value={username}
-    //       onChange={(e) => setUsername(e.target.value)}
-    //     />
-
-    //     <label>Email</label>
-    //     <input
-    //       type="email"
-    //       required
-    //       value={email}
-    //       onChange={(e) => setEmail(e.target.value)}
-    //     />
-
-    //     <label>Country</label>
-    //     <input
-    //       type="text"
-    //       value={country}
-    //       onChange={(e) => setCountry(e.target.value)}
-    //     />
-
-    //     <label>Password</label>
-    //     <input
-    //       type="password"
-    //       required
-    //       minLength="6"
-    //       value={password}
-    //       onChange={(e) => setPassword(e.target.value)}
-    //     />
-
-    //     <label labelFor="image">Profile picture:</label>
-    //     <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-
-    //     <label>Movie genres:</label>
-    //     <Select
-    //       id="options"
-    //       options={options}
-    //       isMulti
-    //       name="genres"
-    //       className="basic-multi-select"
-    //       classNamePrefix="select"
-    //       placeholder="Select your favourite movie genres"
-    //       value={options.filter((obj) => genres.includes(obj.value))}
-    //       onChange={handleGenres}
-    //     />
+    //
 
     //     <button type="submit">Sign up</button>
     //   </form>
@@ -139,7 +92,7 @@ export const Signup = () => {
 
         <div className="row">
           <input
-            description="Password"
+            description="Email"
             placeholder="Enter your email"
             type="email"
             required
@@ -147,13 +100,46 @@ export const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        {/* <label>Email</label>
-         <input
-           type="email"
-           required
-           value={email}
-           onChange={(e) => setEmail(e.target.value)}
-         /> */}
+
+        <div className="row">
+          <input
+            description="Country"
+            placeholder="Enter your Country"
+            type="text"
+            required
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+          />
+        </div>
+
+        <div className="row">
+          <input
+            description="Password"
+            placeholder="Enter your Password"
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="row">
+          <label labelFor="image">Profile picture:</label>
+          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+        </div>
+        <div className="row">
+          <label style={{ textAlign: "center" }}>Movie genres:</label>
+          <Select
+            id="options"
+            options={options}
+            isMulti
+            name="genres"
+            className="basic-multi-select"
+            classNamePrefix="select"
+            placeholder="Select your favourite movie genres"
+            value={options.filter((obj) => genres.includes(obj.value))}
+            onChange={handleGenres}
+          />
+        </div>
 
         <div id="button" className="row">
           <button type="submit">Log in</button>
