@@ -7,7 +7,6 @@ import Select from "react-select";
 import "./Signup.scss";
 
 import React from "react";
-import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 
 export const Signup = () => {
   const [email, setEmail] = useState("");
