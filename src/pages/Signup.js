@@ -7,6 +7,7 @@ import Select from "react-select";
 import "./Signup.scss";
 
 import React from "react";
+import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 
 export const Signup = () => {
   const [email, setEmail] = useState("");
@@ -132,9 +133,8 @@ export const Signup = () => {
             id="options"
             options={options}
             isMulti
+            styles={customStyles}
             name="genres"
-            className="basic-multi-select"
-            classNamePrefix="select"
             placeholder="Select your favourite movie genres"
             value={options.filter((obj) => genres.includes(obj.value))}
             onChange={handleGenres}
@@ -142,7 +142,7 @@ export const Signup = () => {
         </div>
 
         <div id="button" className="row">
-          <button type="submit">Log in</button>
+          <button type="submit">Sign up</button>
         </div>
       </form>
 
@@ -154,4 +154,42 @@ export const Signup = () => {
       </p>
     </div>
   );
+};
+
+const customStyles = {
+  menu: () => ({
+    width: "100%",
+    backgroundColor: "hsl(266, 92%, 95%, 100)",
+    color: "black",
+  }),
+
+  control: () => ({
+    width: "100%",
+    padding: "2rem",
+    // display: "flex",
+    // flexDirection: "column",
+    // alignItems: "center",
+    maxWidth: "240px",
+    minWidth: "240px",
+  }),
+
+  valueContainer: () => ({
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    width: "100%",
+  }),
+  input: () => ({
+    display: "none",
+  }),
+  multiValueLabel: () => ({
+    background: "hsl(265, 100%, 86%)",
+    color: "black",
+    padding: ".2rem",
+  }),
+  multiValueRemove: () => ({
+    background: "rgba(48, 129, 237, 0.8) 50%",
+    padding: ".2rem",
+  }),
 };
