@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
 
+
 export const Post = ({ post, addLike, removeLike, removePost }) => {
   const { user } = useContext(UserContext);
 

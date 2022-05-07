@@ -142,7 +142,7 @@ export const Signup = () => {
         </div>
 
         <div id="button" className="row">
-          <button type="submit">Log in</button>
+          <button type="submit">Sign up</button>
         </div>
       </form>
 

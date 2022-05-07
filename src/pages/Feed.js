@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import { getFeed } from "../api";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/user.context";
 import { CreatePost } from "../components/CreatePost";
 import { Post } from "../components/Post";
 // import { FaCommentAlt } from "react-icons/fa";
+// import socketIOClient from "socket.io-client";
 
 export const Feed = () => {
   const { user } = useContext(UserContext);
   const [feed, setFeed] = useState([]);
+  // const isMountedRef = useRef(null);
 
   const addPost = (post) => {
     setFeed([post, ...feed]);
@@ -39,11 +41,22 @@ export const Feed = () => {
 
   useEffect(() => {
     (async () => {
+      // isMountedRef.current = true;
+
       const userFeed = await getFeed(user.username);
       let sortedFeed = userFeed.data.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
       setFeed(sortedFeed);
+
+      // const socket = socketIOClient(process.env.REACT_APP_PROJECTS_API);
+      // socket.on("newPost", (newPost) => {
+      //   if (isMountedRef.current) {
+      //     setFeed((feed) => {
+      //       return feed.concat(newPost);
+      //     });
+      //   }
+      // });
     })();
   }, [user]);
 
