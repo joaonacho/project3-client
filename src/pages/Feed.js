@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { getFeed } from "../api";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/user.context";
