@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../context/user.context";
 import { format } from "timeago.js";
-import { toast } from "react-toastify";
 import { FaRegPaperPlane } from "react-icons/fa";
 
 export const Comment = ({ postId }) => {
@@ -84,21 +83,30 @@ export const Comment = ({ postId }) => {
             </article>
           );
         })}
-      <div style={{ marginTop: "20px", textAlign: "center" }}>
-        <form onSubmit={(e) => handleSubmit(e, postId)}>
-          <input
-            type="text"
-            placeholder="leave a comment..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
+      <div
+        style={{
+          marginTop: "20px",
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="leave a comment..."
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
 
-          <FaRegPaperPlane
-            style={{ color: "lightgreen", fontSize: "1.2rem" }}
-          />
-
-          <button type="submit">comment</button>
-        </form>
+        <FaRegPaperPlane
+          style={{
+            color: "lightgreen",
+            fontSize: "1.2rem",
+            marginLeft: "10px",
+          }}
+          onClick={(e) => handleSubmit(e, postId)}
+        />
       </div>
     </div>
   );

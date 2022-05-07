@@ -22,40 +22,51 @@ export const Login = () => {
     authenticateUser();
     navigate(`/profile/${username}`);
   };
-  const FormInput = (props) => (
-    <div class="row">
-      <label>{props.description}</label>
-      <input type={props.type} placeholder={props.placeholder} />
-    </div>
-  );
+
+  // const FormInput = (props) => (
+  //   <div className="row">
+  //     <label>{props.description}</label>
+  //     <input type={props.type} placeholder={props.placeholder} />
+  //   </div>
+  // );
 
   return (
     <div id="loginform">
       <h1 id="headerTitle">Log in</h1>
       <form onSubmit={handleSubmit}>
-        <FormInput
-          description="Username"
-          placeholder="Enter your username"
-          type="text"
-          required
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <FormInput
-          description="Password"
-          placeholder="Enter your password"
-          type="password"
-          required
-          minLength="6"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <div id="button" class="row">
-          <button type="submit"></button>
+        <div className="row">
+          <input
+            description="Username"
+            placeholder="Enter your username"
+            type="text"
+            value={username}
+            required
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+
+        <div className="row">
+          <input
+            description="Password"
+            placeholder="Enter your password"
+            type="password"
+            required
+            minLength="6"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <div id="button" className="row">
+          <button type="submit">Log in</button>
         </div>
       </form>
 
       <p className="DontHaveAnAccount">
-        Don't have an account? <Link to="/signup">Sign up</Link>
+        Don't have an account?{" "}
+        <Link className="a" to="/signup">
+          Sign up
+        </Link>
       </p>
     </div>
   );

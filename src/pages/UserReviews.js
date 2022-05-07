@@ -5,6 +5,7 @@ import { getUserReviews, editReview, deleteReview } from "../api";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/user.context";
+import { FaWrench, FaRegTrashAlt, FaCheck } from "react-icons/fa";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 import { format } from "timeago.js";
@@ -68,8 +69,32 @@ export const UserReviews = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 width: "300px",
+                marginTop: "30px",
               }}
             >
+              {user && user.username === username && (
+                <div
+                  style={{
+                    width: "145px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "8px",
+                  }}
+                >
+                  <FaWrench
+                    style={{ color: "whitesmoke", fontSize: "1.2rem" }}
+                    onClick={() => handleForm(review._id)}
+                  />
+
+                  {editingMovie._id === review._id && (
+                    <FaRegTrashAlt
+                      style={{ color: "red", fontSize: "1.2rem" }}
+                      onClick={() => handleDelete(review._id)}
+                    />
+                  )}
+                </div>
+              )}
+
               {review.movie.poster_path ? (
                 <>
                   <Link
@@ -99,45 +124,53 @@ export const UserReviews = () => {
                   </Link>
                 </>
               )}
-              <h3>{review.movie.title}</h3>
+              <h3 style={{ marginTop: "20px" }}>
+                <strong>{review.movie.title}</strong>
+              </h3>
 
               <div style={{ width: "290px" }}>
                 {review._id === editingMovie._id && (
-                  <form onSubmit={(e) => handleSubmit(e, review._id)}>
-                    <>
-                      <textarea
-                        required
-                        cols="30"
-                        rows="5"
-                        value={editingMovie.review}
-                        onChange={(e) =>
-                          setEditingMovie({
-                            ...editingMovie,
-                            review: e.target.value,
-                          })
-                        }
-                      ></textarea>
-                      <input
-                        required
-                        type="number"
-                        min="0"
-                        max="10"
-                        value={editingMovie.rating}
-                        onChange={(e) =>
-                          setEditingMovie({
-                            ...editingMovie,
-                            rating: parseInt(e.target.value),
-                          })
-                        }
-                      />
-                    </>
-                    <button type="submit">Save</button>
-                  </form>
+                  <>
+                    <textarea
+                      required
+                      cols="30"
+                      rows="5"
+                      value={editingMovie.review}
+                      onChange={(e) =>
+                        setEditingMovie({
+                          ...editingMovie,
+                          review: e.target.value,
+                        })
+                      }
+                    ></textarea>
+                    <input
+                      required
+                      type="number"
+                      min="0"
+                      max="10"
+                      value={editingMovie.rating}
+                      onChange={(e) =>
+                        setEditingMovie({
+                          ...editingMovie,
+                          rating: parseInt(e.target.value),
+                        })
+                      }
+                    />
+
+                    <FaCheck
+                      style={{
+                        fontSize: "1.4rem",
+                        color: "lightgreen",
+                        marginLeft: "10px",
+                      }}
+                      onClick={(e) => handleSubmit(e, review._id)}
+                    />
+                  </>
                 )}
 
                 {review._id !== editingMovie._id && (
                   <>
-                    <p>
+                    <p style={{ marginTop: "20px" }}>
                       <i>"{review.review}"</i>
                     </p>
                     <p style={{ textAlign: "right" }}>
@@ -152,16 +185,6 @@ export const UserReviews = () => {
               <p>
                 <small>{format(review.createdAt)}</small>
               </p>
-              {user && user.username === username && (
-                <>
-                  <button onClick={() => handleForm(review._id)}>Edit</button>
-                  {editingMovie._id === review._id && (
-                    <button onClick={() => handleDelete(review._id)}>
-                      Delete
-                    </button>
-                  )}
-                </>
-              )}
             </article>
           );
         })}

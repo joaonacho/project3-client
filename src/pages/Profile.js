@@ -11,6 +11,7 @@ import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
 import { BsFillPencilFill } from "react-icons/bs";
 import { BsFillXCircleFill } from "react-icons/bs";
+import { FaUserPlus, FaUserCheck, FaUserEdit } from "react-icons/fa";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 // import { format } from "timeago.js";
@@ -70,13 +71,15 @@ export const Profile = () => {
           {user && user.username !== newUser.username && newUser.followers && (
             <>
               {!newUser.followers.includes(user._id) ? (
-                <button onClick={() => handleFollow(newUser.username)}>
-                  Follow
-                </button>
+                <FaUserPlus
+                  onClick={() => handleFollow(newUser.username)}
+                  style={{ color: "whitesmoke", fontSize: "2rem" }}
+                />
               ) : (
-                <button onClick={() => handleUnfollow(newUser.username)}>
-                  Unfollow
-                </button>
+                <FaUserCheck
+                  onClick={() => handleUnfollow(newUser.username)}
+                  style={{ color: "lightgreen", fontSize: "2rem" }}
+                />
               )}
             </>
           )}
@@ -87,7 +90,13 @@ export const Profile = () => {
           />
           {user && user.username === newUser.username && (
             <Link to={`/profile/${newUser.username}/edit`}>
-              <BsFillPencilFill style={{ marginLeft: "300px" }} />
+              <FaUserEdit
+                style={{
+                  marginLeft: "300px",
+                  color: "gold",
+                  fontSize: "1.5rem",
+                }}
+              />
             </Link>
           )}
           <h2>{newUser.username}'s profile</h2>

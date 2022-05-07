@@ -47,6 +47,15 @@ export const LandingPage = () => {
 
   return (
     <div className="bg-dark">
+      <section className="container container-padding  center">
+        <h1 className="fs-900 ff-sans-cond">
+          Connect with people who share the passion for the seventh art
+        </h1>
+        <h2 className="item text-accent ff-sans-normal">
+          In aenean posuere lorem risus nec. Tempor tincidunt aenean purus purus
+          vestibulum nibh mi venenatis
+        </h2>
+      </section>
       <section
         className="container-section"
         // style={{
