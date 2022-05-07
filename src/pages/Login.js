@@ -27,7 +27,6 @@ export const Login = () => {
     <div id="loginform">
       <h1 id="headerTitle">Log in</h1>
       <form onSubmit={handleSubmit}>
-<<<<<<< HEAD
         <div className="row">
           <input
             description="Username"
@@ -51,27 +50,6 @@ export const Login = () => {
           />
         </div>
 
-=======
-        <input
-          className="row"
-          description="Username"
-          placeholder="Enter your username"
-          type="text"
-          value={username}
-          required
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          className="row"
-          description="Password"
-          placeholder="Enter your password"
-          type="password"
-          required
-          minLength="6"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
->>>>>>> d4060fb5a22b9d12fe82059d99dab6a9c386883c
         <div id="button" className="row">
           <button type="submit">Log in</button>
         </div>
