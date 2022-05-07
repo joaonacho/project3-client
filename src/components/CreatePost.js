@@ -39,6 +39,7 @@ export const CreatePost = ({ addPost }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginTop: "30px",
       }}
     >
       <form

@@ -82,8 +82,8 @@ export const logIn = (user) => {
   return axios.post(`${baseURL}/login`, user);
 };
 
-//GET random 5 users
-export const randomFive = () => {
+//GET random 6 users
+export const randomSix = () => {
   return axios.get(`${baseURL}/random-users`);
 };
 
@@ -118,6 +118,11 @@ export const unfollowUser = (username, user) => {
   return axios.put(`${baseURL}/profile/${username}/unfollow`, user, {
     headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
   });
+};
+
+//GET users match genres
+export const getUsersGenres = (username) => {
+  return axios.get(`${baseURL}/similar-genres/${username}`);
 };
 
 //REVIEWS

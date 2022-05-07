@@ -2,7 +2,6 @@ import React from "react";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { Comment } from "./Comment";
-import { BsCursor } from "react-icons/bs";
 import { BsHeart, BsHeartFill, BsFillXCircleFill } from "react-icons/bs";
 import { deletePost, likePost, dislikePost } from "../api";
 import { toast } from "react-toastify";

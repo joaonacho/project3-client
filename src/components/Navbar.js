@@ -5,6 +5,13 @@ import { UserContext } from "../context/user.context";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { BsFillHouseFill } from "react-icons/bs";
+import {
+  RiUserSearchLine,
+  RiUserLine,
+  RiSearchLine,
+  RiFileList3Line,
+} from "react-icons/ri";
+import { GiFilmSpool } from "react-icons/gi";
 import "./navbar.scss";
 
 export const Navbar = () => {
@@ -23,7 +30,7 @@ export const Navbar = () => {
             onClick={() => setClick(false)}
             to="/explore"
           >
-            Explore
+            <RiSearchLine style={{ fontSize: "1.3rem" }} />
           </NavLink>
         </li>
 
@@ -31,30 +38,31 @@ export const Navbar = () => {
           <>
             <li>
               <NavLink
+                to="/find-friends"
+                onClick={() => setClick(false)}
+                className="navlink"
+              >
+                <RiUserSearchLine style={{ fontSize: "1.3rem" }} />
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
                 to={`/feed/${user.username}`}
                 className="navlink"
                 onClick={() => setClick(false)}
               >
-                Feed
+                <RiFileList3Line style={{ fontSize: "1.3rem" }} />
               </NavLink>
             </li>
+
             <li>
               <NavLink
                 to={`/profile/${user.username}`}
                 onClick={() => setClick(false)}
                 className="navlink"
               >
-                My Profile
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/find-friends"
-                onClick={() => setClick(false)}
-                className="navlink"
-              >
-                Find Friends
+                <RiUserLine style={{ fontSize: "1.3rem" }} />
               </NavLink>
             </li>
           </>
@@ -91,7 +99,7 @@ export const Navbar = () => {
         <NavLink className="navbar-icons navbar-logo navlink" to="/">
           <h1 className="text-white">
             <span>
-              <BsFillHouseFill />
+              <GiFilmSpool style={{ fontSize: "1.8rem" }} />
               Movie
             </span>
             Screen

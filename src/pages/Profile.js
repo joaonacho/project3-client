@@ -9,7 +9,6 @@ import {
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
-import { BsFillPencilFill } from "react-icons/bs";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { FaUserPlus, FaUserCheck, FaUserEdit } from "react-icons/fa";
 
@@ -103,9 +102,9 @@ export const Profile = () => {
           <p>{newUser.country}</p>
           <p>{newUser.about}</p>
 
-          {newUser.genres && newUser.genres.length > 1 && (
+          {newUser.genres && newUser.genres.length >= 1 && (
             <>
-              <h3>Favourite movie genres:</h3>
+              <h3>Favourite genres:</h3>
               <ul style={{ listStyle: "none" }}>
                 {newUser.genres.map((genre, index) => {
                   return <li key={index}>{genre}</li>;
@@ -114,13 +113,13 @@ export const Profile = () => {
             </>
           )}
 
-          {newUser.reviews && newUser.reviews.length > 1 && (
+          {newUser.reviews && newUser.reviews.length >= 1 && (
             <Link to={`/profile/${newUser.username}/reviews`}>
               <button>See reviews</button>
             </Link>
           )}
 
-          {favList && favList.length > 1 && (
+          {favList && favList.length >= 1 && (
             <>
               <h3>Favourites:</h3>
               <div

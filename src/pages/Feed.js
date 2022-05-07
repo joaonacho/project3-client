@@ -4,11 +4,11 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/user.context";
 import { CreatePost } from "../components/CreatePost";
 import { Post } from "../components/Post";
+// import { FaCommentAlt } from "react-icons/fa";
 
 export const Feed = () => {
   const { user } = useContext(UserContext);
   const [feed, setFeed] = useState([]);
-  const [makePost, setMakePost] = useState(false);
 
   const addPost = (post) => {
     setFeed([post, ...feed]);
@@ -45,14 +45,14 @@ export const Feed = () => {
       );
       setFeed(sortedFeed);
     })();
-  }, [user, makePost]);
+  }, [user]);
 
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <button onClick={() => setMakePost(!makePost)}>Make a post!</button>
-      {makePost && <CreatePost addPost={addPost} />}
+      <CreatePost addPost={addPost} />
+
       <section
         style={{
           display: "flex",
