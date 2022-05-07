@@ -32,7 +32,13 @@ export const Explore = () => {
 
   return (
     <>
-      <div style={{ backgroundColor: "black", paddingTop: "40px" }}>
+      <div
+        style={{
+          backgroundColor: "black",
+          paddingTop: "40px",
+          width: "100%",
+        }}
+      >
         <SearchMovie />
       </div>
 
@@ -47,7 +53,6 @@ export const Explore = () => {
       >
         <div
           style={{
-            position: "fixed",
             marginTop: "10%",
             textAlign: "center",
             display: "flex",

@@ -12,7 +12,7 @@ import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { FaImdb } from "react-icons/fa";
-import { BsBookmarkHeartFill, BsBookmarkCheckFill } from "react-icons/bs";
+import { BsBookmarkHeart, BsBookmarkHeartFill } from "react-icons/bs";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -29,11 +29,14 @@ export const MovieDetails = () => {
     (async () => {
       const userData = await getUser(user.username);
       setUserInSession(userData.data);
-      setUserFavourites(userData.data.favourites);
+
+      const favDataId = userData.data.favourites.map((movie) => {
+        return movie.id;
+      });
+
+      setUserFavourites(favDataId);
     })();
   }, [user]);
-
-  console.log(userFavourites);
 
   useEffect(() => {
     (async () => {
@@ -52,20 +55,20 @@ export const MovieDetails = () => {
   const addMovie = (e) => {
     e.preventDefault();
     addToFavourites(movie);
-    // setUserFavourites(...userFavourites, movie);
+    setUserFavourites([...userFavourites, movie.id]);
     toast.success(`${movie.title} was added to favourites`);
   };
 
-  // const removeMovie = async (movieId, user) => {
-  //   await removeFromFavourites(movieId, user);
+  const removeMovie = async (movieId, user) => {
+    await removeFromFavourites(movieId, user);
 
-  //   const filteredFav = userFavourites.filter((movie) => {
-  //     return movie.id !== movieId;
-  //   });
-  //   setUserFavourites(...filteredFav);
+    const filteredFav = userFavourites.filter((movie) => {
+      return movie !== parseInt(movieId);
+    });
+    setUserFavourites([...filteredFav]);
 
-  //   toast.warning(`${movie.title} was removed from favourites`);
-  // };
+    toast.warning(`${movie.title} was removed from favourites`);
+  };
 
   const handleForm = () => {
     form ? setForm(false) : setForm(true);
@@ -106,33 +109,33 @@ export const MovieDetails = () => {
               marginTop: "30px",
             }}
           >
-            {/* {isLoggedIn &&
+            {isLoggedIn &&
               userFavourites.length &&
-              (userFavourites.includes(movieId) ? (
+              (userFavourites.includes(movie.id) ? (
                 <BsBookmarkHeartFill
-                  onClick={addMovie}
-                  style={{
-                    fontSize: "2.3rem",
-                    alignSelf: "center",
-                    color: "purple",
-                    marginLeft: "90px",
-                    marginTop: "-3px",
-                    position: "absolute",
-                  }}
-                />
-              ) : (
-                <BsBookmarkCheckFill
                   onClick={() => removeMovie(movieId, userInSession)}
                   style={{
                     fontSize: "2.3rem",
                     alignSelf: "center",
-                    color: "lightgreen",
-                    marginLeft: "90px",
-                    marginTop: "-3px",
+                    color: "firebrick",
+                    marginLeft: "88px",
+                    marginTop: "-2px",
                     position: "absolute",
                   }}
                 />
-              ))} */}
+              ) : (
+                <BsBookmarkHeart
+                  onClick={addMovie}
+                  style={{
+                    fontSize: "2.3rem",
+                    alignSelf: "center",
+                    color: "whitesmoke",
+                    marginLeft: "88px",
+                    marginTop: "-2px",
+                    position: "absolute",
+                  }}
+                />
+              ))}
 
             {movie.poster_path ? (
               <img
