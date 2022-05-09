@@ -11,10 +11,8 @@ import {
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
 import { useContext } from "react";
-import { FaImdb } from "react-icons/fa";
-import { BsBookmarkHeartFill } from "react-icons/bs";
-import { BsBookmarkPlusFill } from "react-icons/bs";
 import { MovieDetailCard } from "../components/MovieDetailCard";
+import { MovieCardXS } from "../components/MovieCardXS";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -102,124 +100,17 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      {movie && (
-        <>
-          <MovieDetailCard
-            movie={movie}
-            removeMovie={removeMovie}
-            addMovie={addMovie}
-            userFavourites={userFavourites}
-            userInSession={userInSession}
-            movieId={movieId}
-          />
-          <article>
-            {/* <article
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              marginTop: "30px",
-            }}
-          >
-            {isLoggedIn &&
-              userFavourites.length &&
-              (userFavourites.includes(movie.id) ? (
-                <BsBookmarkHeartFill
-                  onClick={() => removeMovie(movieId, userInSession)}
-                  style={{
-                    fontSize: "3rem",
-                    alignSelf: "center",
-                    color: "firebrick",
-                    marginLeft: "-82px",
-                    position: "absolute",
-                  }}
-                />
-              ) : (
-                <BsBookmarkPlusFill
-                  onClick={addMovie}
-                  style={{
-                    fontSize: "3rem",
-                    alignSelf: "center",
-                    color: "plum",
-                    opacity: "0.7",
-                    marginLeft: "-82px",
-                    position: "absolute",
-                  }}
-                />
-              ))}
-
-            <img
-              src={`https://image.tmdb.org/t/p/w400${movie.backdrop_path}`}
-              alt="coverposter"
-              style={{}}
+      <section>
+        {movie && (
+          <>
+            <MovieDetailCard
+              movie={movie}
+              removeMovie={removeMovie}
+              addMovie={addMovie}
+              userFavourites={userFavourites}
+              userInSession={userInSession}
+              movieId={movieId}
             />
-
-            {movie.poster_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-                alt="movieposter"
-                style={{
-                  width: "200px",
-                  alignSelf: "center",
-                  borderRadius: "7px 7px 0 0 ",
-                }}
-              />
-            ) : (
-              <img
-                src={
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
-                }
-                alt="movieposter"
-                style={{
-                  width: "200px",
-                  alignSelf: "center",
-                  borderRadius: "7px 7px 0 0 ",
-                }}
-              />
-            )}
-            <h1 style={{ alignSelf: "center" }}>{movie.title}</h1>
-            <h3 style={{ alignSelf: "center" }}>
-              <i>{movie.tagline}</i>
-            </h3>
-            <p style={{ alignSelf: "center" }}>
-              <small>Runtime: {movie.runtime} mins</small>
-            </p>
-            <div>
-              <ul
-                style={{
-                  listStyle: "none",
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                {movie.genres &&
-                  movie.genres.map((genre) => {
-                    return (
-                      <li key={genre.id}>
-                        <small>
-                          <strong>{genre.name}</strong>
-                        </small>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-              <p>
-                <small>Rating: {movie.vote_average}</small>
-              </p>
-              <p>
-                <small>Release date: {movie.release_date}</small>
-              </p>
-            </div>
-            <p style={{ alignSelf: "center" }}>{movie.overview}</p>
-
-            <a
-              href={`https://www.imdb.com/title/${movie.imdb_id}/`}
-              target="blank"
-              style={{ alignSelf: "center" }}
-            >
-              <FaImdb style={{ color: "gold", fontSize: "3rem" }} />
-            </a> */}
 
             {isLoggedIn && (
               <div
@@ -236,7 +127,7 @@ export const MovieDetails = () => {
                   }}
                 >
                   <button onClick={handleForm}>Make a review</button>
-                  {form ? (
+                  {form && (
                     <form
                       onSubmit={handleSubmit}
                       style={{
@@ -264,65 +155,17 @@ export const MovieDetails = () => {
                       ></textarea>
                       <button type="submit">Submit</button>
                     </form>
-                  ) : (
-                    <></>
                   )}
                 </div>
               </div>
             )}
-          </article>
-        </>
-      )}
+          </>
+        )}
+      </section>
 
-      <h3 style={{ textAlign: "center" }}>Similar Movies:</h3>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-evenly",
-        }}
-      >
-        {similarMovies &&
-          similarMovies.map((similar) => {
-            return (
-              <Link
-                to={`/movies/${similar.id}`}
-                key={similar.id}
-                style={{ textDecoration: "none", color: "whitesmoke" }}
-              >
-                <article
-                  style={{
-                    margin: "15px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  {similar.poster_path ? (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w400${similar.poster_path}`}
-                      alt="movieposter"
-                      style={{ width: "70px", alignSelf: "center" }}
-                    />
-                  ) : (
-                    <img
-                      src={
-                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
-                      }
-                      alt="movieposter"
-                      style={{ width: "70px", alignSelf: "center" }}
-                    />
-                  )}
-                  <h4>
-                    <i>{similar.title}</i>
-                  </h4>
-                  <p>
-                    <small>Rating: {Math.round(similar.vote_average)}</small>
-                  </p>
-                </article>
-              </Link>
-            );
-          })}
-      </div>
+      <section>
+        <MovieCardXS similarMovies={similarMovies} />
+      </section>
     </div>
   );
 };

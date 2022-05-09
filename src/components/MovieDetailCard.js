@@ -171,27 +171,27 @@ export const MovieDetailCard = ({
           padding: "10px",
         }}
       >
-        <p style={{}}>{movie.overview}</p>
+        <p>{movie.overview}</p>
+        <p
+          style={{
+            textAlign: "right",
+            marginRight: "5px",
+            color: "gold",
+            padding: "10px",
+          }}
+        >
+          <small>Rating:</small>
+          <b> {movie.vote_average}</b>
+        </p>
       </div>
 
       <a
         href={`https://www.imdb.com/title/${movie.imdb_id}/`}
         target="blank"
-        style={{ alignSelf: "center", marginTop: "10px" }}
+        style={{ textAlign: "center", padding: "10px", marginRight: "20px" }}
       >
         <FaImdb style={{ color: "gold", fontSize: "2rem" }} />
       </a>
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-        }}
-      >
-        <p>
-          <small>Rating: {movie.vote_average}</small>
-        </p>
-      </div>
     </article>
   );
 };
