@@ -90,106 +90,69 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      <section
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-          alignItems: "center",
-          MinHeight: "650px",
-          backgroundColor: "purple",
-          color: "whitesmoke",
-        }}
-      >
-        {threeReviews && (
-          <>
-            {threeReviews.map((review) => {
-              return (
-                <div style={{ width: "20%" }} key={review._id}>
-                  <p
-                  // style={{ fontSize: "1.2rem" }}
-                  >
-                    <i>"{review.review}"</i>
-                  </p>
-                  <p style={{ textAlign: "right" }}>
-                    <strong style={{ color: "gold", fontSize: "1.8rem" }}>
-                      {review.rating}
-                    </strong>
-                    <small> /10</small>
-                  </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <p>
+      <section className="bg-secondary-clr-medium-light text-primary-clr-dark container-section background">
+        <div className="container section-container">
+          <h1 className="padding center ff-sans-cond fs-800">We love Cinema</h1>
+          {threeReviews && (
+            <>
+              {threeReviews.map((review) => {
+                return (
+                  <div className="container-review " key={review._id}>
+                    <p className="title">
                       <small>
                         {review.author.username}
                         <br /> about
                         <strong> {review.movie.title}</strong>
                       </small>
                     </p>
-
                     <p>
-                      <br />
-                      <small>{format(review.createdAt)}</small>
+                      <i>"{review.review}"</i>
                     </p>
+
+                    <p className="rating fs-700">
+                      <strong>{review.rating}</strong>
+                      <small> /10</small>
+                    </p>
+                    <div>
+                      <p>
+                        <br />
+                        <small>{format(review.createdAt)}</small>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </>
-        )}
-      </section>
-
-      <section
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-around",
-          alignItems: "center",
-          height: "350px",
-          backgroundColor: "ghostwhite",
-        }}
-      >
-        <h1 style={{ textAlign: "center", color: "darkgrey" }}>
-          We love Cinema
-        </h1>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
-          {randomUsers.length &&
-            randomUsers.map((user) => {
-              return (
-                <article key={user._id}>
-                  <Link to={`/profile/${user.username}`}>
-                    <img
-                      src={user.profileImg}
-                      alt="userimage"
-                      style={{
-                        borderRadius: "50%",
-                        width: "100px",
-                        height: "100px",
-                        boxShadow: "10px 10px 15px lightgrey",
-                      }}
-                    />
-                  </Link>
-                </article>
-              );
-            })}
+                );
+              })}
+            </>
+          )}
         </div>
-        <h1 style={{ textAlign: "center", color: "darkgrey" }}>
-          <em>And our users too!</em>
-        </h1>
       </section>
+
+      <section className=" bg-white">
+        <div className="container section-container">
+          <h1 className="fs-800 center text-primary-clr-dark padding ff-sans-cond ">
+            And our users too!
+          </h1>
+          <div className="container-user">
+            {randomUsers.length &&
+              randomUsers.map((user) => {
+                return (
+                  <article key={user._id}>
+                    <Link to={`/profile/${user.username}`}>
+                      <img
+                        className="user-image"
+                        src={user.profileImg}
+                        alt="userimage"
+                      />
+                    </Link>
+                  </article>
+                );
+              })}
+          </div>
+        </div>
+      </section>
+      <footer className="center text-secondary-clr-light letter-spacing-2 ff-serif">
+        <h5>Made with tears by JN & AG</h5>
+      </footer>
     </div>
   );
 };

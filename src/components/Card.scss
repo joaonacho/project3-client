@@ -1,0 +1,13 @@
+.section-users {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 350px;
+  background-color: ghostwhite;
+}
+
+.card-users {
+  display: flex;
+  flex-direction: row;
+}
