@@ -5,7 +5,6 @@ import { UserContext } from "../context/user.context";
 import { CreatePost } from "../components/CreatePost";
 import { Post } from "../components/Post";
 // import { FaCommentAlt } from "react-icons/fa";
-// import socketIOClient from "socket.io-client";
 
 export const Feed = () => {
   const { user } = useContext(UserContext);
