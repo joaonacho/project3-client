@@ -12,7 +12,9 @@ import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { FaImdb } from "react-icons/fa";
-import { BsBookmarkHeart, BsBookmarkHeartFill } from "react-icons/bs";
+import { BsBookmarkHeartFill } from "react-icons/bs";
+import { BsBookmarkPlusFill } from "react-icons/bs";
+import { MovieDetailCard } from "../components/MovieDetailCard";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -102,7 +104,16 @@ export const MovieDetails = () => {
     <div>
       {movie && (
         <>
-          <article
+          <MovieDetailCard
+            movie={movie}
+            removeMovie={removeMovie}
+            addMovie={addMovie}
+            userFavourites={userFavourites}
+            userInSession={userInSession}
+            movieId={movieId}
+          />
+          <article>
+            {/* <article
             style={{
               display: "flex",
               flexDirection: "column",
@@ -115,33 +126,42 @@ export const MovieDetails = () => {
                 <BsBookmarkHeartFill
                   onClick={() => removeMovie(movieId, userInSession)}
                   style={{
-                    fontSize: "2.3rem",
+                    fontSize: "3rem",
                     alignSelf: "center",
                     color: "firebrick",
-                    marginLeft: "88px",
-                    marginTop: "-2px",
+                    marginLeft: "-82px",
                     position: "absolute",
                   }}
                 />
               ) : (
-                <BsBookmarkHeart
+                <BsBookmarkPlusFill
                   onClick={addMovie}
                   style={{
-                    fontSize: "2.3rem",
+                    fontSize: "3rem",
                     alignSelf: "center",
-                    color: "whitesmoke",
-                    marginLeft: "88px",
-                    marginTop: "-2px",
+                    color: "plum",
+                    opacity: "0.7",
+                    marginLeft: "-82px",
                     position: "absolute",
                   }}
                 />
               ))}
 
+            <img
+              src={`https://image.tmdb.org/t/p/w400${movie.backdrop_path}`}
+              alt="coverposter"
+              style={{}}
+            />
+
             {movie.poster_path ? (
               <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
                 alt="movieposter"
-                style={{ width: "200px", alignSelf: "center" }}
+                style={{
+                  width: "200px",
+                  alignSelf: "center",
+                  borderRadius: "7px 7px 0 0 ",
+                }}
               />
             ) : (
               <img
@@ -149,7 +169,11 @@ export const MovieDetails = () => {
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
                 }
                 alt="movieposter"
-                style={{ width: "200px", alignSelf: "center" }}
+                style={{
+                  width: "200px",
+                  alignSelf: "center",
+                  borderRadius: "7px 7px 0 0 ",
+                }}
               />
             )}
             <h1 style={{ alignSelf: "center" }}>{movie.title}</h1>
@@ -195,7 +219,7 @@ export const MovieDetails = () => {
               style={{ alignSelf: "center" }}
             >
               <FaImdb style={{ color: "gold", fontSize: "3rem" }} />
-            </a>
+            </a> */}
 
             {isLoggedIn && (
               <div
@@ -204,10 +228,6 @@ export const MovieDetails = () => {
                   justifyContent: "space-evenly",
                 }}
               >
-                <button onClick={addMovie} style={{ height: "30px" }}>
-                  Add to favourites
-                </button>
-
                 <div
                   style={{
                     display: "flex",
@@ -268,7 +288,7 @@ export const MovieDetails = () => {
               <Link
                 to={`/movies/${similar.id}`}
                 key={similar.id}
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "whitesmoke" }}
               >
                 <article
                   style={{
@@ -279,7 +299,7 @@ export const MovieDetails = () => {
                 >
                   {similar.poster_path ? (
                     <img
-                      src={`https://image.tmdb.org/t/p/w200${similar.poster_path}`}
+                      src={`https://image.tmdb.org/t/p/w400${similar.poster_path}`}
                       alt="movieposter"
                       style={{ width: "70px", alignSelf: "center" }}
                     />

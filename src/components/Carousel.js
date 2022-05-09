@@ -17,7 +17,10 @@ export const Carousel = ({ movies }) => {
         organicArrows={true}
       >
         <div>
-          <Link to={`/movies/${movies[0].id}`}>
+          <Link
+            to={`/movies/${movies[0].id}`}
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+          >
             {movies[0].backdrop_path ? (
               <img
                 className="test-img"
@@ -49,7 +52,10 @@ export const Carousel = ({ movies }) => {
           </Link>
         </div>
         <div>
-          <Link to={`/movies/${movies[1].id}`}>
+          <Link
+            to={`/movies/${movies[1].id}`}
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+          >
             {movies[1].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[1].backdrop_path}`}
@@ -70,7 +76,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[2].id}`}>
+          <Link
+            to={`/movies/${movies[2].id}`}
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+          >
             {movies[2].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[2].backdrop_path}`}
@@ -91,7 +100,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[3].id}`}>
+          <Link
+            to={`/movies/${movies[3].id}`}
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+          >
             {movies[3].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[3].backdrop_path}`}
@@ -112,7 +124,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[4].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[4].id}`}
+          >
             {movies[4].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[4].backdrop_path}`}
@@ -133,7 +148,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[5].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[5].id}`}
+          >
             {movies[5].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[5].backdrop_path}`}
@@ -154,7 +172,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[6].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[6].id}`}
+          >
             {movies[6].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[6].backdrop_path}`}
@@ -175,7 +196,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[7].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[7].id}`}
+          >
             {movies[7].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[7].backdrop_path}`}
@@ -196,7 +220,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[8].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[8].id}`}
+          >
             {movies[8].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[8].backdrop_path}`}
@@ -217,7 +244,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[9].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[9].id}`}
+          >
             {movies[9].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[9].backdrop_path}`}
@@ -249,7 +279,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[10].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[10].id}`}
+          >
             {movies[10].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[10].backdrop_path}`}
@@ -281,7 +314,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[11].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[11].id}`}
+          >
             {movies[11].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[11].backdrop_path}`}
@@ -311,7 +347,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[12].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[12].id}`}
+          >
             {movies[12].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[12].backdrop_path}`}
@@ -332,7 +371,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[13].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[13].id}`}
+          >
             {movies[13].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[13].backdrop_path}`}
@@ -353,7 +395,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[14].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[14].id}`}
+          >
             {movies[14].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[14].backdrop_path}`}
@@ -374,7 +419,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[15].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[15].id}`}
+          >
             {movies[15].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[15].backdrop_path}`}
@@ -404,7 +452,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[16].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[16].id}`}
+          >
             {movies[16].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[16].backdrop_path}`}
@@ -425,7 +476,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[17].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[17].id}`}
+          >
             {movies[17].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[17].backdrop_path}`}
@@ -446,7 +500,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[18].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[18].id}`}
+          >
             {movies[18].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[18].backdrop_path}`}
@@ -467,7 +524,10 @@ export const Carousel = ({ movies }) => {
         </div>
 
         <div>
-          <Link to={`/movies/${movies[19].id}`}>
+          <Link
+            style={{ color: "whitesmoke", textDecoration: "none" }}
+            to={`/movies/${movies[19].id}`}
+          >
             {movies[19].backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w400${movies[19].backdrop_path}`}

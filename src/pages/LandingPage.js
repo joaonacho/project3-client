@@ -97,7 +97,7 @@ export const LandingPage = () => {
           justifyContent: "space-around",
           flexWrap: "wrap",
           alignItems: "center",
-          height: "650px",
+          MinHeight: "650px",
           backgroundColor: "purple",
           color: "whitesmoke",
         }}
@@ -107,7 +107,9 @@ export const LandingPage = () => {
             {threeReviews.map((review) => {
               return (
                 <div style={{ width: "20%" }} key={review._id}>
-                  <p style={{ fontSize: "1.2rem" }}>
+                  <p
+                  // style={{ fontSize: "1.2rem" }}
+                  >
                     <i>"{review.review}"</i>
                   </p>
                   <p style={{ textAlign: "right" }}>
@@ -154,7 +156,9 @@ export const LandingPage = () => {
           backgroundColor: "ghostwhite",
         }}
       >
-        <h1 style={{ textAlign: "center" }}>We love Cinema</h1>
+        <h1 style={{ textAlign: "center", color: "darkgrey" }}>
+          We love Cinema
+        </h1>
 
         <div
           style={{
@@ -182,7 +186,7 @@ export const LandingPage = () => {
               );
             })}
         </div>
-        <h1 style={{ textAlign: "center" }}>
+        <h1 style={{ textAlign: "center", color: "darkgrey" }}>
           <em>And our users too!</em>
         </h1>
       </section>
