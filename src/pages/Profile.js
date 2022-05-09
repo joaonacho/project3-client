@@ -153,7 +153,10 @@ export const Profile = () => {
                         )}
                         <Link
                           to={`/movies/${fav.id}`}
-                          style={{ textDecoration: "none" }}
+                          style={{
+                            textDecoration: "none",
+                            color: "whitesmoke",
+                          }}
                         >
                           {fav.poster_path ? (
                             <img
