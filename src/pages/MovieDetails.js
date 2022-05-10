@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   getMovieDetails,
   getSimilarMovies,
@@ -7,6 +7,7 @@ import {
   movieReview,
   getUser,
   removeFromFavourites,
+  getMovieReviews,
 } from "../api";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
@@ -14,6 +15,7 @@ import { useContext } from "react";
 import { MovieDetailCard } from "../components/MovieDetailCard";
 import { MovieCardXS } from "../components/MovieCardXS";
 import { ReviewForm } from "../components/ReviewForm";
+import { MovieReviews } from "../components/MovieReviews";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -26,6 +28,7 @@ export const MovieDetails = () => {
   const [userInSession, setUserInSession] = useState({});
   const [userFavourites, setUserFavourites] = useState([]);
   const [moreSimilar, setMoreSimilar] = useState(false);
+  const [movieReviews, setMovieReviews] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -46,6 +49,13 @@ export const MovieDetails = () => {
       setMovie(getDetails.data);
     })();
   }, [movieId]);
+
+  useEffect(() => {
+    (async () => {
+      const movieReviewsFromDb = await getMovieReviews(movie.id);
+      setMovieReviews(movieReviewsFromDb.data.reviews);
+    })();
+  }, [movie.id]);
 
   useEffect(() => {
     (async () => {
@@ -94,6 +104,7 @@ export const MovieDetails = () => {
       imdb_id: movie.imdb_id,
     };
     await movieReview(movieId, fullReview);
+    setMovieReviews([...movieReviews, fullReview]);
     setForm(false);
     setReview();
     setRating();
@@ -129,6 +140,7 @@ export const MovieDetails = () => {
             setReview={setReview}
           />
         )}
+        {movieReviews && <MovieReviews movieReviews={movieReviews} />}
       </section>
 
       <section

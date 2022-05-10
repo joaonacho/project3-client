@@ -14,6 +14,7 @@ export const ReviewForm = ({
       style={{
         display: "flex",
         justifyContent: "space-evenly",
+        marginTop: "20px",
       }}
     >
       <div
@@ -23,7 +24,20 @@ export const ReviewForm = ({
           alignItems: "center",
         }}
       >
-        <button onClick={handleForm}>Make a review</button>
+        <button
+          onClick={handleForm}
+          style={{
+            alignSelf: "center",
+            backgroundColor: "plum",
+            opacity: "0.8",
+            padding: "4px",
+            borderRadius: "10px",
+            color: "purple",
+            fontSize: "1rem",
+          }}
+        >
+          Leave a review
+        </button>
         {form && (
           <form
             onSubmit={handleSubmit}

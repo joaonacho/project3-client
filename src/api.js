@@ -12,6 +12,11 @@ export const upload = (uploadData) => {
   return axios.post(`${baseURL}/upload`, uploadData);
 };
 
+//GET movie reviews
+export const getMovieReviews = (movieId) => {
+  return axios.get(`${baseURL}/reviews/${movieId}`);
+};
+
 //MOVIE external API
 export const getUpcomingMovies = () => {
   return axios.get(
