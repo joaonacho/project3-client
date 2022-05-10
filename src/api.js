@@ -30,6 +30,12 @@ export const getMovieDetails = (id) => {
   );
 };
 
+export const getMovieCredits = (id) => {
+  return axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=d8030aaaaf0512a8717930690f78c10b&language=en-US`
+  );
+};
+
 export const getSimilarMovies = (id) => {
   return axios.get(
     `https://api.themoviedb.org/3/movie/${id}/similar?api_key=d8030aaaaf0512a8717930690f78c10b&language=en-US&page=1`

@@ -8,6 +8,7 @@ import {
   getUser,
   removeFromFavourites,
   getMovieReviews,
+  getMovieCredits,
 } from "../api";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
@@ -16,6 +17,7 @@ import { MovieDetailCard } from "../components/MovieDetailCard";
 import { MovieCardXS } from "../components/MovieCardXS";
 import { ReviewForm } from "../components/ReviewForm";
 import { MovieReviews } from "../components/MovieReviews";
+import { MovieCredits } from "../components/MovieCredits";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -29,6 +31,10 @@ export const MovieDetails = () => {
   const [userFavourites, setUserFavourites] = useState([]);
   const [moreSimilar, setMoreSimilar] = useState(false);
   const [movieReviews, setMovieReviews] = useState([]);
+  const [movieCast, setMovieCast] = useState([]);
+  const [movieCrew, setMovieCrew] = useState([]);
+  const [moreCast, setMoreCast] = useState(false);
+  const [moreCrew, setMoreCrew] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -56,6 +62,14 @@ export const MovieDetails = () => {
       setMovieReviews(movieReviewsFromDb.data.reviews);
     })();
   }, [movie.id]);
+
+  useEffect(() => {
+    (async () => {
+      const creditsFromApi = await getMovieCredits(movieId);
+      setMovieCast(creditsFromApi.data.cast);
+      setMovieCrew(creditsFromApi.data.crew);
+    })();
+  }, [movieId]);
 
   useEffect(() => {
     (async () => {
@@ -124,6 +138,50 @@ export const MovieDetails = () => {
               userInSession={userInSession}
               movieId={movieId}
             />
+          </>
+        )}
+      </section>
+
+      <section>
+        <h3 style={{ textAlign: "center", marginBottom: "15px" }}>Cast:</h3>
+        {!moreCast ? (
+          <>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <MovieCredits movieCast={movieCast.slice(0, 3)} />
+              <button onClick={() => setMoreCast(!moreCast)}>+</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <MovieCredits movieCast={movieCast.slice(0, 10)} />
+              <button onClick={() => setMoreCast(!moreCast)}>-</button>
+            </div>
+          </>
+        )}
+
+        <h3
+          style={{
+            textAlign: "center",
+            marginBottom: "15px",
+            marginTop: "15px",
+          }}
+        >
+          Crew:
+        </h3>
+        {!moreCrew ? (
+          <>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <MovieCredits movieCrew={movieCrew.slice(0, 3)} />
+              <button onClick={() => setMoreCrew(!moreCrew)}>+</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <MovieCredits movieCrew={movieCrew.slice(0, 10)} />
+              <button onClick={() => setMoreCrew(!moreCrew)}>-</button>
+            </div>
           </>
         )}
       </section>

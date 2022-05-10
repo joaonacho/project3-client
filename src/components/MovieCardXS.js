@@ -24,7 +24,7 @@ export const MovieCardXS = ({ similarMovies }) => {
                   style={{
                     margin: "15px",
                     display: "flex",
-                    borderRadius: "8px 8px 0 0",
+                    borderRadius: "8px 8px 8px 0",
                     flexDirection: "column",
                     backgroundColor: "purple",
                     boxShadow: "0 0 25px black",
