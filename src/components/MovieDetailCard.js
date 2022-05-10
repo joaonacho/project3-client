@@ -1,6 +1,5 @@
 import React from "react";
 import { useContext } from "react";
-import { FaImdb } from "react-icons/fa";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsBookmarkPlusFill } from "react-icons/bs";
 import { UserContext } from "../context/user.context";
@@ -164,6 +163,7 @@ export const MovieDetailCard = ({
 
       <div
         style={{
+          position: "sticky",
           width: "225px",
           textAlign: "left",
           marginLeft: "180px",
@@ -182,19 +182,6 @@ export const MovieDetailCard = ({
           ★<b> {movie.vote_average}</b>
         </p>
       </div>
-
-      <a
-        href={`https://www.imdb.com/title/${movie.imdb_id}/`}
-        target="blank"
-        style={{
-          alignSelf: "center",
-          padding: "10px",
-          width: "50px",
-          height: "50px",
-        }}
-      >
-        <FaImdb style={{ color: "gold", fontSize: "2rem" }} />
-      </a>
     </article>
   );
 };

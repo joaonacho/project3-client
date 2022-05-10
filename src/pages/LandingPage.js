@@ -20,7 +20,7 @@ export const LandingPage = () => {
   useEffect(() => {
     (async () => {
       const sixUsers = await randomSix();
-      setRandomUsers(sixUsers.data.slice(0, 3));
+      setRandomUsers(sixUsers.data.slice(0, 4));
     })();
   }, []);
 
@@ -56,15 +56,7 @@ export const LandingPage = () => {
           vestibulum nibh mi venenatis
         </h2>
       </section>
-      <section
-        className="container-section"
-        // style={{
-        //   display: "flex",
-        //   flexWrap: "wrap",
-        //   flexDirection: "row-reverse",
-        //   backgroundColor: "black",
-        // }}
-      >
+      <section className="container-section">
         <div className="container-multiple-carousels">
           <div className="container-carousel">
             {trendingMovies.length && (

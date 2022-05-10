@@ -1,7 +1,6 @@
 import React from "react";
 
 export const MovieCredits = ({ movieCast, movieCrew }) => {
-  console.log(movieCrew);
   return (
     <>
       <div

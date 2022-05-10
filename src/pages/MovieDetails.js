@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { FaImdb } from "react-icons/fa";
 import {
   getMovieDetails,
   getSimilarMovies,
@@ -187,6 +188,7 @@ export const MovieDetails = () => {
       </section>
 
       <section>
+        {movieReviews && <MovieReviews movieReviews={movieReviews} />}
         {isLoggedIn && (
           <ReviewForm
             handleForm={handleForm}
@@ -198,13 +200,13 @@ export const MovieDetails = () => {
             setReview={setReview}
           />
         )}
-        {movieReviews && <MovieReviews movieReviews={movieReviews} />}
       </section>
 
       <section
         style={{
           display: "flex",
           flexDirection: "column",
+          marginTop: "20px",
         }}
       >
         {!moreSimilar ? (
@@ -246,6 +248,18 @@ export const MovieDetails = () => {
             </button>
           </>
         )}
+        <a
+          href={`https://www.imdb.com/title/${movie.imdb_id}/`}
+          target="blank"
+          style={{
+            alignSelf: "flex-end",
+            padding: "10px",
+            width: "50px",
+            height: "50px",
+          }}
+        >
+          <FaImdb style={{ color: "gold", fontSize: "2rem" }} />
+        </a>
       </section>
     </div>
   );

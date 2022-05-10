@@ -19,7 +19,7 @@ export const FindFriends = () => {
       const usersSameGenres = await getUsersGenres(user.username);
 
       if (usersSameGenres.data.length) {
-        setUserGenres(usersSameGenres.data);
+        setUserGenres(usersSameGenres.data.slice(0, 6));
       }
 
       if (!usersSameGenres.data.length) {
