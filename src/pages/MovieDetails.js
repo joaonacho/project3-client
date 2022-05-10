@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 import { MovieDetailCard } from "../components/MovieDetailCard";
 import { MovieCardXS } from "../components/MovieCardXS";
+import { ReviewForm } from "../components/ReviewForm";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -24,6 +25,7 @@ export const MovieDetails = () => {
   const [form, setForm] = useState(false);
   const [userInSession, setUserInSession] = useState({});
   const [userFavourites, setUserFavourites] = useState([]);
+  const [moreSimilar, setMoreSimilar] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -111,60 +113,69 @@ export const MovieDetails = () => {
               userInSession={userInSession}
               movieId={movieId}
             />
-
-            {isLoggedIn && (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  <button onClick={handleForm}>Make a review</button>
-                  {form && (
-                    <form
-                      onSubmit={handleSubmit}
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <label>Rating:</label>
-                      <input
-                        required
-                        type="number"
-                        min="0"
-                        max="10"
-                        value={rating}
-                        onChange={(e) => setRating(e.target.value)}
-                      />
-                      <label>Review:</label>
-                      <textarea
-                        required
-                        cols="30"
-                        rows="5"
-                        value={review}
-                        onChange={(e) => setReview(e.target.value)}
-                      ></textarea>
-                      <button type="submit">Submit</button>
-                    </form>
-                  )}
-                </div>
-              </div>
-            )}
           </>
         )}
       </section>
 
       <section>
-        <MovieCardXS similarMovies={similarMovies} />
+        {isLoggedIn && (
+          <ReviewForm
+            handleForm={handleForm}
+            form={form}
+            handleSubmit={handleSubmit}
+            rating={rating}
+            setRating={setRating}
+            review={review}
+            setReview={setReview}
+          />
+        )}
+      </section>
+
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {!moreSimilar ? (
+          <>
+            <MovieCardXS similarMovies={similarMovies.slice(0, 10)} />
+            <button
+              style={{
+                alignSelf: "center",
+                backgroundColor: "plum",
+                opacity: "0.8",
+                padding: "4px",
+                borderRadius: "10px",
+                color: "purple",
+                fontSize: "1rem",
+                textAlign: "center",
+              }}
+              onClick={() => setMoreSimilar(!moreSimilar)}
+            >
+              show more
+            </button>
+          </>
+        ) : (
+          <>
+            <MovieCardXS similarMovies={similarMovies} />
+            <button
+              style={{
+                alignSelf: "center",
+                backgroundColor: "plum",
+                opacity: "0.8",
+                padding: "4px",
+                borderRadius: "10px",
+                color: "purple",
+                fontSize: "1rem",
+                textAlign: "center",
+              }}
+              onClick={() => setMoreSimilar(!moreSimilar)}
+            >
+              show less
+            </button>
+          </>
+        )}
       </section>
     </div>
   );

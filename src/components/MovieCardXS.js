@@ -24,14 +24,22 @@ export const MovieCardXS = ({ similarMovies }) => {
                   style={{
                     margin: "15px",
                     display: "flex",
+                    borderRadius: "8px 8px 0 0",
                     flexDirection: "column",
+                    backgroundColor: "purple",
+                    boxShadow: "0 0 25px black",
+                    width: "100px",
                   }}
                 >
                   {similar.poster_path ? (
                     <img
                       src={`https://image.tmdb.org/t/p/w400${similar.poster_path}`}
                       alt="movieposter"
-                      style={{ width: "70px", alignSelf: "center" }}
+                      style={{
+                        width: "100px",
+                        alignSelf: "center",
+                        borderRadius: "8px 8px 0 0",
+                      }}
                     />
                   ) : (
                     <img
@@ -39,15 +47,17 @@ export const MovieCardXS = ({ similarMovies }) => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
                       }
                       alt="movieposter"
-                      style={{ width: "70px", alignSelf: "center" }}
+                      style={{
+                        width: "100px",
+                        alignSelf: "center",
+                        borderRadius: "8px 8px 0 0",
+                      }}
                     />
                   )}
-                  <h4>
-                    <i>{similar.title}</i>
-                  </h4>
-                  <p>
-                    <small>Rating: {Math.round(similar.vote_average)}</small>
+                  <p style={{ color: "gold", padding: "5px" }}>
+                    ★ {Math.round(similar.vote_average)}
                   </p>
+                  <h4 style={{ padding: "5px" }}>{similar.title}</h4>
                 </article>
               </Link>
             );

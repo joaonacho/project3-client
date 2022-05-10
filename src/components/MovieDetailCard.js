@@ -30,8 +30,8 @@ export const MovieDetailCard = ({
           flexWrap: "wrap",
         }}
       >
-        <h1 style={{ alignSelf: "center" }}>{movie.title}</h1>
-        <h4 style={{ alignSelf: "center" }}>
+        <h1 style={{ textAlign: "center" }}>{movie.title}</h1>
+        <h4 style={{ textAlign: "center" }}>
           <i>{movie.tagline}</i>
         </h4>
       </div>
@@ -45,15 +45,15 @@ export const MovieDetailCard = ({
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-evenly",
             marginTop: "5px",
           }}
         >
-          <p style={{ marginRight: "10px" }}>
+          <p style={{ marginLeft: "10px" }}>
             <small>Duration: {movie.runtime} mins</small>
           </p>
-          <p style={{ marginLeft: "10px" }}>
-            <small>Release date: {movie.release_date}</small>
+          <p style={{ marginRight: "10px" }}>
+            <small>Released: {movie.release_date}</small>
           </p>
         </div>
         <div style={{ width: "100%" }}>
@@ -71,11 +71,10 @@ export const MovieDetailCard = ({
                 return (
                   <li
                     style={{
-                      border: "1.5px solid purple",
+                      border: "1px solid purple",
                       borderRadius: "5px",
                       backgroundColor: "plum",
-                      padding: "8px",
-                      marginRight: "15px",
+                      padding: "4px",
                       textAlign: "center",
                       color: "purple",
                     }}
@@ -180,15 +179,19 @@ export const MovieDetailCard = ({
             padding: "10px",
           }}
         >
-          <small>Rating:</small>
-          <b> {movie.vote_average}</b>
+          ★<b> {movie.vote_average}</b>
         </p>
       </div>
 
       <a
         href={`https://www.imdb.com/title/${movie.imdb_id}/`}
         target="blank"
-        style={{ textAlign: "center", padding: "10px", marginRight: "20px" }}
+        style={{
+          alignSelf: "center",
+          padding: "10px",
+          width: "50px",
+          height: "50px",
+        }}
       >
         <FaImdb style={{ color: "gold", fontSize: "2rem" }} />
       </a>
