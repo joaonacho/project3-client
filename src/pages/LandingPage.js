@@ -1,4 +1,5 @@
 import React from "react";
+import tmdbLogo from "../../public/tmdbLogo.svg";
 import { useState, useEffect } from "react";
 import {
   randomReviews,
@@ -144,6 +145,9 @@ export const LandingPage = () => {
       </section>
       <footer className="center text-secondary-clr-light letter-spacing-2 ff-serif">
         <h5>Made with tears by JN & AG</h5>
+        <a href={"https://developers.themoviedb.org/"} target="blank">
+          <img style={{ width: "25px" }} src={tmdbLogo} alt="TMDBlogo" />
+        </a>
       </footer>
     </div>
   );
