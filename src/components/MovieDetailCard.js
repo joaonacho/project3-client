@@ -55,7 +55,7 @@ export const MovieDetailCard = ({
             <small>Released: {movie.release_date}</small>
           </p>
         </div>
-        <div style={{ width: "600px", alignSelf: "center" }}>
+        <div style={{ width: "300px", alignSelf: "center" }}>
           <ul
             style={{
               display: "flex",
