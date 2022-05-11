@@ -99,17 +99,23 @@ export const MovieDetailCard = ({
           alt="coverposter"
           style={{ width: "600px" }}
         />
+      </div>
 
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
         {movie.poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
             alt="movieposter"
             style={{
-              position: "absolute",
               width: "150px",
-              alignSelf: "center",
-              marginTop: "175px",
-              marginLeft: "-110px",
+              height: "230px",
+              marginTop: "-50px",
               borderRadius: "7px",
               boxShadow: "0px 0px 20px black",
             }}
@@ -121,12 +127,11 @@ export const MovieDetailCard = ({
             }
             alt="movieposter"
             style={{
-              position: "absolute",
               width: "150px",
-              alignSelf: "center",
-              marginTop: "175px",
-              marginLeft: "-110px",
+              height: "230px",
+              marginTop: "-50px",
               borderRadius: "7px",
+              boxShadow: "0px 0px 20px black",
             }}
           />
         )}
@@ -138,10 +143,9 @@ export const MovieDetailCard = ({
               onClick={() => removeMovie(movieId, userInSession)}
               style={{
                 fontSize: "3rem",
-                alignSelf: "center",
                 color: "firebrick",
-                marginTop: "86.5px",
-                marginLeft: "-167px",
+                marginTop: "-50px",
+                marginLeft: "-169.5px",
                 position: "absolute",
               }}
             />
@@ -150,37 +154,33 @@ export const MovieDetailCard = ({
               onClick={addMovie}
               style={{
                 fontSize: "3rem",
-                alignSelf: "center",
-                marginTop: "86.5px",
-                marginLeft: "-167px",
+                marginTop: "-50px",
+                marginLeft: "-169.5px",
                 position: "absolute",
                 color: "plum",
                 opacity: "0.7",
               }}
             />
           ))}
-      </div>
 
-      <div
-        style={{
-          position: "sticky",
-          width: "225px",
-          textAlign: "left",
-          marginLeft: "180px",
-          padding: "10px",
-        }}
-      >
-        <p>{movie.overview}</p>
-        <p
+        <div
           style={{
-            textAlign: "right",
-            marginRight: "5px",
-            color: "gold",
+            width: "225px",
+            textAlign: "left",
             padding: "10px",
           }}
         >
-          ★<b> {movie.vote_average}</b>
-        </p>
+          <p>{movie.overview}</p>
+          <p
+            style={{
+              textAlign: "right",
+              color: "gold",
+              padding: "10px",
+            }}
+          >
+            ★<b> {movie.vote_average}</b>
+          </p>
+        </div>
       </div>
     </article>
   );

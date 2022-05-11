@@ -29,6 +29,7 @@ export const MovieReviews = ({ movieReviews }) => {
             style={{
               display: "flex",
               flexDirection: "column",
+              alignSelf: "center",
               flexWrap: "wrap",
               marginTop: "20px",
             }}
@@ -47,6 +48,7 @@ export const MovieReviews = ({ movieReviews }) => {
                     display: "flex",
                     flexDirection: "row",
                     marginBottom: "10px",
+                    width: "200px",
                   }}
                 >
                   <img
@@ -68,7 +70,7 @@ export const MovieReviews = ({ movieReviews }) => {
             <p>
               <i>"{review.review}"</i>
             </p>
-            <p style={{ alignSelf: "flex-end" }}>
+            <p style={{ textAlign: "right" }}>
               <small>{format(review.createdAt)}</small>
             </p>
           </div>

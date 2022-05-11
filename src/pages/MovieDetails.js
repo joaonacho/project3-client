@@ -62,7 +62,7 @@ export const MovieDetails = () => {
       const movieReviewsFromDb = await getMovieReviews(movie.id);
       setMovieReviews(movieReviewsFromDb.data.reviews);
     })();
-  }, [movie.id]);
+  }, [movie]);
 
   useEffect(() => {
     (async () => {
@@ -155,7 +155,7 @@ export const MovieDetails = () => {
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCast={movieCast.slice(0, 10)} />
+              <MovieCredits movieCast={movieCast.slice(0, 15)} />
               <button onClick={() => setMoreCast(!moreCast)}>-</button>
             </div>
           </>
@@ -180,7 +180,7 @@ export const MovieDetails = () => {
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCrew={movieCrew.slice(0, 10)} />
+              <MovieCredits movieCrew={movieCrew.slice(0, 15)} />
               <button onClick={() => setMoreCrew(!moreCrew)}>-</button>
             </div>
           </>
