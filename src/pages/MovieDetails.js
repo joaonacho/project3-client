@@ -187,7 +187,7 @@ export const MovieDetails = () => {
         )}
       </section>
 
-      <section>
+      <section style={{ marginTop: "25px" }}>
         {movieReviews && <MovieReviews movieReviews={movieReviews} />}
         {isLoggedIn && (
           <ReviewForm
@@ -252,7 +252,7 @@ export const MovieDetails = () => {
           href={`https://www.imdb.com/title/${movie.imdb_id}/`}
           target="blank"
           style={{
-            alignSelf: "flex-end",
+            alignSelf: "center",
             padding: "10px",
             width: "50px",
             height: "50px",

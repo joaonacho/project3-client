@@ -29,8 +29,8 @@ export const MovieDetailCard = ({
           flexWrap: "wrap",
         }}
       >
-        <h1 style={{ textAlign: "center" }}>{movie.title}</h1>
-        <h4 style={{ textAlign: "center" }}>
+        <h1 style={{ alignSelf: "center" }}>{movie.title}</h1>
+        <h4 style={{ alignSelf: "center" }}>
           <i>{movie.tagline}</i>
         </h4>
       </div>
@@ -55,14 +55,14 @@ export const MovieDetailCard = ({
             <small>Released: {movie.release_date}</small>
           </p>
         </div>
-        <div style={{ width: "100%" }}>
+        <div style={{ width: "600px", alignSelf: "center" }}>
           <ul
             style={{
               display: "flex",
               flexWrap: "wrap",
-              justifyContent: "center",
+              justifyContent: "space-around",
+              marginLeft: "-35px",
               listStyle: "none",
-              marginLeft: "-30px",
             }}
           >
             {movie.genres &&
@@ -70,12 +70,11 @@ export const MovieDetailCard = ({
                 return (
                   <li
                     style={{
-                      border: "1px solid purple",
-                      borderRadius: "5px",
-                      backgroundColor: "plum",
+                      border: "1px solid grey",
+                      borderRadius: "4px",
                       padding: "4px",
                       textAlign: "center",
-                      color: "purple",
+                      color: "whitesmoke",
                     }}
                     key={genre.id}
                   >

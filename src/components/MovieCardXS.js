@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const MovieCardXS = ({ similarMovies }) => {
   return (
     <>
-      <h3 style={{ textAlign: "center" }}>Similar Movies:</h3>
+      <h3 style={{ textAlign: "center" }}>You might also like:</h3>
       <div
         style={{
           display: "flex",

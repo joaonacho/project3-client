@@ -4,14 +4,7 @@ import { Link } from "react-router-dom";
 
 export const MovieReviews = ({ movieReviews }) => {
   return (
-    <article
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        marginTop: "20px",
-        padding: "10px",
-      }}
-    >
+    <>
       {movieReviews.length >= 1 ? (
         <div style={{ textAlign: "center" }}>
           <h3>Reviews from our users:</h3>
@@ -24,58 +17,70 @@ export const MovieReviews = ({ movieReviews }) => {
 
       {movieReviews.map((review) => {
         return (
-          <div
-            key={review._id}
+          <article
             style={{
               display: "flex",
               flexDirection: "column",
-              alignSelf: "center",
-              flexWrap: "wrap",
               marginTop: "20px",
+              padding: "10px",
             }}
           >
-            {review.author.username && review.author.profileImg && (
-              <Link
-                to={`/profile/${review.author.username}`}
-                style={{
-                  textDecoration: "none",
-                  color: "whitesmoke",
-                  width: "50%",
-                }}
-              >
-                <div
+            <div
+              key={review._id}
+              style={{
+                width: "60%",
+                display: "flex",
+                flexDirection: "column",
+                alignSelf: "center",
+                flexWrap: "wrap",
+                marginTop: "20px",
+              }}
+            >
+              {review.author.username && review.author.profileImg && (
+                <Link
+                  to={`/profile/${review.author.username}`}
                   style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginBottom: "10px",
-                    width: "200px",
+                    textDecoration: "none",
+                    color: "whitesmoke",
+                    width: "20%",
                   }}
                 >
-                  <img
-                    src={review.author.profileImg}
-                    alt="profilepicture"
+                  <div
                     style={{
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "50%",
+                      display: "flex",
+                      flexDirection: "row",
+                      marginBottom: "10px",
+                      width: "200px",
                     }}
-                  />
-                  <p style={{ marginLeft: "10px" }}>{review.author.username}</p>
-                </div>
-              </Link>
-            )}
-            <p style={{ color: "gold" }}>
-              ★ <b>{review.rating}</b> <small>/10</small>
-            </p>
-            <p>
-              <i>"{review.review}"</i>
-            </p>
-            <p style={{ textAlign: "right" }}>
-              <small>{format(review.createdAt)}</small>
-            </p>
-          </div>
+                  >
+                    <img
+                      src={review.author.profileImg}
+                      alt="profilepicture"
+                      style={{
+                        width: "30px",
+                        height: "30px",
+                        borderRadius: "50%",
+                      }}
+                    />
+                    <p style={{ marginLeft: "10px", marginTop: "5px" }}>
+                      {review.author.username}
+                    </p>
+                  </div>
+                </Link>
+              )}
+              <p style={{ color: "gold" }}>
+                ★ <b>{review.rating}</b> <small>/10</small>
+              </p>
+              <p style={{ textAlign: "center" }}>
+                <i>"{review.review}"</i>
+              </p>
+              <p style={{ textAlign: "center" }}>
+                <small>{format(review.createdAt)}</small>
+              </p>
+            </div>
+          </article>
         );
       })}
-    </article>
+    </>
   );
 };
