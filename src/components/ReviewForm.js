@@ -28,11 +28,11 @@ export const ReviewForm = ({
           onClick={handleForm}
           style={{
             alignSelf: "center",
-            backgroundColor: "plum",
-            opacity: "0.8",
+            border: "1px solid grey",
             padding: "4px",
-            borderRadius: "10px",
-            color: "purple",
+            borderRadius: "4px",
+            color: "whitesmoke",
+            backgroundColor: "black",
             fontSize: "1rem",
           }}
         >

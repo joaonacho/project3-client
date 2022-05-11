@@ -149,14 +149,40 @@ export const MovieDetails = () => {
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <MovieCredits movieCast={movieCast.slice(0, 3)} />
-              <button onClick={() => setMoreCast(!moreCast)}>+</button>
+              <button
+                onClick={() => setMoreCast(!moreCast)}
+                style={{
+                  fontSize: "1rem",
+                  border: "none",
+                  borderRadius: "4px",
+                  padding: "4px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                }}
+              >
+                +
+              </button>
             </div>
           </>
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <MovieCredits movieCast={movieCast.slice(0, 15)} />
-              <button onClick={() => setMoreCast(!moreCast)}>-</button>
+              <button
+                onClick={() => setMoreCast(!moreCast)}
+                style={{
+                  fontSize: "1rem",
+                  border: "none",
+                  borderRadius: "4px",
+                  padding: "4px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                }}
+              >
+                -
+              </button>
             </div>
           </>
         )}
@@ -174,14 +200,40 @@ export const MovieDetails = () => {
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <MovieCredits movieCrew={movieCrew.slice(0, 3)} />
-              <button onClick={() => setMoreCrew(!moreCrew)}>+</button>
+              <button
+                onClick={() => setMoreCrew(!moreCrew)}
+                style={{
+                  fontSize: "1rem",
+                  border: "none",
+                  borderRadius: "4px",
+                  padding: "4px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                }}
+              >
+                +
+              </button>
             </div>
           </>
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <MovieCredits movieCrew={movieCrew.slice(0, 15)} />
-              <button onClick={() => setMoreCrew(!moreCrew)}>-</button>
+              <button
+                onClick={() => setMoreCrew(!moreCrew)}
+                style={{
+                  fontSize: "1rem",
+                  border: "none",
+                  borderRadius: "4px",
+                  padding: "4px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                }}
+              >
+                -
+              </button>
             </div>
           </>
         )}
@@ -213,19 +265,18 @@ export const MovieDetails = () => {
           <>
             <MovieCardXS similarMovies={similarMovies.slice(0, 10)} />
             <button
+              onClick={() => setMoreSimilar(!moreSimilar)}
               style={{
                 alignSelf: "center",
-                backgroundColor: "plum",
-                opacity: "0.8",
-                padding: "4px",
-                borderRadius: "10px",
-                color: "purple",
                 fontSize: "1rem",
+                borderRadius: "4px",
+                padding: "4px",
                 textAlign: "center",
+                color: "whitesmoke",
+                backgroundColor: "black",
               }}
-              onClick={() => setMoreSimilar(!moreSimilar)}
             >
-              show more
+              +
             </button>
           </>
         ) : (
@@ -234,17 +285,16 @@ export const MovieDetails = () => {
             <button
               style={{
                 alignSelf: "center",
-                backgroundColor: "plum",
-                opacity: "0.8",
-                padding: "4px",
-                borderRadius: "10px",
-                color: "purple",
                 fontSize: "1rem",
+                borderRadius: "4px",
+                padding: "4px",
                 textAlign: "center",
+                color: "whitesmoke",
+                backgroundColor: "black",
               }}
               onClick={() => setMoreSimilar(!moreSimilar)}
             >
-              show less
+              -
             </button>
           </>
         )}

@@ -5,7 +5,7 @@ import { getUserReviews, editReview, deleteReview } from "../api";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/user.context";
-import { FaWrench, FaRegTrashAlt, FaCheck } from "react-icons/fa";
+import { FaWrench, FaTrashAlt, FaCheck } from "react-icons/fa";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 import { format } from "timeago.js";
@@ -68,27 +68,30 @@ export const UserReviews = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                width: "300px",
+                width: "200px",
                 marginTop: "30px",
+                backgroundColor: "purple",
+                borderRadius: "10px 10px 10px 0",
               }}
             >
               {user && user.username === username && (
                 <div
                   style={{
-                    width: "145px",
+                    position: "absolute",
+                    width: "190px",
+                    marginTop: "5px",
                     display: "flex",
                     justifyContent: "space-between",
-                    marginBottom: "8px",
                   }}
                 >
                   <FaWrench
-                    style={{ color: "whitesmoke", fontSize: "1.2rem" }}
+                    style={{ color: "grey", fontSize: "1.5rem" }}
                     onClick={() => handleForm(review._id)}
                   />
 
                   {editingMovie._id === review._id && (
-                    <FaRegTrashAlt
-                      style={{ color: "red", fontSize: "1.2rem" }}
+                    <FaTrashAlt
+                      style={{ color: "red", fontSize: "1.5rem" }}
                       onClick={() => handleDelete(review._id)}
                     />
                   )}
@@ -102,9 +105,9 @@ export const UserReviews = () => {
                     style={{ textDecoration: "none" }}
                   >
                     <img
-                      src={`https://image.tmdb.org/t/p/w200${review.movie.poster_path}`}
+                      src={`https://image.tmdb.org/t/p/w400${review.movie.poster_path}`}
                       alt="poster"
-                      style={{ width: "150px" }}
+                      style={{ width: "200px", borderRadius: "10px 10px 0 0" }}
                     />
                   </Link>
                 </>
@@ -119,19 +122,28 @@ export const UserReviews = () => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
                       }
                       alt="poster"
-                      style={{ width: "150px" }}
+                      style={{ width: "200px", borderRadius: "10px 10px 0 0" }}
                     />
                   </Link>
                 </>
               )}
-              <h3 style={{ marginTop: "20px" }}>
-                <strong>{review.movie.title}</strong>
+              <h3 style={{ marginTop: "20px", textAlign: "center" }}>
+                {review.movie.title}
               </h3>
 
-              <div style={{ width: "290px" }}>
+              <div
+                style={{
+                  marginTop: "20px",
+                  width: "200px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
                 {review._id === editingMovie._id && (
                   <>
                     <textarea
+                      style={{ width: "200px" }}
                       required
                       cols="30"
                       rows="5"
@@ -161,7 +173,7 @@ export const UserReviews = () => {
                       style={{
                         fontSize: "1.4rem",
                         color: "lightgreen",
-                        marginLeft: "10px",
+                        marginTop: "10px",
                       }}
                       onClick={(e) => handleSubmit(e, review._id)}
                     />
@@ -169,17 +181,22 @@ export const UserReviews = () => {
                 )}
 
                 {review._id !== editingMovie._id && (
-                  <>
-                    <p style={{ marginTop: "20px" }}>
+                  <div style={{ width: "200px" }}>
+                    <p style={{ padding: "10px", textAlign: "center" }}>
                       <i>"{review.review}"</i>
                     </p>
-                    <p style={{ textAlign: "right" }}>
-                      <strong style={{ color: "gold", fontSize: "1.8rem" }}>
-                        {review.rating}
-                      </strong>
+                    <p
+                      style={{
+                        textAlign: "right",
+                        padding: "10px",
+                        color: "gold",
+                        fontSize: "1.5rem",
+                      }}
+                    >
+                      <strong>★ {review.rating}</strong>
                       <small>/10</small>
                     </p>
-                  </>
+                  </div>
                 )}
               </div>
               <p>

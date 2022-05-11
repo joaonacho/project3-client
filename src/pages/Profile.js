@@ -113,7 +113,18 @@ export const Profile = () => {
 
           {newUser.reviews && newUser.reviews.length >= 1 && (
             <Link to={`/profile/${newUser.username}/reviews`}>
-              <button>See reviews</button>
+              <button
+                style={{
+                  fontSize: "1rem",
+                  borderRadius: "4px",
+                  padding: "4px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                }}
+              >
+                See reviews
+              </button>
             </Link>
           )}
 
@@ -135,7 +146,20 @@ export const Profile = () => {
                       marginTop: "20px",
                     }}
                   >
-                    <button onClick={() => setMoreFav(!moreFav)}>+</button>
+                    <button
+                      style={{
+                        alignSelf: "center",
+                        fontSize: "1rem",
+                        borderRadius: "4px",
+                        padding: "4px",
+                        textAlign: "center",
+                        color: "whitesmoke",
+                        backgroundColor: "black",
+                      }}
+                      onClick={() => setMoreFav(!moreFav)}
+                    >
+                      +
+                    </button>
                   </div>
                 </>
               ) : (
@@ -153,7 +177,20 @@ export const Profile = () => {
                       marginTop: "20px",
                     }}
                   >
-                    <button onClick={() => setMoreFav(!moreFav)}>-</button>
+                    <button
+                      style={{
+                        alignSelf: "center",
+                        fontSize: "1rem",
+                        borderRadius: "4px",
+                        padding: "4px",
+                        textAlign: "center",
+                        color: "whitesmoke",
+                        backgroundColor: "black",
+                      }}
+                      onClick={() => setMoreFav(!moreFav)}
+                    >
+                      -
+                    </button>
                   </div>
                 </>
               )}
