@@ -64,6 +64,7 @@ export const FindFriends = () => {
         <div class="search__container">
           <div className="search__input">
             <input
+              className="input-find-friends "
               name={query}
               type="text"
               onChange={(e) => handleQuery(e)}

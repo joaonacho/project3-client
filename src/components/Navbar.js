@@ -30,7 +30,6 @@ export const Navbar = () => {
             onClick={() => setClick(false)}
             to="/explore"
           >
-            <RiSearchLine style={{ fontSize: "1.3rem" }} />
             <p>explore movies</p>
           </NavLink>
         </li>
