@@ -10,6 +10,7 @@ export const MovieCardXS = ({ similarMovies }) => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-evenly",
+          marginTop: "30px",
         }}
       >
         {similarMovies &&

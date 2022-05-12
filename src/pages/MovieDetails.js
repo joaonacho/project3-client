@@ -142,23 +142,40 @@ export const MovieDetails = () => {
           </>
         )}
       </section>
-
+      <hr
+        style={{
+          width: "70%",
+          backgroundColor: "darkmagenta",
+          border: "1px solid darkmagenta ",
+          marginTop: "40px",
+        }}
+      />
       <section>
-        <h3 style={{ textAlign: "center", marginBottom: "15px" }}>Cast:</h3>
+        <h3
+          style={{
+            textAlign: "center",
+            marginBottom: "20px",
+            marginTop: "40px",
+          }}
+        >
+          Cast:
+        </h3>
         {!moreCast ? (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCast={movieCast.slice(0, 3)} />
+              <MovieCredits movieCast={movieCast.slice(0, 8)} />
               <button
                 onClick={() => setMoreCast(!moreCast)}
                 style={{
-                  fontSize: "1rem",
+                  fontSize: "1.4rem",
                   border: "none",
-                  borderRadius: "4px",
-                  padding: "4px",
+                  borderRadius: "0 10px 10px 0",
+                  padding: "8px",
                   textAlign: "center",
                   color: "whitesmoke",
                   backgroundColor: "black",
+                  width: "50px",
+                  height: "260px",
                 }}
               >
                 +
@@ -168,17 +185,19 @@ export const MovieDetails = () => {
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCast={movieCast.slice(0, 15)} />
+              <MovieCredits movieCast={movieCast.slice(0, 20)} />
               <button
                 onClick={() => setMoreCast(!moreCast)}
                 style={{
-                  fontSize: "1rem",
+                  fontSize: "1.4rem",
                   border: "none",
-                  borderRadius: "4px",
-                  padding: "4px",
+                  borderRadius: "0 10px 10px 0",
+                  padding: "8px",
                   textAlign: "center",
                   color: "whitesmoke",
                   backgroundColor: "black",
+                  width: "50px",
+                  height: "260px",
                 }}
               >
                 -
@@ -190,8 +209,8 @@ export const MovieDetails = () => {
         <h3
           style={{
             textAlign: "center",
-            marginBottom: "15px",
-            marginTop: "15px",
+            marginBottom: "20px",
+            marginTop: "60px",
           }}
         >
           Crew:
@@ -199,17 +218,19 @@ export const MovieDetails = () => {
         {!moreCrew ? (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCrew={movieCrew.slice(0, 3)} />
+              <MovieCredits movieCrew={movieCrew.slice(0, 8)} />
               <button
                 onClick={() => setMoreCrew(!moreCrew)}
                 style={{
-                  fontSize: "1rem",
+                  fontSize: "1.4rem",
                   border: "none",
-                  borderRadius: "4px",
-                  padding: "4px",
+                  borderRadius: "0 10px 10px 0",
+                  padding: "8px",
                   textAlign: "center",
                   color: "whitesmoke",
                   backgroundColor: "black",
+                  width: "50px",
+                  height: "260px",
                 }}
               >
                 +
@@ -219,17 +240,19 @@ export const MovieDetails = () => {
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCrew={movieCrew.slice(0, 15)} />
+              <MovieCredits movieCrew={movieCrew.slice(0, 20)} />
               <button
                 onClick={() => setMoreCrew(!moreCrew)}
                 style={{
-                  fontSize: "1rem",
+                  fontSize: "1.4rem",
                   border: "none",
-                  borderRadius: "4px",
-                  padding: "4px",
+                  borderRadius: "0 10px 10px 0",
+                  padding: "8px",
                   textAlign: "center",
                   color: "whitesmoke",
                   backgroundColor: "black",
+                  width: "50px",
+                  height: "260px",
                 }}
               >
                 -
@@ -238,8 +261,15 @@ export const MovieDetails = () => {
           </>
         )}
       </section>
-
-      <section style={{ marginTop: "25px" }}>
+      <hr
+        style={{
+          width: "70%",
+          backgroundColor: "darkmagenta",
+          border: "1px solid darkmagenta ",
+          marginTop: "80px",
+        }}
+      />
+      <section style={{ marginTop: "60px" }}>
         {movieReviews && <MovieReviews movieReviews={movieReviews} />}
         {isLoggedIn && (
           <ReviewForm
@@ -253,12 +283,19 @@ export const MovieDetails = () => {
           />
         )}
       </section>
-
+      <hr
+        style={{
+          width: "70%",
+          backgroundColor: "darkmagenta",
+          border: "1px solid darkmagenta ",
+          marginTop: "80px",
+        }}
+      />
       <section
         style={{
           display: "flex",
           flexDirection: "column",
-          marginTop: "20px",
+          marginTop: "60px",
         }}
       >
         {!moreSimilar ? (

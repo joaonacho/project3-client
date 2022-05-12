@@ -27,77 +27,41 @@ export const MovieDetailCard = ({
           display: "flex",
           flexDirection: "column",
           flexWrap: "wrap",
+          marginBottom: "30px",
         }}
       >
-        <h1 style={{ alignSelf: "center" }}>{movie.title}</h1>
-        <h4 style={{ alignSelf: "center" }}>
+        <h1 style={{ textAlign: "center", fontSize: "2rem" }}>{movie.title}</h1>
+        <h4 style={{ textAlign: "center" }}>
           <i>{movie.tagline}</i>
         </h4>
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          flexWrap: "wrap",
-        }}
-      >
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div>
+          <p
+            style={{
+              position: "absolute",
+              fontSize: "1.8rem",
+              color: "gold",
+              padding: "10px",
+              textShadow: "1px 1px 1px black",
+            }}
+          >
+            <b>★ {movie.vote_average}</b>
+          </p>
+        </div>
         <div
           style={{
             display: "flex",
-            justifyContent: "space-evenly",
+            justifyContent: "center",
             marginTop: "5px",
           }}
         >
-          <p style={{ marginLeft: "10px" }}>
-            <small>Duration: {movie.runtime} mins</small>
-          </p>
-          <p style={{ marginRight: "10px" }}>
-            <small>Released: {movie.release_date}</small>
-          </p>
+          <img
+            src={`https://image.tmdb.org/t/p/w400${movie.backdrop_path}`}
+            alt="coverposter"
+            style={{ width: "600px" }}
+          />
         </div>
-        <div style={{ width: "300px", alignSelf: "center" }}>
-          <ul
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-around",
-              marginLeft: "-35px",
-              listStyle: "none",
-            }}
-          >
-            {movie.genres &&
-              movie.genres.map((genre) => {
-                return (
-                  <li
-                    style={{
-                      border: "1px solid grey",
-                      borderRadius: "4px",
-                      padding: "4px",
-                      textAlign: "center",
-                      color: "whitesmoke",
-                    }}
-                    key={genre.id}
-                  >
-                    <p>
-                      <small>
-                        <b>{genre.name}</b>
-                      </small>
-                    </p>
-                  </li>
-                );
-              })}
-          </ul>
-        </div>
-      </div>
-
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "5px" }}
-      >
-        <img
-          src={`https://image.tmdb.org/t/p/w400${movie.backdrop_path}`}
-          alt="coverposter"
-          style={{ width: "600px" }}
-        />
       </div>
 
       <div
@@ -170,15 +134,66 @@ export const MovieDetailCard = ({
           }}
         >
           <p>{movie.overview}</p>
-          <p
+        </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          marginTop: "20px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            marginTop: "5px",
+          }}
+        >
+          <p style={{ marginLeft: "10px" }}>
+            <small>Duration: {movie.runtime} mins</small>
+          </p>
+          <p style={{ marginRight: "10px" }}>
+            <small>Released: {movie.release_date}</small>
+          </p>
+        </div>
+        <div style={{ width: "300px", alignSelf: "center", marginTop: "20px" }}>
+          <ul
             style={{
-              textAlign: "right",
-              color: "gold",
-              padding: "10px",
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-around",
+              marginLeft: "-35px",
+              listStyle: "none",
             }}
           >
-            ★<b> {movie.vote_average}</b>
-          </p>
+            {movie.genres &&
+              movie.genres.map((genre) => {
+                return (
+                  <li
+                    style={{
+                      border: "1px solid grey",
+                      borderRadius: "8px",
+                      paddingTop: "7px",
+                      paddingBottom: "7px",
+                      paddingLeft: "15px",
+                      paddingRight: "15px",
+                      textAlign: "center",
+                      color: "whitesmoke",
+                      marginTop: "10px",
+                    }}
+                    key={genre.id}
+                  >
+                    <p>
+                      <small>
+                        <b>{genre.name}</b>
+                      </small>
+                    </p>
+                  </li>
+                );
+              })}
+          </ul>
         </div>
       </div>
     </article>
