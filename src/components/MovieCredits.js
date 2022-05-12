@@ -1,7 +1,6 @@
 import React from "react";
 
 export const MovieCredits = ({ movieCast, movieCrew }) => {
-  console.log(movieCrew);
   return (
     <>
       <div
@@ -18,7 +17,7 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
               <article
                 style={{
                   width: "80px",
-                  boxShadow: "0 0 25px black",
+                  boxShadow: "-5px 0 20px black",
                   backgroundColor: "purple",
                   borderRadius: "8px 8px 8px 0",
                 }}
@@ -40,8 +39,13 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
                 )}
                 <div style={{ width: "80px" }}>
                   <p style={{ padding: "7px" }}>{credit.name}</p>
-                  <p style={{ padding: "7px", color: "grey" }}>
-                    as {credit.character}
+                  <p
+                    style={{
+                      padding: "7px",
+                      color: "grey",
+                    }}
+                  >
+                    <small>as {credit.character}</small>
                   </p>
                 </div>
               </article>
@@ -63,7 +67,7 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
               <article
                 style={{
                   width: "80px",
-                  boxShadow: "0 0 25px black",
+                  boxShadow: "-5px 0 20px black",
                   backgroundColor: "purple",
                   borderRadius: "8px 8px 8px 0",
                 }}
@@ -85,7 +89,9 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
                 )}
                 <div style={{ width: "80px" }}>
                   <p style={{ padding: "7px" }}>{crew.name}</p>
-                  <p style={{ padding: "7px", color: "grey" }}>{crew.job}</p>
+                  <p style={{ padding: "7px", color: "grey" }}>
+                    <small>{crew.job}</small>
+                  </p>
                 </div>
               </article>
             );

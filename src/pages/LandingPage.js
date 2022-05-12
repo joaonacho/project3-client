@@ -1,4 +1,5 @@
 import React from "react";
+import tmdbLogo from "../../public/tmdbLogo.svg";
 import { useState, useEffect } from "react";
 import {
   randomReviews,
@@ -20,7 +21,7 @@ export const LandingPage = () => {
   useEffect(() => {
     (async () => {
       const sixUsers = await randomSix();
-      setRandomUsers(sixUsers.data.slice(0, 3));
+      setRandomUsers(sixUsers.data.slice(0, 4));
     })();
   }, []);
 
@@ -56,15 +57,7 @@ export const LandingPage = () => {
           vestibulum nibh mi venenatis
         </h2>
       </section>
-      <section
-        className="container-section"
-        // style={{
-        //   display: "flex",
-        //   flexWrap: "wrap",
-        //   flexDirection: "row-reverse",
-        //   backgroundColor: "black",
-        // }}
-      >
+      <section className="container-section">
         <div className="container-multiple-carousels">
           <div className="container-carousel">
             {trendingMovies.length && (
@@ -154,6 +147,9 @@ export const LandingPage = () => {
       </section>
       <footer className="center text-secondary-clr-light letter-spacing-2 ff-serif">
         <h5>Made with tears by JN & AG</h5>
+        <a href={"https://developers.themoviedb.org/"} target="blank">
+          <img style={{ width: "25px" }} src={tmdbLogo} alt="TMDBlogo" />
+        </a>
       </footer>
     </div>
   );

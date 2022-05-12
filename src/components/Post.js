@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
 
-
 export const Post = ({ post, addLike, removeLike, removePost }) => {
   const { user } = useContext(UserContext);
 
@@ -47,7 +46,7 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
             />
             <Link
               to={`/profile/${post.author.username}`}
-              style={{ textDecoration: "none" }}
+              style={{ textDecoration: "none", color: "whitesmoke" }}
             >
               <p style={{ marginLeft: "10px", marginTop: "8px" }}>
                 <strong>{post.author.username}</strong>
@@ -106,7 +105,7 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
                       removeLike(post._id, user._id);
                       dislikePost(post._id, user._id);
                     }}
-                    style={{ color: "red", fontSize: "1.5rem" }}
+                    style={{ color: "red", fontSize: "1.2rem" }}
                   />
                 )}
                 {post.likes.length === 1 ? (

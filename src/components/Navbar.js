@@ -11,7 +11,7 @@ import {
   RiSearchLine,
   RiFileList3Line,
 } from "react-icons/ri";
-import { GiFilmSpool } from "react-icons/gi";
+import { GiFilmStrip } from "react-icons/gi";
 import "./navbar.scss";
 
 export const Navbar = () => {
@@ -31,6 +31,7 @@ export const Navbar = () => {
             to="/explore"
           >
             <RiSearchLine style={{ fontSize: "1.3rem" }} />
+            <p>explore movies</p>
           </NavLink>
         </li>
 
@@ -43,6 +44,7 @@ export const Navbar = () => {
                 className="navlink"
               >
                 <RiUserSearchLine style={{ fontSize: "1.3rem" }} />
+                <p>find friends</p>
               </NavLink>
             </li>
 
@@ -53,6 +55,7 @@ export const Navbar = () => {
                 onClick={() => setClick(false)}
               >
                 <RiFileList3Line style={{ fontSize: "1.3rem" }} />
+                <p>feed</p>
               </NavLink>
             </li>
 
@@ -63,7 +66,13 @@ export const Navbar = () => {
                 className="navlink"
               >
                 <RiUserLine style={{ fontSize: "1.3rem" }} />
+                <p>profile</p>
               </NavLink>
+            </li>
+            <li>
+              <p onClick={logoutUser} className="navlink">
+                Logout
+              </p>
             </li>
           </>
         )}
@@ -99,14 +108,13 @@ export const Navbar = () => {
         <NavLink className="navbar-icons navbar-logo navlink" to="/">
           <h1 className="text-white">
             <span>
-              <GiFilmSpool style={{ fontSize: "1.8rem" }} />
+              <GiFilmStrip style={{ fontSize: "1.8rem" }} />
               Movie
             </span>
             Screen
           </h1>
         </NavLink>
 
-        {isLoggedIn && <button onClick={logoutUser}>Logout</button>}
         <LinksNavBar className={"nav-menu"} />
         {click && <LinksNavBar className={"nav-menu active"} />}
         <div className="hamburger" onClick={handleClick}>

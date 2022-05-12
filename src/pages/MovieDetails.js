@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { FaImdb } from "react-icons/fa";
 import {
   getMovieDetails,
   getSimilarMovies,
@@ -61,7 +62,7 @@ export const MovieDetails = () => {
       const movieReviewsFromDb = await getMovieReviews(movie.id);
       setMovieReviews(movieReviewsFromDb.data.reviews);
     })();
-  }, [movie.id]);
+  }, [movie]);
 
   useEffect(() => {
     (async () => {
@@ -141,21 +142,66 @@ export const MovieDetails = () => {
           </>
         )}
       </section>
-
+      <hr
+        style={{
+          width: "70%",
+          backgroundColor: "darkmagenta",
+          border: "1px solid darkmagenta ",
+          marginTop: "40px",
+        }}
+      />
       <section>
-        <h3 style={{ textAlign: "center", marginBottom: "15px" }}>Cast:</h3>
+        <h3
+          style={{
+            textAlign: "center",
+            marginBottom: "20px",
+            marginTop: "40px",
+          }}
+        >
+          Cast:
+        </h3>
         {!moreCast ? (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCast={movieCast.slice(0, 3)} />
-              <button onClick={() => setMoreCast(!moreCast)}>+</button>
+              <MovieCredits movieCast={movieCast.slice(0, 8)} />
+              <button
+                onClick={() => setMoreCast(!moreCast)}
+                style={{
+                  fontSize: "1.4rem",
+                  border: "none",
+                  borderRadius: "0 10px 10px 0",
+                  padding: "8px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                  width: "50px",
+                  height: "260px",
+                }}
+              >
+                +
+              </button>
             </div>
           </>
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCast={movieCast.slice(0, 10)} />
-              <button onClick={() => setMoreCast(!moreCast)}>-</button>
+              <MovieCredits movieCast={movieCast.slice(0, 20)} />
+              <button
+                onClick={() => setMoreCast(!moreCast)}
+                style={{
+                  fontSize: "1.4rem",
+                  border: "none",
+                  borderRadius: "0 10px 10px 0",
+                  padding: "8px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                  width: "50px",
+                  height: "260px",
+                }}
+              >
+                -
+              </button>
             </div>
           </>
         )}
@@ -163,8 +209,8 @@ export const MovieDetails = () => {
         <h3
           style={{
             textAlign: "center",
-            marginBottom: "15px",
-            marginTop: "15px",
+            marginBottom: "20px",
+            marginTop: "60px",
           }}
         >
           Crew:
@@ -172,21 +218,59 @@ export const MovieDetails = () => {
         {!moreCrew ? (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCrew={movieCrew.slice(0, 3)} />
-              <button onClick={() => setMoreCrew(!moreCrew)}>+</button>
+              <MovieCredits movieCrew={movieCrew.slice(0, 8)} />
+              <button
+                onClick={() => setMoreCrew(!moreCrew)}
+                style={{
+                  fontSize: "1.4rem",
+                  border: "none",
+                  borderRadius: "0 10px 10px 0",
+                  padding: "8px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                  width: "50px",
+                  height: "260px",
+                }}
+              >
+                +
+              </button>
             </div>
           </>
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <MovieCredits movieCrew={movieCrew.slice(0, 10)} />
-              <button onClick={() => setMoreCrew(!moreCrew)}>-</button>
+              <MovieCredits movieCrew={movieCrew.slice(0, 20)} />
+              <button
+                onClick={() => setMoreCrew(!moreCrew)}
+                style={{
+                  fontSize: "1.4rem",
+                  border: "none",
+                  borderRadius: "0 10px 10px 0",
+                  padding: "8px",
+                  textAlign: "center",
+                  color: "whitesmoke",
+                  backgroundColor: "black",
+                  width: "50px",
+                  height: "260px",
+                }}
+              >
+                -
+              </button>
             </div>
           </>
         )}
       </section>
-
-      <section>
+      <hr
+        style={{
+          width: "70%",
+          backgroundColor: "darkmagenta",
+          border: "1px solid darkmagenta ",
+          marginTop: "80px",
+        }}
+      />
+      <section style={{ marginTop: "60px" }}>
+        {movieReviews && <MovieReviews movieReviews={movieReviews} />}
         {isLoggedIn && (
           <ReviewForm
             handleForm={handleForm}
@@ -198,54 +282,77 @@ export const MovieDetails = () => {
             setReview={setReview}
           />
         )}
-        {movieReviews && <MovieReviews movieReviews={movieReviews} />}
       </section>
-
+      <hr
+        style={{
+          width: "70%",
+          backgroundColor: "darkmagenta",
+          border: "1px solid darkmagenta ",
+          marginTop: "80px",
+        }}
+      />
       <section
         style={{
           display: "flex",
           flexDirection: "column",
+          marginTop: "60px",
         }}
       >
         {!moreSimilar ? (
           <>
-            <MovieCardXS similarMovies={similarMovies.slice(0, 10)} />
+            <h3 style={{ textAlign: "center" }}>You might also like:</h3>
             <button
+              onClick={() => setMoreSimilar(!moreSimilar)}
               style={{
                 alignSelf: "center",
-                backgroundColor: "plum",
-                opacity: "0.8",
+                fontSize: "1.4rem",
+                borderRadius: "4px",
                 padding: "4px",
-                borderRadius: "10px",
-                color: "purple",
-                fontSize: "1rem",
                 textAlign: "center",
+                color: "whitesmoke",
+                backgroundColor: "black",
+                width: "100px",
+                marginTop: "30px",
               }}
-              onClick={() => setMoreSimilar(!moreSimilar)}
             >
-              show more
+              +
             </button>
+            <MovieCardXS similarMovies={similarMovies.slice(0, 10)} />
           </>
         ) : (
           <>
-            <MovieCardXS similarMovies={similarMovies} />
+            <h3 style={{ textAlign: "center" }}>You might also like:</h3>
             <button
               style={{
                 alignSelf: "center",
-                backgroundColor: "plum",
-                opacity: "0.8",
+                fontSize: "1.4rem",
+                borderRadius: "4px",
                 padding: "4px",
-                borderRadius: "10px",
-                color: "purple",
-                fontSize: "1rem",
                 textAlign: "center",
+                color: "whitesmoke",
+                backgroundColor: "black",
+                width: "100px",
+                marginTop: "30px",
               }}
               onClick={() => setMoreSimilar(!moreSimilar)}
             >
-              show less
+              -
             </button>
+            <MovieCardXS similarMovies={similarMovies} />
           </>
         )}
+        <a
+          href={`https://www.imdb.com/title/${movie.imdb_id}/`}
+          target="blank"
+          style={{
+            alignSelf: "center",
+            padding: "10px",
+            width: "50px",
+            height: "50px",
+          }}
+        >
+          <FaImdb style={{ color: "gold", fontSize: "2rem" }} />
+        </a>
       </section>
     </div>
   );

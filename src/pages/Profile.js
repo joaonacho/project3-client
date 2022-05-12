@@ -9,12 +9,9 @@ import {
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
-import { BsFillXCircleFill } from "react-icons/bs";
-import { FaUserPlus, FaUserCheck, FaUserEdit } from "react-icons/fa";
 
-//Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
-// import { format } from "timeago.js";
-//To use just use format(something.createdAt) -> comes from timestamps
+import { FaUserPlus, FaUserCheck, FaUserEdit } from "react-icons/fa";
+import { FavouritesCard } from "../components/FavouritesCard";
 
 export const Profile = () => {
   const { user } = useContext(UserContext);
@@ -22,6 +19,7 @@ export const Profile = () => {
   const [newUser, setUser] = useState({});
   const [favList, setFavList] = useState([]);
   const [renderAgain, setRenderAgain] = useState(false);
+  const [moreFav, setMoreFav] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -144,16 +142,7 @@ export const Profile = () => {
                         }}
                       >
                         <div style={{ width: "30%" }}>
-                          {user && user.username === newUser.username && (
-                            <>
-                              <BsFillXCircleFill
-                                onClick={() => removeMovie(fav.id, user)}
-                                style={{
-                                  color: "red",
-                                }}
-                              />
-                            </>
-                          )}
+                          {user && user.username === newUser.username && <></>}
                           <Link
                             to={`/movies/${fav.id}`}
                             style={{

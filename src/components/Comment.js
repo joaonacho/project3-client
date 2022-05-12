@@ -85,6 +85,7 @@ export const Comment = ({ postId }) => {
                 style={{
                   textAlign: "left",
                   marginLeft: "45px",
+                  padding: "10px",
                 }}
               >
                 <p>{comment.content}</p>
