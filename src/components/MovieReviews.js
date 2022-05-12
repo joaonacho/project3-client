@@ -1,6 +1,7 @@
 import React from "react";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import "animate.css";
 
 export const MovieReviews = ({ movieReviews }) => {
   return (
@@ -18,6 +19,7 @@ export const MovieReviews = ({ movieReviews }) => {
       {movieReviews.map((review) => {
         return (
           <article
+            className="animate__animated animate__fadeIn"
             style={{
               display: "flex",
               flexDirection: "column",

@@ -19,6 +19,7 @@ import { MovieCardXS } from "../components/MovieCardXS";
 import { ReviewForm } from "../components/ReviewForm";
 import { MovieReviews } from "../components/MovieReviews";
 import { MovieCredits } from "../components/MovieCredits";
+import "animate.css";
 
 export const MovieDetails = () => {
   const { user, isLoggedIn } = useContext(UserContext);
@@ -128,7 +129,7 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <section>
+      <section className="animate__animated animate__fadeIn">
         {movie && (
           <>
             <MovieDetailCard
@@ -150,7 +151,7 @@ export const MovieDetails = () => {
           marginTop: "40px",
         }}
       />
-      <section>
+      <section className="animate__animated animate__fadeInLeft">
         <h3
           style={{
             textAlign: "center",
@@ -269,7 +270,10 @@ export const MovieDetails = () => {
           marginTop: "80px",
         }}
       />
-      <section style={{ marginTop: "60px" }}>
+      <section
+        style={{ marginTop: "60px" }}
+        className="animate__animated animate__fadeIn"
+      >
         {movieReviews && <MovieReviews movieReviews={movieReviews} />}
         {isLoggedIn && (
           <ReviewForm
@@ -292,6 +296,7 @@ export const MovieDetails = () => {
         }}
       />
       <section
+        className="animate__animated animate__fadeInLeft"
         style={{
           display: "flex",
           flexDirection: "column",

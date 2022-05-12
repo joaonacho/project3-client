@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/user.context";
 import { FaWrench, FaTrashAlt, FaCheck } from "react-icons/fa";
+import "animate.css";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 import { format } from "timeago.js";
@@ -63,6 +64,7 @@ export const UserReviews = () => {
         reviews.map((review) => {
           return (
             <article
+              className="animate__animated animate__fadeInLeft"
               key={review._id}
               style={{
                 display: "flex",
@@ -91,6 +93,7 @@ export const UserReviews = () => {
 
                   {editingMovie._id === review._id && (
                     <FaTrashAlt
+                      className="animate__animated animate__fadeIn"
                       style={{ color: "red", fontSize: "1.5rem" }}
                       onClick={() => handleDelete(review._id)}
                     />
@@ -143,6 +146,7 @@ export const UserReviews = () => {
                 {review._id === editingMovie._id && (
                   <>
                     <textarea
+                      className="animate__animated animate__fadeIn"
                       style={{ width: "200px" }}
                       required
                       cols="30"
@@ -156,6 +160,7 @@ export const UserReviews = () => {
                       }
                     ></textarea>
                     <input
+                      className="animate__animated animate__fadeIn"
                       required
                       type="number"
                       min="0"
@@ -170,6 +175,7 @@ export const UserReviews = () => {
                     />
 
                     <FaCheck
+                      className="animate__animated animate__fadeIn"
                       style={{
                         fontSize: "1.4rem",
                         color: "lightgreen",

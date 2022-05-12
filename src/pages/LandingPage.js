@@ -11,6 +11,8 @@ import { Carousel } from "../components/Carousel";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import "./LandingPage.scss";
+import "animate.css";
+import tmdbLogo from "public/tmdbLogo.svg";
 
 export const LandingPage = () => {
   const [threeReviews, setThreeReviews] = useState([]);
@@ -57,7 +59,7 @@ export const LandingPage = () => {
           vestibulum nibh mi venenatis
         </h2>
       </section>
-      <section className="container-section">
+      <section className="container-section animate__animated animate__fadeIn">
         <div className="container-multiple-carousels">
           <div className="container-carousel">
             {trendingMovies.length && (
@@ -92,7 +94,10 @@ export const LandingPage = () => {
             <>
               {threeReviews.map((review) => {
                 return (
-                  <div className="container-review " key={review._id}>
+                  <div
+                    className="container-review animate__animated animate__fadeInLeft"
+                    key={review._id}
+                  >
                     <p className="title">
                       <small>
                         {review.author.username}
@@ -131,7 +136,10 @@ export const LandingPage = () => {
             {randomUsers.length &&
               randomUsers.map((user) => {
                 return (
-                  <article key={user._id}>
+                  <article
+                    key={user._id}
+                    className="animate__animated animate__fadeIn"
+                  >
                     <Link to={`/profile/${user.username}`}>
                       <img
                         className="user-image"
@@ -147,7 +155,9 @@ export const LandingPage = () => {
       </section>
       <footer className="center text-secondary-clr-light letter-spacing-2 ff-serif">
         <h5>Made with tears by JN & AG</h5>
-        <a href={"https://developers.themoviedb.org/"} target="blank"></a>
+        <a href={"https://developers.themoviedb.org/"} target="blank">
+          <img src={tmdbLogo} alt="TMDBlogo" />
+        </a>
       </footer>
     </div>
   );
