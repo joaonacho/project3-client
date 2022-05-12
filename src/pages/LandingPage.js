@@ -92,7 +92,9 @@ export const LandingPage = () => {
 
       <section className="bg-secondary-clr-medium-light text-primary-clr-dark container-section background">
         <div className="container section-container">
-          <h1 className="padding center ff-sans-cond fs-800">We love Cinema</h1>
+          <h1 className="padding center ff-sans-cond fs-800 text-white">
+            We love Cinema
+          </h1>
           {threeReviews && (
             <>
               {threeReviews.map((review) => {

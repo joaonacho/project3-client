@@ -6,6 +6,7 @@ import { UserContext } from "../context/user.context";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { FriendsSuggestions } from "../components/FriendsSuggestions";
+import "./FindFriends.scss";
 
 export const FindFriends = () => {
   const { user } = useContext(UserContext);
@@ -58,119 +59,92 @@ export const FindFriends = () => {
   };
 
   return (
-    <section
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "30px",
-        }}
-      >
-        <input
-          name={query}
-          type="text"
-          onChange={(e) => handleQuery(e)}
-          placeholder="Search by username"
-        />
-        <FiSearch
-          style={{
-            marginLeft: "5px",
-            fontSize: "1.8rem",
-            color: "gold",
-          }}
-          onClick={handleSubmit}
-        />
-      </div>
-      <div
-        style={{
-          alignSelf: "center",
-          backgroundColor: "whitesmoke",
-          width: "40%",
-          marginTop: "20px",
-        }}
-      >
-        {users.length > 0 &&
-          users.map((person) => {
-            return (
-              <Link
-                to={`/profile/${person.username}`}
-                style={{ textDecoration: "none" }}
-                key={person._id}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    border: "1px solid grey",
-                  }}
+    <div className="container">
+      <section>
+        <div class="search__container">
+          <div className="search__input">
+            <input
+              name={query}
+              type="text"
+              onChange={(e) => handleQuery(e)}
+              placeholder="Search by username"
+            />
+            <FiSearch onClick={handleSubmit} />
+          </div>
+        </div>
+        <div>
+          {users.length > 0 &&
+            users.map((person) => {
+              return (
+                <Link
+                  to={`/profile/${person.username}`}
+                  style={{ textDecoration: "none" }}
+                  key={person._id}
                 >
-                  <img
-                    src={person.profileImg}
-                    alt="profilepic"
-                    style={{
-                      width: "80px",
-                      height: "80px",
-                      borderRadius: "50%",
-                      padding: "5px",
-                    }}
-                  />
                   <div
                     style={{
-                      textAlign: "right",
-                      padding: "5px",
-                      color: "purple",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      border: "1px solid grey",
                     }}
                   >
-                    <h2>{person.username}</h2>
-                    <p>
-                      <small>{person.country}</small>
-                    </p>
+                    <img
+                      src={person.profileImg}
+                      alt="profilepic"
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        borderRadius: "50%",
+                        padding: "5px",
+                      }}
+                    />
+                    <div
+                      style={{
+                        textAlign: "right",
+                        padding: "5px",
+                        color: "purple",
+                      }}
+                    >
+                      <h2>{person.username}</h2>
+                      <p>
+                        <small>{person.country}</small>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          height: "600px",
-        }}
-      >
-        {userGenres.length > 1 ? (
-          <h2>People you may like based on your favourite movie genres:</h2>
-        ) : (
-          <h2>People you may like:</h2>
-        )}
-
-        <div
-          style={{
-            marginTop: "40px",
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-          }}
-        >
-          {userGenres && userGenres.length > 1
-            ? userGenres.map((user) => {
-                return <FriendsSuggestions key={user._id} users={user} />;
-              })
-            : randomUsers.map((user) => {
-                return <FriendsSuggestions key={user._id} users={user} />;
-              })}
+                </Link>
+              );
+            })}
         </div>
-      </div>
-    </section>
+      </section>
+      <section>
+        <div className="container-sugestions">
+          {userGenres.length > 1 ? (
+            <h2>People you may like based on your favourite movie genres:</h2>
+          ) : (
+            <h2>People you may like:</h2>
+          )}
+          <div>
+            <div className="container-grid">
+              {userGenres && userGenres.length > 1
+                ? userGenres.map((user) => {
+                    return (
+                      <div>
+                        <FriendsSuggestions key={user._id} users={user} />
+                      </div>
+                    );
+                  })
+                : randomUsers.map((user) => {
+                    return (
+                      <div>
+                        <FriendsSuggestions key={user._id} users={user} />
+                      </div>
+                    );
+                  })}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
