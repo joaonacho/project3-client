@@ -300,39 +300,45 @@ export const MovieDetails = () => {
       >
         {!moreSimilar ? (
           <>
-            <MovieCardXS similarMovies={similarMovies.slice(0, 10)} />
+            <h3 style={{ textAlign: "center" }}>You might also like:</h3>
             <button
               onClick={() => setMoreSimilar(!moreSimilar)}
               style={{
                 alignSelf: "center",
-                fontSize: "1rem",
+                fontSize: "1.4rem",
                 borderRadius: "4px",
                 padding: "4px",
                 textAlign: "center",
                 color: "whitesmoke",
                 backgroundColor: "black",
+                width: "100px",
+                marginTop: "30px",
               }}
             >
               +
             </button>
+            <MovieCardXS similarMovies={similarMovies.slice(0, 10)} />
           </>
         ) : (
           <>
-            <MovieCardXS similarMovies={similarMovies} />
+            <h3 style={{ textAlign: "center" }}>You might also like:</h3>
             <button
               style={{
                 alignSelf: "center",
-                fontSize: "1rem",
+                fontSize: "1.4rem",
                 borderRadius: "4px",
                 padding: "4px",
                 textAlign: "center",
                 color: "whitesmoke",
                 backgroundColor: "black",
+                width: "100px",
+                marginTop: "30px",
               }}
               onClick={() => setMoreSimilar(!moreSimilar)}
             >
               -
             </button>
+            <MovieCardXS similarMovies={similarMovies} />
           </>
         )}
         <a

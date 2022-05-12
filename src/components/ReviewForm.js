@@ -29,11 +29,14 @@ export const ReviewForm = ({
           style={{
             alignSelf: "center",
             border: "1px solid grey",
-            padding: "4px",
             borderRadius: "4px",
             color: "whitesmoke",
-            backgroundColor: "black",
             fontSize: "1rem",
+            paddingRight: "20px",
+            paddingLeft: "20px",
+            paddingTop: "10px",
+            paddingBottom: "10px",
+            backgroundColor: "darkmagenta",
           }}
         >
           Leave a review
