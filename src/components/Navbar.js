@@ -42,7 +42,6 @@ export const Navbar = () => {
                 onClick={() => setClick(false)}
                 className="navlink"
               >
-                <RiUserSearchLine style={{ fontSize: "1.3rem" }} />
                 <p>find friends</p>
               </NavLink>
             </li>
@@ -53,7 +52,6 @@ export const Navbar = () => {
                 className="navlink"
                 onClick={() => setClick(false)}
               >
-                <RiFileList3Line style={{ fontSize: "1.3rem" }} />
                 <p>feed</p>
               </NavLink>
             </li>
@@ -64,7 +62,6 @@ export const Navbar = () => {
                 onClick={() => setClick(false)}
                 className="navlink"
               >
-                <RiUserLine style={{ fontSize: "1.3rem" }} />
                 <p>profile</p>
               </NavLink>
             </li>

@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 
 import { FaUserPlus, FaUserCheck, FaUserEdit } from "react-icons/fa";
 import { FavouritesCard } from "../components/FavouritesCard";
+import "./Profile.scss";
 
 export const Profile = () => {
   const { user } = useContext(UserContext);
@@ -62,8 +63,8 @@ export const Profile = () => {
   };
 
   return (
-    <section className="container center">
-      <div className="center">
+    <section className="container center bg-dark">
+      <div className="center profile-container">
         {newUser && (
           <>
             {user &&
@@ -83,34 +84,44 @@ export const Profile = () => {
                   )}
                 </>
               )}
-            <img
-              src={newUser.profileImg}
-              alt="profilepic"
-              style={{ width: "200px", height: "200px", borderRadius: "50%" }}
-            />
-            {user && user.username === newUser.username && (
-              <Link to={`/profile/${newUser.username}/edit`}>
-                <FaUserEdit
-                  style={{
-                    marginLeft: "300px",
-                    color: "gold",
-                    fontSize: "1.5rem",
-                  }}
-                />
-              </Link>
-            )}
-            <h2>{newUser.username}'s profile</h2>
-            <p>{newUser.country}</p>
-            <p>{newUser.about}</p>
+            <div className="profile-photo-group">
+              <img
+                className="profile-photo"
+                src={newUser.profileImg}
+                alt="profilepic"
+              />
+              {user && user.username === newUser.username && (
+                <Link to={`/profile/${newUser.username}/edit`}>
+                  <FaUserEdit
+                    style={{
+                      color: "gold",
+                      fontSize: "1.5rem",
+                    }}
+                  />
+                </Link>
+              )}
+            </div>
+
+            <div className="profile-user">
+              <h3 className="text-secondary-clr-medium-light fs-800 ff-sans-cond">
+                {newUser.username}'s profile
+              </h3>
+              <p className="text-secondary-clr-light">{newUser.country}</p>
+              <p>{newUser.about}</p>
+            </div>
 
             {newUser.genres && newUser.genres.length >= 1 && (
               <>
-                <h3>Favourite genres:</h3>
-                <ul style={{ listStyle: "none" }}>
-                  {newUser.genres.map((genre, index) => {
-                    return <li key={index}>{genre}</li>;
-                  })}
-                </ul>
+                <div className="profile-fav-genres">
+                  <h3 className="text-secondary-clr-medium-light fs-700 ff-sans-cond">
+                    Favourite genres:
+                  </h3>
+                  <ul style={{ listStyle: "none", padding: "0" }}>
+                    {newUser.genres.map((genre, index) => {
+                      return <li key={index}>{genre}</li>;
+                    })}
+                  </ul>
+                </div>
               </>
             )}
 
@@ -120,15 +131,7 @@ export const Profile = () => {
               </Link>
             )}
 
-            <hr
-              style={{
-                width: "70%",
-                backgroundColor: "darkmagenta",
-                border: "1px solid darkmagenta ",
-                marginTop: "80px",
-                marginBottom: "80px",
-              }}
-            />
+            <hr className="profile-line" />
 
             {favList && favList.length >= 1 && (
               <>

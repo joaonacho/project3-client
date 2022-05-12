@@ -1,0 +1,42 @@
+.profile-photo-group {
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  gap: 1rem;
+}
+
+.profile-container {
+  margin: 2rem auto;
+}
+
+.profile-photo {
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 50%;
+}
+
+.profile-user {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.profile-fav-genres {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  margin: 2rem auto 0;
+}
+
+.profile-line {
+  width: 100%;
+  background-color: hsl(var(--secondary-clr-light));
+  border: 1px solid hsl(var(--secondary-clr-light));
+  margin-bottom: 5rem;
+}
