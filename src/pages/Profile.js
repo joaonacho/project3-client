@@ -120,56 +120,84 @@ export const Profile = () => {
               </Link>
             )}
 
+            <hr
+              style={{
+                width: "70%",
+                backgroundColor: "darkmagenta",
+                border: "1px solid darkmagenta ",
+                marginTop: "80px",
+                marginBottom: "80px",
+              }}
+            />
+
             {favList && favList.length >= 1 && (
               <>
-                <h3>Favourites:</h3>
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  {favList.map((fav) => {
-                    return (
-                      <article
-                        key={fav._id}
+                <h3 style={{ textAlign: "center" }}>Favourites:</h3>
+                {!moreFav ? (
+                  <>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "20px",
+                      }}
+                    >
+                      <button
                         style={{
-                          width: "30%",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          marginTop: "25px",
+                          alignSelf: "center",
+                          fontSize: "1.4rem",
+                          borderRadius: "4px",
+                          padding: "4px",
+                          textAlign: "center",
+                          color: "whitesmoke",
+                          backgroundColor: "black",
+                          width: "100px",
                         }}
+                        onClick={() => setMoreFav(!moreFav)}
                       >
-                        <div style={{ width: "30%" }}>
-                          {user && user.username === newUser.username && <></>}
-                          <Link
-                            to={`/movies/${fav.id}`}
-                            style={{
-                              textDecoration: "none",
-                              color: "whitesmoke",
-                            }}
-                          >
-                            {fav.poster_path ? (
-                              <img
-                                src={`https://image.tmdb.org/t/p/w200${fav.poster_path}`}
-                                alt="movieposter"
-                              />
-                            ) : (
-                              <img
-                                src={
-                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
-                                }
-                                alt="movieposter"
-                              />
-                            )}
-                            <h3 style={{ textAlign: "center" }}>{fav.title}</h3>
-                          </Link>
-                        </div>
-                      </article>
-                    );
-                  })}
-                </div>
+                        +
+                      </button>
+                    </div>
+                    <FavouritesCard
+                      removeMovie={removeMovie}
+                      favList={favList.slice(0, 4)}
+                      user={user}
+                      newUser={newUser}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "20px",
+                      }}
+                    >
+                      <button
+                        style={{
+                          alignSelf: "center",
+                          fontSize: "1.4rem",
+                          borderRadius: "4px",
+                          padding: "4px",
+                          textAlign: "center",
+                          color: "whitesmoke",
+                          backgroundColor: "black",
+                          width: "100px",
+                        }}
+                        onClick={() => setMoreFav(!moreFav)}
+                      >
+                        -
+                      </button>
+                    </div>
+                    <FavouritesCard
+                      removeMovie={removeMovie}
+                      favList={favList}
+                      user={user}
+                      newUser={newUser}
+                    />
+                  </>
+                )}
               </>
             )}
           </>
