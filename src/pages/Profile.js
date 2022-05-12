@@ -128,17 +128,21 @@ export const Profile = () => {
             </Link>
           )}
 
+          <hr
+            style={{
+              width: "70%",
+              backgroundColor: "darkmagenta",
+              border: "1px solid darkmagenta ",
+              marginTop: "80px",
+              marginBottom: "80px",
+            }}
+          />
+
           {favList && favList.length >= 1 && (
             <>
               <h3 style={{ textAlign: "center" }}>Favourites:</h3>
               {!moreFav ? (
                 <>
-                  <FavouritesCard
-                    removeMovie={removeMovie}
-                    favList={favList.slice(0, 4)}
-                    user={user}
-                    newUser={newUser}
-                  />
                   <div
                     style={{
                       display: "flex",
@@ -149,27 +153,28 @@ export const Profile = () => {
                     <button
                       style={{
                         alignSelf: "center",
-                        fontSize: "1rem",
+                        fontSize: "1.4rem",
                         borderRadius: "4px",
                         padding: "4px",
                         textAlign: "center",
                         color: "whitesmoke",
                         backgroundColor: "black",
+                        width: "100px",
                       }}
                       onClick={() => setMoreFav(!moreFav)}
                     >
                       +
                     </button>
                   </div>
-                </>
-              ) : (
-                <>
                   <FavouritesCard
                     removeMovie={removeMovie}
-                    favList={favList}
+                    favList={favList.slice(0, 4)}
                     user={user}
                     newUser={newUser}
                   />
+                </>
+              ) : (
+                <>
                   <div
                     style={{
                       display: "flex",
@@ -180,18 +185,25 @@ export const Profile = () => {
                     <button
                       style={{
                         alignSelf: "center",
-                        fontSize: "1rem",
+                        fontSize: "1.4rem",
                         borderRadius: "4px",
                         padding: "4px",
                         textAlign: "center",
                         color: "whitesmoke",
                         backgroundColor: "black",
+                        width: "100px",
                       }}
                       onClick={() => setMoreFav(!moreFav)}
                     >
                       -
                     </button>
                   </div>
+                  <FavouritesCard
+                    removeMovie={removeMovie}
+                    favList={favList}
+                    user={user}
+                    newUser={newUser}
+                  />
                 </>
               )}
             </>
