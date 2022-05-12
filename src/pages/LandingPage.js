@@ -12,7 +12,6 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import "./LandingPage.scss";
 import "animate.css";
-import tmdbLogo from "public/tmdbLogo.svg";
 
 export const LandingPage = () => {
   const [threeReviews, setThreeReviews] = useState([]);
@@ -155,9 +154,7 @@ export const LandingPage = () => {
       </section>
       <footer className="center text-secondary-clr-light letter-spacing-2 ff-serif">
         <h5>Made with tears by JN & AG</h5>
-        <a href={"https://developers.themoviedb.org/"} target="blank">
-          <img src={tmdbLogo} alt="TMDBlogo" />
-        </a>
+        <a href={"https://developers.themoviedb.org/"} target="blank"></a>
       </footer>
     </div>
   );
