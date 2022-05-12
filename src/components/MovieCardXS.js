@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "animate.css";
 
 export const MovieCardXS = ({ similarMovies }) => {
   return (
@@ -21,6 +22,7 @@ export const MovieCardXS = ({ similarMovies }) => {
                 style={{ textDecoration: "none", color: "whitesmoke" }}
               >
                 <article
+                  className="animate__animated animate__fadeInLeft"
                   style={{
                     margin: "15px",
                     display: "flex",

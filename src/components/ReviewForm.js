@@ -43,6 +43,7 @@ export const ReviewForm = ({
         </button>
         {form && (
           <form
+            className="animate__animated animate__fadeIn"
             onSubmit={handleSubmit}
             style={{
               display: "flex",

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsBookmarkPlusFill } from "react-icons/bs";
 import { UserContext } from "../context/user.context";
+import "animate.css";
 
 export const MovieDetailCard = ({
   movie,
@@ -56,11 +57,21 @@ export const MovieDetailCard = ({
             marginTop: "5px",
           }}
         >
-          <img
-            src={`https://image.tmdb.org/t/p/w400${movie.backdrop_path}`}
-            alt="coverposter"
-            style={{ width: "600px" }}
-          />
+          {movie.backdrop_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w400${movie.backdrop_path}`}
+              alt="coverposter"
+              style={{ width: "600px" }}
+            />
+          ) : (
+            <img
+              src={
+                "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
+              }
+              alt="coverposter"
+              style={{ width: "600px" }}
+            />
+          )}
         </div>
       </div>
 
@@ -103,6 +114,7 @@ export const MovieDetailCard = ({
           userFavourites &&
           (userFavourites.includes(movie.id) ? (
             <BsBookmarkHeartFill
+              className="animate__animated animate__fadeIn"
               onClick={() => removeMovie(movieId, userInSession)}
               style={{
                 fontSize: "3rem",
@@ -114,6 +126,7 @@ export const MovieDetailCard = ({
             />
           ) : (
             <BsBookmarkPlusFill
+              className="animate__animated animate__fadeIn"
               onClick={addMovie}
               style={{
                 fontSize: "3rem",

@@ -7,6 +7,7 @@ import { deletePost, likePost, dislikePost } from "../api";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
+import "animate.css";
 
 export const Post = ({ post, addLike, removeLike, removePost }) => {
   const { user } = useContext(UserContext);
@@ -20,6 +21,7 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
     <div>
       {post && (
         <article
+          className="animate__animated animate__fadeIn"
           style={{
             marginTop: "50px",
             display: "flex",
@@ -90,6 +92,7 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
               >
                 {!post.likes.includes(user._id) && (
                   <BsHeart
+                    className="animate__animated animate__fadeIn"
                     id="likeBtn"
                     onClick={() => {
                       addLike(post._id, user._id);
@@ -101,6 +104,7 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
 
                 {post.likes.includes(user._id) && (
                   <BsHeartFill
+                    className="animate__animated animate__fadeIn"
                     onClick={() => {
                       removeLike(post._id, user._id);
                       dislikePost(post._id, user._id);
