@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "animate.css";
 
+import "./MovieCardXS.scss";
+
 export const MovieCardXS = ({ similarMovies }) => {
   return (
     <>
@@ -22,13 +24,12 @@ export const MovieCardXS = ({ similarMovies }) => {
                 style={{ textDecoration: "none", color: "whitesmoke" }}
               >
                 <article
-                  className="animate__animated animate__fadeInLeft"
+                  className="animate__animated animate__fadeInLeft card-background"
                   style={{
                     margin: "15px",
                     display: "flex",
                     borderRadius: "8px 8px 8px 0",
                     flexDirection: "column",
-                    backgroundColor: "purple",
                     boxShadow: "0 0 25px black",
                     width: "100px",
                   }}

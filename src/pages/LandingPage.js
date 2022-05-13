@@ -12,39 +12,47 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import "./LandingPage.scss";
 import "animate.css";
-import tmdbLogo from "public/tmdbLogo.svg";
 
 export const LandingPage = () => {
   const [threeReviews, setThreeReviews] = useState([]);
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [randomUsers, setRandomUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const sixUsers = await randomSix();
       setRandomUsers(sixUsers.data.slice(0, 4));
+      setIsLoading(false);
     })();
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const reviews = await randomReviews();
       setThreeReviews(reviews.data);
+      setIsLoading(false);
     })();
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const findTrending = await trendingWeekMovies();
       setTrendingMovies(findTrending.data.results);
+      setIsLoading(false);
     })();
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const findUpcoming = await getUpcomingMovies();
       setUpcomingMovies(findUpcoming.data.results);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -62,12 +70,20 @@ export const LandingPage = () => {
       <section className="container-section animate__animated animate__fadeIn">
         <div className="container-multiple-carousels">
           <div className="container-carousel">
-            {trendingMovies.length && (
+            {isLoading ? (
+              <div>
+                <span>Loading...</span>
+              </div>
+            ) : (
               <>
-                <div>
-                  <h2>Trending Movies</h2>
-                </div>
-                <Carousel movies={trendingMovies} />
+                {trendingMovies.length >= 1 && (
+                  <>
+                    <div>
+                      <h2>Trending Movies</h2>
+                    </div>
+                    <Carousel movies={trendingMovies} />
+                  </>
+                )}
               </>
             )}
           </div>
@@ -156,7 +172,11 @@ export const LandingPage = () => {
       <footer className="center text-secondary-clr-light letter-spacing-2 ff-serif">
         <h5>Made with tears by JN & AG</h5>
         <a href={"https://developers.themoviedb.org/"} target="blank">
-          <img src={tmdbLogo} alt="TMDBlogo" />
+          <img
+            src={"https://bit.ly/39YwFnl"}
+            alt="TMDBlogo"
+            style={{ width: "40px" }}
+          />
         </a>
       </footer>
     </div>

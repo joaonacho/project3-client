@@ -8,11 +8,13 @@ export const MovieReviews = ({ movieReviews }) => {
     <>
       {movieReviews.length >= 1 ? (
         <div style={{ textAlign: "center" }}>
-          <h3>Reviews from our users:</h3>
+          <h3 className="ff-sans-cond fs-700">Reviews from our users:</h3>
         </div>
       ) : (
         <div style={{ textAlign: "center" }}>
-          <h3>Be the first to review this movie!</h3>
+          <h3 className="ff-sans-cond fs-700">
+            Be the first to review this movie!
+          </h3>
         </div>
       )}
 

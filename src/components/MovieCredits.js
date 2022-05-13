@@ -1,5 +1,6 @@
 import React from "react";
 import "animate.css";
+import "./MovieCardXS.scss";
 
 export const MovieCredits = ({ movieCast, movieCrew }) => {
   return (
@@ -16,7 +17,7 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
           movieCast.map((credit) => {
             return (
               <article
-                className="animate__animated animate__fadeInLeft"
+                className="animate__animated animate__fadeInLeft card-background"
                 style={{
                   width: "80px",
                   boxShadow: "-5px 0 20px black",
@@ -67,7 +68,7 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
           movieCrew.map((crew) => {
             return (
               <article
-                className="animate__animated animate__fadeInLeft"
+                className="animate__animated animate__fadeInLeft card-background"
                 style={{
                   width: "80px",
                   boxShadow: "-5px 0 20px black",

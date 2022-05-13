@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsBookmarkPlusFill } from "react-icons/bs";
 import { UserContext } from "../context/user.context";
+import { FaImdb } from "react-icons/fa";
 import "animate.css";
 
 export const MovieDetailCard = ({
@@ -31,7 +32,9 @@ export const MovieDetailCard = ({
           marginBottom: "30px",
         }}
       >
-        <h1 style={{ textAlign: "center", fontSize: "2rem" }}>{movie.title}</h1>
+        <h1 className="ff-sans-cond fs-900" style={{ textAlign: "center" }}>
+          {movie.title}
+        </h1>
         <h4 style={{ textAlign: "center" }}>
           <i>{movie.tagline}</i>
         </h4>
@@ -167,6 +170,26 @@ export const MovieDetailCard = ({
           <p style={{ marginLeft: "10px" }}>
             <small>Duration: {movie.runtime} mins</small>
           </p>
+
+          <a
+            href={`https://www.imdb.com/title/${movie.imdb_id}/`}
+            target="blank"
+            style={{
+              alignSelf: "center",
+              padding: "10px",
+              width: "50px",
+              height: "50px",
+            }}
+          >
+            <FaImdb
+              style={{
+                color: "whitesmoke",
+                fontSize: "1.8rem",
+                marginTop: "-15px",
+              }}
+            />
+          </a>
+
           <p style={{ marginRight: "10px" }}>
             <small>Released: {movie.release_date}</small>
           </p>

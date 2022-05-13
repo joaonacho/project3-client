@@ -1,4 +1,6 @@
 import React from "react";
+import "../pages/Signup.scss";
+import "animate.css";
 
 export const ReviewForm = ({
   handleForm,
@@ -18,29 +20,46 @@ export const ReviewForm = ({
       }}
     >
       <div
+        className="row"
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <button
-          onClick={handleForm}
-          style={{
-            alignSelf: "center",
-            border: "1px solid grey",
-            borderRadius: "4px",
-            color: "whitesmoke",
-            fontSize: "1rem",
-            paddingRight: "20px",
-            paddingLeft: "20px",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            backgroundColor: "darkmagenta",
-          }}
-        >
-          Leave a review
-        </button>
+        {!form ? (
+          <button
+            onClick={handleForm}
+            style={{
+              width: "250px",
+              alignSelf: "center",
+              color: "whitesmoke",
+              fontSize: "1rem",
+              paddingRight: "20px",
+              paddingLeft: "20px",
+              paddingTop: "10px",
+              paddingBottom: "25px",
+            }}
+          >
+            Leave a review
+          </button>
+        ) : (
+          <button
+            onClick={handleForm}
+            style={{
+              width: "100px",
+              alignSelf: "center",
+              color: "whitesmoke",
+              fontSize: "1rem",
+              paddingRight: "20px",
+              paddingLeft: "20px",
+              paddingTop: "10px",
+              paddingBottom: "25px",
+            }}
+          >
+            close
+          </button>
+        )}
         {form && (
           <form
             className="animate__animated animate__fadeIn"
@@ -51,8 +70,9 @@ export const ReviewForm = ({
               alignItems: "center",
             }}
           >
-            <label>Rating:</label>
+            <label style={{ marginTop: "30px" }}>Rating:</label>
             <input
+              placeholder="1-10"
               required
               type="number"
               min="0"
@@ -60,7 +80,7 @@ export const ReviewForm = ({
               value={rating}
               onChange={(e) => setRating(e.target.value)}
             />
-            <label>Review:</label>
+            <label style={{ marginTop: "30px" }}>Review:</label>
             <textarea
               required
               cols="30"
@@ -68,7 +88,16 @@ export const ReviewForm = ({
               value={review}
               onChange={(e) => setReview(e.target.value)}
             ></textarea>
-            <button type="submit">Submit</button>
+            <button
+              style={{
+                width: "80px",
+                fontSize: "0.8rem",
+                marginTop: "20px",
+              }}
+              type="submit"
+            >
+              Submit
+            </button>
           </form>
         )}
       </div>
