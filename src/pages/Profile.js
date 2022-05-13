@@ -64,10 +64,7 @@ export const Profile = () => {
   };
 
   return (
-    <section
-      className="container center bg-dark"
-      className="animate__animated animate__fadeIn"
-    >
+    <section className="container center bg-dark animate__animated animate__fadeIn">
       <div className="center profile-container">
         {newUser && (
           <>
