@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsFillXCircleFill } from "react-icons/bs";
+import "./MovieCardXS.scss";
 
 export const FavouritesCard = ({ removeMovie, favList, user, newUser }) => {
   return (
@@ -8,13 +9,14 @@ export const FavouritesCard = ({ removeMovie, favList, user, newUser }) => {
       style={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-evenly",
         flexWrap: "wrap",
       }}
     >
       {favList.map((fav) => {
         return (
           <article
+            className="animate__animated animate__fadeInLeft card-background"
             key={fav._id}
             style={{
               marginTop: "30px",
@@ -33,7 +35,7 @@ export const FavouritesCard = ({ removeMovie, favList, user, newUser }) => {
                       color: "red",
                       fontSize: "1.5rem",
                       position: "absolute",
-                      marginLeft: "-12px",
+                      marginLeft: "-85px",
                       marginTop: "-12px",
                     }}
                   />

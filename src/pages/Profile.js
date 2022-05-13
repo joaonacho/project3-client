@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { FaUserPlus, FaUserCheck, FaUserEdit } from "react-icons/fa";
 import { FavouritesCard } from "../components/FavouritesCard";
 import "./Profile.scss";
+import "animate.css";
 
 export const Profile = () => {
   const { user } = useContext(UserContext);
@@ -63,7 +64,10 @@ export const Profile = () => {
   };
 
   return (
-    <section className="container center bg-dark">
+    <section
+      className="container center bg-dark"
+      className="animate__animated animate__fadeIn"
+    >
       <div className="center profile-container">
         {newUser && (
           <>
@@ -95,7 +99,7 @@ export const Profile = () => {
                   <FaUserEdit
                     style={{
                       color: "gold",
-                      fontSize: "1.5rem",
+                      fontSize: "2rem",
                     }}
                   />
                 </Link>
@@ -103,17 +107,25 @@ export const Profile = () => {
             </div>
 
             <div className="profile-user">
-              <h3 className="text-secondary-clr-medium-light fs-800 ff-sans-cond">
+              <h3 className="text-secondary-clr-medium-light fs-700 ff-sans-cond">
                 {newUser.username}'s profile
               </h3>
-              <p className="text-secondary-clr-light">{newUser.country}</p>
-              <p>{newUser.about}</p>
+              <p
+                className="text-secondary-clr-light"
+                style={{ marginTop: "10px" }}
+              >
+                From: {newUser.country}
+              </p>
+              <p style={{ marginTop: "10px" }}>{newUser.about}</p>
             </div>
 
             {newUser.genres && newUser.genres.length >= 1 && (
               <>
-                <div className="profile-fav-genres">
-                  <h3 className="text-secondary-clr-medium-light fs-700 ff-sans-cond">
+                <div
+                  style={{ marginTop: "80px" }}
+                  className="profile-fav-genres"
+                >
+                  <h3 className="text-secondary-clr-medium-light fs-500 ff-sans-cond">
                     Favourite genres:
                   </h3>
                   <ul style={{ listStyle: "none", padding: "0" }}>
@@ -126,79 +138,88 @@ export const Profile = () => {
             )}
 
             {newUser.reviews && newUser.reviews.length >= 1 && (
-              <Link to={`/profile/${newUser.username}/reviews`}>
-                <button>See reviews</button>
+              <Link
+                to={`/profile/${newUser.username}/reviews`}
+                className="row"
+                style={{ width: "250px" }}
+              >
+                <button style={{ width: "250px", marginTop: "20px" }}>
+                  Movie reviews
+                </button>
               </Link>
             )}
 
-            <hr className="profile-line" />
+            <hr
+              style={{
+                width: "70%",
+                backgroundColor: "plum",
+                border: "1px solid plum ",
+                marginTop: "100px",
+                marginBottom: "100px",
+              }}
+            />
 
             {favList && favList.length >= 1 && (
               <>
-                <h3 style={{ textAlign: "center" }}>Favourites:</h3>
+                <h3
+                  className="ff-sans-cond fs-700"
+                  style={{ textAlign: "center" }}
+                >
+                  Favourites:
+                </h3>
                 {!moreFav ? (
                   <>
                     <div
                       style={{
                         display: "flex",
-                        justifyContent: "center",
+                        justifyContent: "space-evenly",
                         marginTop: "20px",
                       }}
                     >
-                      <button
-                        style={{
-                          alignSelf: "center",
-                          fontSize: "1.4rem",
-                          borderRadius: "4px",
-                          padding: "4px",
-                          textAlign: "center",
-                          color: "whitesmoke",
-                          backgroundColor: "black",
-                          width: "100px",
-                        }}
-                        onClick={() => setMoreFav(!moreFav)}
-                      >
-                        +
-                      </button>
+                      <FavouritesCard
+                        removeMovie={removeMovie}
+                        favList={favList.slice(0, 4)}
+                        user={user}
+                        newUser={newUser}
+                      />
                     </div>
-                    <FavouritesCard
-                      removeMovie={removeMovie}
-                      favList={favList.slice(0, 4)}
-                      user={user}
-                      newUser={newUser}
-                    />
+                    <p
+                      style={{
+                        textAlign: "center",
+                        color: "grey",
+                        marginTop: "30px",
+                      }}
+                      onClick={() => setMoreFav(!moreFav)}
+                    >
+                      show more ...
+                    </p>
                   </>
                 ) : (
                   <>
                     <div
                       style={{
                         display: "flex",
-                        justifyContent: "center",
+                        justifyContent: "space-evenly",
                         marginTop: "20px",
                       }}
                     >
-                      <button
-                        style={{
-                          alignSelf: "center",
-                          fontSize: "1.4rem",
-                          borderRadius: "4px",
-                          padding: "4px",
-                          textAlign: "center",
-                          color: "whitesmoke",
-                          backgroundColor: "black",
-                          width: "100px",
-                        }}
-                        onClick={() => setMoreFav(!moreFav)}
-                      >
-                        -
-                      </button>
+                      <FavouritesCard
+                        removeMovie={removeMovie}
+                        favList={favList}
+                        user={user}
+                        newUser={newUser}
+                      />
                     </div>
-                    <FavouritesCard
-                      removeMovie={removeMovie}
-                      favList={favList}
-                      user={user}
-                      newUser={newUser}
-                    />
+                    <p
+                      style={{
+                        textAlign: "center",
+                        color: "grey",
+                        marginTop: "30px",
+                      }}
+                      onClick={() => setMoreFav(!moreFav)}
+                    >
+                      hide
+                    </p>
                   </>
                 )}
               </>

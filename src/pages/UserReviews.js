@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { UserContext } from "../context/user.context";
 import { FaWrench, FaTrashAlt, FaCheck } from "react-icons/fa";
 import "animate.css";
+import "../components/MovieCardXS.scss";
 
 //Timeago.js tells how many weeks, days, hours or seconds a comment/Post was made
 import { format } from "timeago.js";
@@ -64,7 +65,7 @@ export const UserReviews = () => {
         reviews.map((review) => {
           return (
             <article
-              className="animate__animated animate__fadeInLeft"
+              className="animate__animated animate__fadeInLeft card-background"
               key={review._id}
               style={{
                 display: "flex",
