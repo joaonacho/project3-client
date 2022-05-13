@@ -1,22 +1,15 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { FaRegTimesCircle } from "react-icons/fa";
-import { BsFillHouseFill } from "react-icons/bs";
-import {
-  RiUserSearchLine,
-  RiUserLine,
-  RiSearchLine,
-  RiFileList3Line,
-} from "react-icons/ri";
+
 import { GiFilmStrip } from "react-icons/gi";
 import "./navbar.scss";
 
 export const Navbar = () => {
   const { isLoggedIn, user, logoutUser } = useContext(UserContext);
-  let location = useLocation();
 
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -42,7 +35,6 @@ export const Navbar = () => {
                 onClick={() => setClick(false)}
                 className="navlink"
               >
-                <RiUserSearchLine style={{ fontSize: "1.3rem" }} />
                 <p>find friends</p>
               </NavLink>
             </li>
@@ -53,7 +45,6 @@ export const Navbar = () => {
                 className="navlink"
                 onClick={() => setClick(false)}
               >
-                <RiFileList3Line style={{ fontSize: "1.3rem" }} />
                 <p>feed</p>
               </NavLink>
             </li>
@@ -64,12 +55,11 @@ export const Navbar = () => {
                 onClick={() => setClick(false)}
                 className="navlink"
               >
-                <RiUserLine style={{ fontSize: "1.3rem" }} />
                 <p>profile</p>
               </NavLink>
             </li>
-            <li>
-              <p onClick={logoutUser} className="navlink">
+            <li className="navlink">
+              <p className="arrange-font" onClick={logoutUser}>
                 Logout
               </p>
             </li>

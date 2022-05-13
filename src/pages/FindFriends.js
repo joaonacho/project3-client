@@ -82,14 +82,7 @@ export const FindFriends = () => {
                   style={{ textDecoration: "none" }}
                   key={person._id}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      border: "1px solid grey",
-                    }}
-                  >
+                  <div>
                     <img
                       src={person.profileImg}
                       alt="profilepic"
@@ -100,13 +93,7 @@ export const FindFriends = () => {
                         padding: "5px",
                       }}
                     />
-                    <div
-                      style={{
-                        textAlign: "right",
-                        padding: "5px",
-                        color: "purple",
-                      }}
-                    >
+                    <div>
                       <h2>{person.username}</h2>
                       <p>
                         <small>{person.country}</small>
@@ -130,14 +117,14 @@ export const FindFriends = () => {
               {userGenres && userGenres.length > 1
                 ? userGenres.map((user) => {
                     return (
-                      <div>
+                      <div className="center">
                         <FriendsSuggestions key={user._id} users={user} />
                       </div>
                     );
                   })
                 : randomUsers.map((user) => {
                     return (
-                      <div>
+                      <div className="center">
                         <FriendsSuggestions key={user._id} users={user} />
                       </div>
                     );
