@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/user.context";
 import { CreatePost } from "../components/CreatePost";
 import { Post } from "../components/Post";
+import "./Feed.scss";
 
 export const Feed = () => {
   const { user } = useContext(UserContext);
@@ -64,12 +65,7 @@ export const Feed = () => {
     >
       <CreatePost addPost={addPost} />
 
-      <section
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <section>
         {feed &&
           feed.map((post) => {
             return (

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { searchMovie } from "../api";
+import "./SearchMovie.scss";
 
 export const SearchMovie = () => {
   const [movie, setMovie] = useState([]);
@@ -28,31 +29,21 @@ export const SearchMovie = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-      }}
-    >
-      <input
-        type="text"
-        placeholder="Search movies"
-        onChange={filterMovieList}
-        value={query}
-        style={{
-          width: "20%",
-          fontSize: "1rem",
-          alignSelf: "center",
-        }}
-      />
+    <div className="search__container">
+      <div className="search__input">
+        <input
+          className="input-find-friends"
+          type="text"
+          placeholder="Search movies"
+          onChange={filterMovieList}
+          value={query}
+        />
+      </div>
 
       <div
+        className="padding"
         style={{
-          alignSelf: "center",
-          width: "40%",
-          backgroundColor: "whitesmoke",
-          marginTop: "20px",
+          marginBottom: "4rem ",
         }}
       >
         {movie &&
@@ -64,12 +55,16 @@ export const SearchMovie = () => {
                   style={{ textDecoration: "none" }}
                 >
                   <div
+                    className="secondary-clr-medium-light"
                     key={index}
                     style={{
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
                       border: "1px solid grey",
+                      borderRadius: "1rem",
+                      padding: "0.5rem 0.5rem",
+                      margin: "0.3rem 0 ",
                     }}
                     onClick={cleanUp}
                   >
@@ -78,7 +73,11 @@ export const SearchMovie = () => {
                         <img
                           src={`https://image.tmdb.org/t/p/w200${found.poster_path}`}
                           alt="poster"
-                          style={{ width: "100px", padding: "5px" }}
+                          style={{
+                            width: "100px",
+                            padding: "5px",
+                            borderRadius: "1rem",
+                          }}
                         />
                       </>
                     ) : (
@@ -93,10 +92,13 @@ export const SearchMovie = () => {
                       </>
                     )}
                     <div
+                      className="text-secondary-clr-light "
                       style={{
                         textAlign: "right",
-                        padding: "5px",
-                        color: "purple",
+                        padding: "5px 2rem 5px 0",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
                       }}
                     >
                       <h2>

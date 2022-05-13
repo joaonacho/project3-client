@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 import { UserContext } from "../context/user.context";
 import "animate.css";
+import "./Post.scss";
 
 export const Post = ({ post, addLike, removeLike, removePost }) => {
   const { user } = useContext(UserContext);
@@ -18,7 +19,7 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
   };
 
   return (
-    <div>
+    <div className="container-post">
       {post && (
         <article
           className="animate__animated animate__fadeIn"
@@ -30,12 +31,13 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
           }}
         >
           <div
-            style={{
-              width: "50%",
-              display: "flex",
-              flexDirection: "row",
-              alignSelf: "center",
-            }}
+            className="post-top-container"
+            // style={{
+            //   width: "50%",
+            //   display: "flex",
+            //   flexDirection: "row",
+            //   alignSelf: "center",
+            // }}
           >
             <img
               src={post.author.profileImg}
@@ -56,33 +58,18 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
             </Link>
           </div>
 
-          <img
-            src={post.poster}
-            alt="coverimage"
-            style={{
-              width: "50%",
-              maxHeight: "3000px",
-              marginTop: "10px",
-              alignSelf: "center",
-            }}
-          />
-          <div style={{ width: "50%", alignSelf: "center" }}>
-            <p style={{ marginTop: "10px", textAlign: "left" }}>
-              {post.content}
-            </p>
-            <p style={{ textAlign: "right" }}>
-              <small>
-                <i>{format(post.createdAt)}</i>
-              </small>
-            </p>
+          <img className="post-image" src={post.poster} alt="coverimage" />
+          <div className="post-bottom-container">
+            <div className="post-bottom-first-container">
+              <p className="align-left">{post.content}</p>
+              <p className="align-right">
+                <small>
+                  <i>{format(post.createdAt)}</i>
+                </small>
+              </p>
+            </div>
 
-            <div
-              style={{
-                marginTop: "10px",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
+            <div className="post-bottom-second-container">
               <div
                 style={{
                   display: "flex",
@@ -136,13 +123,7 @@ export const Post = ({ post, addLike, removeLike, removePost }) => {
                 </>
               )}
             </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+
             <Comment postId={post._id} />
           </div>
         </article>

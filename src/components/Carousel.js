@@ -10,6 +10,7 @@ export const Carousel = ({ movies }) => {
   return (
     <div className="test">
       <AutoplaySlider
+        className="slider"
         play={true}
         cancelOnInteraction={false}
         interval={Math.round(Math.random() * 3000) + 1500}
@@ -23,13 +24,14 @@ export const Carousel = ({ movies }) => {
           >
             {movies[0].backdrop_path ? (
               <img
-                className="test-img"
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[0].backdrop_path}`}
                 alt="movieposter"
                 // style={{ width: "400px" }}
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -58,11 +60,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[1].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[1].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -82,11 +86,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[2].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[2].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -106,11 +112,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[3].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[3].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -130,11 +138,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[4].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[4].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -154,11 +164,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[5].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[5].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -178,11 +190,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[6].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[6].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -202,11 +216,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[7].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[7].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -226,11 +242,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[8].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[8].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -250,12 +268,14 @@ export const Carousel = ({ movies }) => {
           >
             {movies[9].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[9].backdrop_path}`}
                 alt="movieposter"
                 // style={{ width: "400px" }}
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -285,12 +305,14 @@ export const Carousel = ({ movies }) => {
           >
             {movies[10].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[10].backdrop_path}`}
                 alt="movieposter"
                 // style={{ width: "400px" }}
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -320,11 +342,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[11].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[11].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -353,11 +377,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[12].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[12].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -377,11 +403,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[13].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[13].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -401,11 +429,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[14].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[14].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -425,11 +455,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[15].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[15].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -458,11 +490,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[16].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[16].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -482,11 +516,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[17].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[17].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -506,11 +542,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[18].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[18].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }
@@ -530,11 +568,13 @@ export const Carousel = ({ movies }) => {
           >
             {movies[19].backdrop_path ? (
               <img
+                className="img"
                 src={`https://image.tmdb.org/t/p/w400${movies[19].backdrop_path}`}
                 alt="movieposter"
               />
             ) : (
               <img
+                className="img"
                 src={
                   "https://cdn.pixabay.com/photo/2019/04/12/19/24/film-35mm-4122924_1280.jpg"
                 }

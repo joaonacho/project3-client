@@ -67,8 +67,8 @@ export const LandingPage = () => {
           vestibulum nibh mi venenatis
         </h2>
       </section>
-      <section className="container-section animate__animated animate__fadeIn">
-        <div className="container-multiple-carousels">
+      <section className=" animate__animated animate__fadeIn">
+        <div className="container-section">
           <div className="container-carousel">
             {isLoading ? (
               <div>
