@@ -26,11 +26,12 @@ export const MovieCardXS = ({ similarMovies }) => {
                 <article
                   className="animate__animated animate__fadeInLeft card-background"
                   style={{
-                    margin: "15px",
+                    marginBottom: "10px",
+                    marginRight: "2px",
                     display: "flex",
                     borderRadius: "8px 8px 8px 0",
                     flexDirection: "column",
-                    boxShadow: "0 0 25px black",
+                    boxShadow: "-5px 0 20px black",
                     width: "100px",
                   }}
                 >

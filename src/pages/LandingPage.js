@@ -126,7 +126,7 @@ export const LandingPage = () => {
                     </p>
 
                     <p className="rating fs-700">
-                      <strong>{review.rating}</strong>
+                      <strong>★ {review.rating}</strong>
                       <small> /10</small>
                     </p>
                     <div>

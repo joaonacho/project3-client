@@ -34,7 +34,11 @@ export const MovieDetailCard = ({
       >
         <h1
           className="ff-sans-cond fs-900 text-secondary-clr-medium-light"
-          style={{ textAlign: "center" }}
+          style={{
+            textAlign: "center",
+            paddingLeft: "10px",
+            paddingRight: "10px",
+          }}
         >
           {movie.title}
         </h1>
@@ -170,7 +174,8 @@ export const MovieDetailCard = ({
           }}
         >
           <p style={{ marginLeft: "10px" }}>
-            <small>Duration: {movie.runtime} mins</small>
+            <small>Duration:</small>
+            <span style={{ fontSize: "1rem" }}>{movie.runtime} mins</span>
           </p>
 
           <a
@@ -193,7 +198,8 @@ export const MovieDetailCard = ({
           </a>
 
           <p style={{ marginRight: "10px" }}>
-            <small>Released: {movie.release_date}</small>
+            <small>Released:</small>
+            <span style={{ fontSize: "1rem" }}> {movie.release_date}</span>
           </p>
         </div>
         <div style={{ width: "300px", alignSelf: "center", marginTop: "20px" }}>

@@ -317,7 +317,7 @@ export const MovieDetails = () => {
             <h3 className="ff-sans-cond fs-700" style={{ textAlign: "center" }}>
               You might also like:
             </h3>
-            <MovieCardXS similarMovies={similarMovies.slice(0, 10)} />
+            <MovieCardXS similarMovies={similarMovies.slice(0, 8)} />
             <p
               onClick={() => setMoreSimilar(!moreSimilar)}
               style={{

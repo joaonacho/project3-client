@@ -72,7 +72,7 @@ export const ReviewForm = ({
           >
             <label style={{ marginTop: "30px" }}>Rating:</label>
             <input
-              placeholder="1-10"
+              placeholder="★ 1-10"
               required
               type="number"
               min="0"

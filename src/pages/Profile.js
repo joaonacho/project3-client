@@ -27,7 +27,10 @@ export const Profile = () => {
   useEffect(() => {
     (async () => {
       const foundUser = await getUser(username);
-      setUserFollowers([foundUser.data.followers._id]);
+      const followersId = foundUser.data.followers.map((userId) => {
+        return userId._id;
+      });
+      setUserFollowers(followersId);
       setUser(foundUser.data);
     })();
   }, [username, renderAgain]);
@@ -65,8 +68,6 @@ export const Profile = () => {
     toast.warn(`You're unfollowing ${newUser.username}`);
   };
 
-  console.log(newUser.followers);
-
   return (
     <section className="container center bg-dark animate__animated animate__fadeIn">
       <div className="center profile-container">
@@ -75,6 +76,7 @@ export const Profile = () => {
             style={{
               display: "flex",
               flexDirection: "row",
+              marginTop: "60px",
             }}
           >
             <div style={{ marginRight: "50px" }}>
@@ -112,19 +114,33 @@ export const Profile = () => {
             </div>
           </div>
         )}
-        {newUser && newUser.followers && (
+        {newUser && userFollowers && (
           <>
-            {user && user._id && user.username !== newUser.username && (
-              <div>
-                {!newUser.followers.includes(user._id) ? (
+            {user && user.username !== newUser.username && (
+              <div style={{ marginTop: "20px" }}>
+                {!userFollowers.includes(user._id) ? (
                   <FaUserPlus
+                    className="animate__animated animate__fadeIn"
                     onClick={() => handleFollow(newUser.username)}
-                    style={{ color: "whitesmoke", fontSize: "2rem" }}
+                    style={{
+                      color: "whitesmoke",
+                      fontSize: "2.5rem",
+                      position: "absolute",
+                      marginTop: "28px",
+                      marginLeft: "-92px",
+                    }}
                   />
                 ) : (
                   <FaUserCheck
+                    className="animate__animated animate__fadeIn"
                     onClick={() => handleUnfollow(newUser.username)}
-                    style={{ color: "lightgreen", fontSize: "2rem" }}
+                    style={{
+                      color: "lightgreen",
+                      fontSize: "2.5rem",
+                      position: "absolute",
+                      marginTop: "28px",
+                      marginLeft: "-92px",
+                    }}
                   />
                 )}
               </div>
@@ -193,7 +209,6 @@ export const Profile = () => {
                             paddingRight: "15px",
                             textAlign: "center",
                             color: "whitesmoke",
-                            // marginTop: "10px",
                             margin: "10px",
                           }}
                           key={index}

@@ -77,7 +77,7 @@ export const EditUser = () => {
   };
 
   return (
-    <section className="container">
+    <section className="container animate__animated animate__fadeIn">
       <div className="center">
         <div className="SignUpForm">
           {user && (
@@ -90,9 +90,10 @@ export const EditUser = () => {
                     width: "200px",
                     height: "200px",
                     borderRadius: "50%",
+                    marginBottom: "20px",
                   }}
                 />
-                <h2 className="text-secondary-clr-medium-light fs-800 ff-sans-cond">
+                <h2 className="text-secondary-clr-medium-light fs-700 ff-sans-cond">
                   {user.username}
                 </h2>
               </div>
