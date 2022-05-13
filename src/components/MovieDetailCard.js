@@ -32,7 +32,10 @@ export const MovieDetailCard = ({
           marginBottom: "30px",
         }}
       >
-        <h1 className="ff-sans-cond fs-900" style={{ textAlign: "center" }}>
+        <h1
+          className="ff-sans-cond fs-900 text-secondary-clr-medium-light"
+          style={{ textAlign: "center" }}
+        >
           {movie.title}
         </h1>
         <h4 style={{ textAlign: "center" }}>
@@ -129,15 +132,14 @@ export const MovieDetailCard = ({
             />
           ) : (
             <BsBookmarkPlusFill
-              className="animate__animated animate__fadeIn"
+              className="animate__animated animate__fadeIn text-secondary-clr-medium-light"
               onClick={addMovie}
               style={{
                 fontSize: "3rem",
                 marginTop: "-50px",
                 marginLeft: "-169.5px",
                 position: "absolute",
-                color: "plum",
-                opacity: "0.7",
+                opacity: "0.5",
               }}
             />
           ))}
@@ -221,7 +223,7 @@ export const MovieDetailCard = ({
                     }}
                     key={genre.id}
                   >
-                    <p>
+                    <p className="fs-600 ff-sans-cond">
                       <small>
                         <b>{genre.name}</b>
                       </small>

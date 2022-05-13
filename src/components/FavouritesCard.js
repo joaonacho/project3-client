@@ -21,7 +21,6 @@ export const FavouritesCard = ({ removeMovie, favList, user, newUser }) => {
             style={{
               marginTop: "30px",
               width: "150px",
-              backgroundColor: "purple",
               borderRadius: "10px 10px 10px 0",
               boxShadow: "0 0 25px black",
             }}
@@ -32,7 +31,7 @@ export const FavouritesCard = ({ removeMovie, favList, user, newUser }) => {
                   <BsFillXCircleFill
                     onClick={() => removeMovie(fav.id, user)}
                     style={{
-                      color: "red",
+                      color: "firebrick",
                       fontSize: "1.5rem",
                       position: "absolute",
                       marginLeft: "-85px",
@@ -63,10 +62,15 @@ export const FavouritesCard = ({ removeMovie, favList, user, newUser }) => {
                     style={{ width: "150px", borderRadius: "10px 10px 0 0" }}
                   />
                 )}
-                <p style={{ textAlign: "left", color: "gold", padding: "5px" }}>
-                  ★ {fav.vote_average}
+                <p
+                  style={{ textAlign: "left", color: "gold", padding: "10px" }}
+                >
+                  <b>★ {fav.vote_average}</b>
                 </p>
-                <h3 style={{ textAlign: "left", padding: "5px" }}>
+                <h3
+                  style={{ textAlign: "left", padding: "10px" }}
+                  className="fs-600 ff-sans-cond"
+                >
                   {fav.title}
                 </h3>
               </Link>

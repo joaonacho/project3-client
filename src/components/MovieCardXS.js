@@ -57,10 +57,15 @@ export const MovieCardXS = ({ similarMovies }) => {
                       }}
                     />
                   )}
-                  <p style={{ color: "gold", padding: "5px" }}>
-                    ★ {Math.round(similar.vote_average)}
+                  <p style={{ color: "gold", padding: "10px" }}>
+                    <b>★ {Math.round(similar.vote_average)}</b>
                   </p>
-                  <h4 style={{ padding: "5px" }}>{similar.title}</h4>
+                  <h3
+                    className="fs-600 ff-sans-cond"
+                    style={{ padding: "10px" }}
+                  >
+                    {similar.title}
+                  </h3>
                 </article>
               </Link>
             );

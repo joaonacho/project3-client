@@ -78,6 +78,16 @@ export const getUser = (username) => {
   return axios.get(`${baseURL}/profile/${username}`);
 };
 
+//GET user followers
+export const getFollowers = (username) => {
+  return axios.get(`${baseURL}/${username}/followers`);
+};
+
+//GET user following
+export const getFollowing = (username) => {
+  return axios.get(`${baseURL}/${username}/following`);
+};
+
 //PUT edit user info
 export const updateUser = (username, user) => {
   return axios.put(`${baseURL}/profile/${username}/edit`, user);

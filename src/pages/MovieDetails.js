@@ -332,7 +332,9 @@ export const MovieDetails = () => {
           </>
         ) : (
           <>
-            <h3 style={{ textAlign: "center" }}>You might also like:</h3>
+            <h3 className="fs-700 ff-sans-cond" style={{ textAlign: "center" }}>
+              You might also like:
+            </h3>
 
             <MovieCardXS similarMovies={similarMovies} />
             <p

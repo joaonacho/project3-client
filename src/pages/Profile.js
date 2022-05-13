@@ -20,12 +20,14 @@ export const Profile = () => {
   const { username } = useParams();
   const [newUser, setUser] = useState({});
   const [favList, setFavList] = useState([]);
+  const [userFollowers, setUserFollowers] = useState([]);
   const [renderAgain, setRenderAgain] = useState(false);
   const [moreFav, setMoreFav] = useState(false);
 
   useEffect(() => {
     (async () => {
       const foundUser = await getUser(username);
+      setUserFollowers([foundUser.data.followers._id]);
       setUser(foundUser.data);
     })();
   }, [username, renderAgain]);
@@ -53,38 +55,80 @@ export const Profile = () => {
 
   const handleFollow = async (name) => {
     await followUser(name, { user });
-    toast.success(`You're following ${newUser.username}`);
     setRenderAgain(!renderAgain);
+    toast.success(`You're following ${newUser.username}`);
   };
 
   const handleUnfollow = async (name) => {
     await unfollowUser(name, { user });
-    toast.warn(`You're unfollowing ${newUser.username}`);
     setRenderAgain(!renderAgain);
+    toast.warn(`You're unfollowing ${newUser.username}`);
   };
+
+  console.log(newUser.followers);
 
   return (
     <section className="container center bg-dark animate__animated animate__fadeIn">
       <div className="center profile-container">
-        {newUser && (
+        {newUser.followers && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div style={{ marginRight: "50px" }}>
+              <Link
+                to={`/profile/${newUser.username}/reviews`}
+                style={{ textDecoration: "none", color: "whitesmoke" }}
+              >
+                <p className="text-secondary-clr-medium-light fs-700 ff-sans-cond">
+                  {newUser.reviews.length}
+                </p>
+                <p className="fs-500 ff-sans-cond">Reviews</p>
+              </Link>
+            </div>
+            <div style={{ marginRight: "50px" }}>
+              <Link
+                to={`/${newUser.username}/followers`}
+                style={{ textDecoration: "none", color: "whitesmoke" }}
+              >
+                <p className="text-secondary-clr-medium-light fs-700 ff-sans-cond">
+                  {newUser.followers.length}
+                </p>
+                <p className="fs-500 ff-sans-cond">Followers</p>
+              </Link>
+            </div>
+            <div>
+              <Link
+                to={`/${newUser.username}/following`}
+                style={{ textDecoration: "none", color: "whitesmoke" }}
+              >
+                <p className="text-secondary-clr-medium-light fs-700 ff-sans-cond">
+                  {newUser.follows.length}
+                </p>
+                <p className="fs-500 ff-sans-cond">Following</p>
+              </Link>
+            </div>
+          </div>
+        )}
+        {newUser && newUser.followers && (
           <>
-            {user &&
-              user.username !== newUser.username &&
-              newUser.followers && (
-                <>
-                  {!newUser.followers.includes(user._id) ? (
-                    <FaUserPlus
-                      onClick={() => handleFollow(newUser.username)}
-                      style={{ color: "whitesmoke", fontSize: "2rem" }}
-                    />
-                  ) : (
-                    <FaUserCheck
-                      onClick={() => handleUnfollow(newUser.username)}
-                      style={{ color: "lightgreen", fontSize: "2rem" }}
-                    />
-                  )}
-                </>
-              )}
+            {user && user._id && user.username !== newUser.username && (
+              <div>
+                {!newUser.followers.includes(user._id) ? (
+                  <FaUserPlus
+                    onClick={() => handleFollow(newUser.username)}
+                    style={{ color: "whitesmoke", fontSize: "2rem" }}
+                  />
+                ) : (
+                  <FaUserCheck
+                    onClick={() => handleUnfollow(newUser.username)}
+                    style={{ color: "lightgreen", fontSize: "2rem" }}
+                  />
+                )}
+              </div>
+            )}
             <div className="profile-photo-group">
               <img
                 className="profile-photo"
@@ -96,7 +140,10 @@ export const Profile = () => {
                   <FaUserEdit
                     style={{
                       color: "gold",
-                      fontSize: "2rem",
+                      fontSize: "2.5rem",
+                      position: "absolute",
+                      marginLeft: "-90px",
+                      marginTop: "15px",
                     }}
                   />
                 </Link>
@@ -105,7 +152,7 @@ export const Profile = () => {
 
             <div className="profile-user">
               <h3 className="text-secondary-clr-medium-light fs-700 ff-sans-cond">
-                {newUser.username}'s profile
+                {newUser.username}
               </h3>
               <p
                 className="text-secondary-clr-light"
@@ -125,9 +172,35 @@ export const Profile = () => {
                   <h3 className="text-secondary-clr-medium-light fs-500 ff-sans-cond">
                     Favourite genres:
                   </h3>
-                  <ul style={{ listStyle: "none", padding: "0" }}>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: "0",
+                      display: "flex",
+                      flexWrap: "wrap",
+                      justifyContent: "center",
+                    }}
+                  >
                     {newUser.genres.map((genre, index) => {
-                      return <li key={index}>{genre}</li>;
+                      return (
+                        <li
+                          style={{
+                            border: "1px solid grey",
+                            borderRadius: "8px",
+                            paddingTop: "7px",
+                            paddingBottom: "7px",
+                            paddingLeft: "15px",
+                            paddingRight: "15px",
+                            textAlign: "center",
+                            color: "whitesmoke",
+                            // marginTop: "10px",
+                            margin: "10px",
+                          }}
+                          key={index}
+                        >
+                          <p className="fs-600 ff-sans-cond">{genre}</p>
+                        </li>
+                      );
                     })}
                   </ul>
                 </div>

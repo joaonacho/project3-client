@@ -6,6 +6,7 @@ import Select from "react-select";
 import { toast } from "react-toastify";
 import { FaCheck } from "react-icons/fa";
 import "./EditUser.scss";
+import { Link } from "react-router-dom";
 
 export const EditUser = () => {
   const { username } = useParams();
@@ -145,6 +146,16 @@ export const EditUser = () => {
             </>
           )}
         </div>
+        <Link
+          to={`/profile/${username}`}
+          style={{
+            textDecoration: "none",
+            color: "grey",
+            marginTop: "30px",
+          }}
+        >
+          <p>Go back</p>
+        </Link>
       </div>
     </section>
   );

@@ -18,6 +18,8 @@ import { FindFriends } from "./pages/FindFriends";
 import { Feed } from "./pages/Feed";
 import { CreatePost } from "./components/CreatePost";
 import { Post } from "./components/Post";
+import { UserFollowers } from "./pages/UserFollowers";
+import { UserFollowing } from "./pages/UserFollowing";
 
 function App() {
   return (
@@ -58,6 +60,9 @@ function App() {
           }
         />
         <Route path="/profile/:username" element={<Profile />} />
+
+        <Route path="/:username/followers" element={<UserFollowers />} />
+        <Route path="/:username/following" element={<UserFollowing />} />
         <Route
           path="/profile/:username/edit"
           element={

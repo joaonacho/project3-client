@@ -41,10 +41,15 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
                   />
                 )}
                 <div style={{ width: "80px" }}>
-                  <p style={{ padding: "7px" }}>{credit.name}</p>
+                  <p
+                    className="fs-600 ff-sans-cond"
+                    style={{ padding: "10px" }}
+                  >
+                    {credit.name}
+                  </p>
                   <p
                     style={{
-                      padding: "7px",
+                      padding: "10px",
                       color: "grey",
                     }}
                   >
@@ -92,8 +97,13 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
                   />
                 )}
                 <div style={{ width: "80px" }}>
-                  <p style={{ padding: "7px" }}>{crew.name}</p>
-                  <p style={{ padding: "7px", color: "grey" }}>
+                  <p
+                    className="fs-600 ff-sans-cond"
+                    style={{ padding: "10px" }}
+                  >
+                    {crew.name}
+                  </p>
+                  <p style={{ padding: "10px", color: "grey" }}>
                     <small>{crew.job}</small>
                   </p>
                 </div>
