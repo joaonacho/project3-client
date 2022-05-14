@@ -35,7 +35,7 @@ export const CreatePost = ({ addPost }) => {
     setImage("");
   };
   return (
-    <div className="row">
+    <div className="row-create-post">
       <div
         style={{
           display: "flex",
@@ -45,6 +45,7 @@ export const CreatePost = ({ addPost }) => {
         }}
       >
         <form
+          className="form-create-post"
           onSubmit={handleSubmit}
           style={{
             display: "flex",

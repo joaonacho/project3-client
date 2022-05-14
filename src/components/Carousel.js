@@ -40,16 +40,7 @@ export const Carousel = ({ movies }) => {
               />
             )}
             <div className="title">
-              <p
-              // style={{
-              //   fontSize: "1.2rem",
-              //   color: "white",
-              //   textAlign: "center",
-              //   marginBottom: "17px",
-              // }}
-              >
-                {movies[0].title}
-              </p>
+              <p>{movies[0].title}</p>
             </div>
           </Link>
         </div>
@@ -73,7 +64,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[1].title}</p>
             </div>
           </Link>
@@ -99,7 +90,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[2].title}</p>
             </div>
           </Link>
@@ -125,7 +116,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[3].title}</p>
             </div>
           </Link>
@@ -151,7 +142,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[4].title}</p>
             </div>
           </Link>
@@ -177,7 +168,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[5].title}</p>
             </div>
           </Link>
@@ -203,7 +194,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[6].title}</p>
             </div>
           </Link>
@@ -229,7 +220,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[7].title}</p>
             </div>
           </Link>
@@ -255,7 +246,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[8].title}</p>
             </div>
           </Link>
@@ -283,7 +274,7 @@ export const Carousel = ({ movies }) => {
                 // style={{ width: "400px", height: "225px" }}
               />
             )}
-            <div>
+            <div className="title">
               <p
               // style={{
               //   fontSize: "1.2rem",
@@ -320,7 +311,7 @@ export const Carousel = ({ movies }) => {
                 // style={{ width: "400px", height: "225px" }}
               />
             )}
-            <div>
+            <div className="title">
               <p
               // style={{
               //   fontSize: "1.2rem",
@@ -355,7 +346,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p
               // style={{
               //   fontSize: "1.2rem",
@@ -390,7 +381,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[12].title}</p>
             </div>
           </Link>
@@ -416,7 +407,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[13].title}</p>
             </div>
           </Link>
@@ -442,7 +433,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[14].title}</p>
             </div>
           </Link>
@@ -468,7 +459,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p
               // style={{
               //   fontSize: "1.2rem",
@@ -503,7 +494,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[16].title}</p>
             </div>
           </Link>
@@ -529,7 +520,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[17].title}</p>
             </div>
           </Link>
@@ -555,7 +546,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[18].title}</p>
             </div>
           </Link>
@@ -581,7 +572,7 @@ export const Carousel = ({ movies }) => {
                 alt="movieposter"
               />
             )}
-            <div>
+            <div className="title">
               <p>{movies[19].title}</p>
             </div>
           </Link>

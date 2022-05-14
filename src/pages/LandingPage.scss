@@ -1,8 +1,9 @@
 .container-section {
   display: flex;
-  column-gap: 1rem;
+  column-gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
+  row-gap: 3rem;
 }
 
 .react-select-container {

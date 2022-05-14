@@ -11,15 +11,30 @@
   min-height: 300px;
 }
 
-.p {
-  display: flex;
-  align-items: center;
-  align-content: stretch;
-  justify-content: center;
-  height: fit-content;
-  text-decoration: none;
-  color: aliceblue;
-  padding-top: 1em;
+// .p {
+//   display: flex;
+//   align-items: center;
+//   align-content: stretch;
+//   justify-content: center;
+//   height: fit-content;
+//   text-decoration: none;
+//   color: aliceblue;
+//   padding-top: 1em;
+// }
+
+.title {
+  width: inherit;
+  height: 10rem;
+  text-align: center;
+}
+
+@media only screen and (min-width: 700px) {
+  .title {
+    width: inherit;
+    height: 5rem;
+    text-align: center;
+    font-size: large;
+  }
 }
 
 // .test-div {
