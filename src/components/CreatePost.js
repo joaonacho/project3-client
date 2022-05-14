@@ -3,6 +3,7 @@ import { createPost, upload } from "../api";
 import { useContext, useState } from "react";
 import { UserContext } from "../context/user.context";
 import { toast } from "react-toastify";
+import "./CreatePost.scss";
 
 export const CreatePost = ({ addPost }) => {
   const { user } = useContext(UserContext);
@@ -34,31 +35,33 @@ export const CreatePost = ({ addPost }) => {
     setImage("");
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginTop: "30px",
-      }}
-    >
-      <form
-        onSubmit={handleSubmit}
+    <div className="row">
+      <div
         style={{
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
+          marginTop: "30px",
         }}
       >
-        <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-        <textarea
-          cols="30"
-          rows="5"
-          value={content}
-          placeholder="What's on your mind?"
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <button type="submit">Post</button>
-      </form>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+          <textarea
+            cols="30"
+            rows="5"
+            value={content}
+            placeholder="What's on your mind?"
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+          <button type="submit">Post</button>
+        </form>
+      </div>
     </div>
   );
 };

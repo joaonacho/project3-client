@@ -1,0 +1,20 @@
+.comment-container {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 600px) {
+  .comment-container {
+    width: 100%;
+  }
+}
+
+.post {
+  width: 100%;
+  background-color: #030333;
+  border-radius: 15px 0px 15px 15px;
+  margin-bottom: 0.5rem;
+  border: 1px solid gray;
+}

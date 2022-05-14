@@ -61,10 +61,10 @@ export const FindFriends = () => {
   return (
     <div className="container">
       <section>
-        <div class="search__container">
+        <div className="search__container">
           <div className="search__input">
             <input
-              className="input-find-friends "
+              className="input-find-friends"
               name={query}
               type="text"
               onChange={(e) => handleQuery(e)}
@@ -73,7 +73,12 @@ export const FindFriends = () => {
             <FiSearch onClick={handleSubmit} />
           </div>
         </div>
-        <div>
+        <div
+          className="padding"
+          style={{
+            marginBottom: "4rem ",
+          }}
+        >
           {users.length > 0 &&
             users.map((person) => {
               return (
@@ -82,7 +87,18 @@ export const FindFriends = () => {
                   style={{ textDecoration: "none" }}
                   key={person._id}
                 >
-                  <div>
+                  <div
+                    className="secondary-clr-medium-light"
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      border: "1px solid grey",
+                      borderRadius: "1rem",
+                      padding: "0.5rem 0.5rem",
+                      margin: "0.3rem 0 ",
+                    }}
+                  >
                     <img
                       src={person.profileImg}
                       alt="profilepic"
@@ -93,7 +109,16 @@ export const FindFriends = () => {
                         padding: "5px",
                       }}
                     />
-                    <div>
+                    <div
+                      className="text-secondary-clr-light "
+                      style={{
+                        textAlign: "right",
+                        padding: "5px 2rem 5px 0",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                      }}
+                    >
                       <h2>{person.username}</h2>
                       <p>
                         <small>{person.country}</small>

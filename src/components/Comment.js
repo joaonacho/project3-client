@@ -7,6 +7,7 @@ import { format } from "timeago.js";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "animate.css";
+import "./Comment.scss";
 
 export const Comment = ({ postId }) => {
   const { user } = useContext(UserContext);
@@ -38,12 +39,7 @@ export const Comment = ({ postId }) => {
   return (
     <>
       {!showComments ? (
-        <div
-          style={{
-            width: "50%",
-            marginTop: "10px",
-          }}
-        >
+        <div className="comment-container">
           <p
             onClick={() => setShowComments(!showComments)}
             style={{ color: "grey" }}
@@ -52,15 +48,10 @@ export const Comment = ({ postId }) => {
           </p>
         </div>
       ) : (
-        <div
-          style={{
-            width: "50%",
-            marginTop: "10px",
-          }}
-        >
+        <div className="comment-container">
           <p
             onClick={() => setShowComments(!showComments)}
-            style={{ color: "grey" }}
+            style={{ color: "grey", paddingBottom: ".5rem" }}
           >
             <small>hide comments</small>
           </p>
@@ -68,13 +59,7 @@ export const Comment = ({ postId }) => {
           {commentsInPost &&
             commentsInPost.map((comment) => {
               return (
-                <article
-                  className="animate__animated animate__fadeIn"
-                  style={{
-                    backgroundColor: "purple",
-                    borderRadius: "15px 0px 15px 15px",
-                  }}
-                >
+                <article className="animate__animated animate__fadeIn post">
                   <div
                     style={{
                       display: "flex",
