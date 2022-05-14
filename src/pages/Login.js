@@ -10,6 +10,7 @@ import React from "react";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(null);
 
   const { storeToken, authenticateUser } = useContext(UserContext);
 
@@ -17,10 +18,14 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await logIn({ email, password });
-    storeToken(response.data.authToken);
-    authenticateUser();
-    navigate(`/`);
+    try {
+      const response = await logIn({ email, password });
+      storeToken(response.data.authToken);
+      authenticateUser();
+      navigate(`/`);
+    } catch (error) {
+      setMessage(error.response.data.message);
+    }
   };
 
   return (
@@ -54,6 +59,12 @@ export const Login = () => {
           <button type="submit">Log in</button>
         </div>
       </form>
+
+      {message && (
+        <p style={{ color: "red", textAlign: "center", fontSize: "1.2rem" }}>
+          {message}
+        </p>
+      )}
 
       <p className="DontHaveAnAccount">
         Don't have an account?

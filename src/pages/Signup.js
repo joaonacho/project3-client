@@ -15,6 +15,7 @@ export const Signup = () => {
   const [country, setCountry] = useState("");
   const [genres, setGenres] = useState([]);
   const [image, setImage] = useState();
+  const [message, setMessage] = useState(null);
   const navigate = useNavigate();
 
   const options = [
@@ -53,29 +54,25 @@ export const Signup = () => {
       profileImg = response.data.fileUrl;
     }
 
-    await signUp({
-      username,
-      email,
-      password,
-      genres,
-      country,
-      profileImg,
-    });
-    toast.success("A new account was created! Please log in.");
-    navigate("/login");
+    try {
+      setMessage(null);
+      const accountCreated = await signUp({
+        username,
+        email,
+        password,
+        genres,
+        country,
+        profileImg,
+      });
+      toast.success("A new account was created! Please log in.");
+      navigate("/login");
+      console.log(accountCreated);
+    } catch (error) {
+      setMessage(error.response.data.message);
+    }
   };
 
   return (
-    // <div className="signup-box container">
-    //   <h1>Sign up</h1>
-    //
-
-    //     <button type="submit">Sign up</button>
-    //   </form>
-
-    //   <p>Already have an account?</p>
-    //   <Link to="/login">Login</Link>
-    // </div>
     <div id="SignUpForm">
       <h1 id="headerTitle">Sign Up</h1>
       <form onSubmit={handleSubmit}>
@@ -145,8 +142,14 @@ export const Signup = () => {
         </div>
       </form>
 
+      {message && (
+        <p style={{ color: "red", textAlign: "center", fontSize: "1.2rem" }}>
+          {message}
+        </p>
+      )}
+
       <p className="DontHaveAnAccount">
-        Don't have an account?{" "}
+        Don't have an account?
         <Link className="a" to="/signup">
           Sign up
         </Link>

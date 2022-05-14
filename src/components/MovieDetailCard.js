@@ -174,8 +174,8 @@ export const MovieDetailCard = ({
           }}
         >
           <p style={{ marginLeft: "10px" }}>
-            <small>Duration:</small>
-            <span style={{ fontSize: "1rem" }}>{movie.runtime} mins</span>
+            <small>Duration: </small>
+            {movie.runtime} mins
           </p>
 
           <a
@@ -198,8 +198,8 @@ export const MovieDetailCard = ({
           </a>
 
           <p style={{ marginRight: "10px" }}>
-            <small>Released:</small>
-            <span style={{ fontSize: "1rem" }}> {movie.release_date}</span>
+            <small>Released: </small>
+            {movie.release_date}
           </p>
         </div>
         <div style={{ width: "300px", alignSelf: "center", marginTop: "20px" }}>
