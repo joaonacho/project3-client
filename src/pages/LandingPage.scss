@@ -63,3 +63,27 @@
 footer {
   margin: 1rem auto;
 }
+
+.movie-filter {
+  width: inherit;
+  text-align: center;
+  padding: 0 0 1rem 0;
+  background-color: hsl(var(--secondary-clr-medium-light));
+  color: hsl(var(--primary-clr-dark));
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-700);
+  border-radius: 0 0 0 0;
+}
+
+@media only screen and (min-width: 700px) {
+  .movie-filter {
+    width: inherit;
+    text-align: center;
+    padding: 0 0 1rem 0;
+    background-color: hsl(var(--secondary-clr-medium-light));
+    color: hsl(var(--primary-clr-dark));
+    font-family: var(--ff-sans-cond);
+    font-size: var(--fs-700);
+    border-radius: 0 0 0 0;
+  }
+}

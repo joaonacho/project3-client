@@ -42,7 +42,7 @@ export const Explore = () => {
             <div>
               {topRatedMovies.length && (
                 <>
-                  <div className="carrousel-header">
+                  <div className="movie-filter">
                     <h2>Top Rated</h2>
                   </div>
                   <Carousel movies={topRatedMovies} />
@@ -54,11 +54,12 @@ export const Explore = () => {
               {inTheatres.length && (
                 <>
                   <div
-                  // style={{
-                  //   backgroundColor: "purple",
-                  //   width: "100%",
-                  //   color: "whitesmoke",
-                  // }}
+                    className="movie-filter"
+                    // style={{
+                    //   backgroundColor: "purple",
+                    //   width: "100%",
+                    //   color: "whitesmoke",
+                    // }}
                   >
                     <h2>In theatres</h2>
                   </div>
@@ -71,12 +72,13 @@ export const Explore = () => {
               {popularMovies.length && (
                 <>
                   <div
-                  // style={{
-                  //   backgroundColor: "purple",
-                  //   width: "100%",
-                  //   color: "whitesmoke",
-                  //   borderRadius: "0 8px 0 0",
-                  // }}
+                    className="movie-filter"
+                    // style={{
+                    //   backgroundColor: "purple",
+                    //   width: "100%",
+                    //   color: "whitesmoke",
+                    //   borderRadius: "0 8px 0 0",
+                    // }}
                   >
                     <h2>Popular Movies</h2>
                   </div>

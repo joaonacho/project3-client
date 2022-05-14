@@ -74,7 +74,7 @@ export const LandingPage = () => {
               <>
                 {trendingMovies.length >= 1 && (
                   <>
-                    <div>
+                    <div className="movie-filter">
                       <h2>Trending Movies</h2>
                     </div>
                     <Carousel movies={trendingMovies} />
@@ -87,7 +87,7 @@ export const LandingPage = () => {
           <div className="container-carousel">
             {upcomingMovies.length && (
               <>
-                <div>
+                <div className="movie-filter">
                   <h2>Upcoming Movies</h2>
                 </div>
                 <Carousel movies={upcomingMovies} />
