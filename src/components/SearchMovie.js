@@ -7,6 +7,7 @@ import "./SearchMovie.scss";
 export const SearchMovie = () => {
   const [movie, setMovie] = useState([]);
   const [query, setQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const filterMovieList = (e) => {
     setQuery(e.target.value);
@@ -14,11 +15,12 @@ export const SearchMovie = () => {
     if (e.target.value === "") {
       setMovie([]);
     }
-
+    setIsLoading(true);
     setTimeout(() => {
       (async () => {
         let movieFound = await searchMovie(e.target.value);
         setMovie(movieFound.data.results);
+        setIsLoading(false);
       })();
     }, 1500);
   };
@@ -46,6 +48,30 @@ export const SearchMovie = () => {
           marginBottom: "4rem ",
         }}
       >
+        {isLoading && (
+          <div
+            style={{
+              height: "600px",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: "0.8",
+            }}
+          >
+            <svg className="spinner" viewBox="0 0 50 50">
+              <circle
+                className="path"
+                cx="25"
+                cy="25"
+                r="20"
+                fill="none"
+                stroke-width="5"
+              ></circle>
+            </svg>
+          </div>
+        )}
+
         {movie &&
           movie.map((found, index) => {
             return (

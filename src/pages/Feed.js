@@ -9,6 +9,7 @@ import "./Feed.scss";
 export const Feed = () => {
   const { user } = useContext(UserContext);
   const [feed, setFeed] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   // const isMountedRef = useRef(null);
 
   const addPost = (post) => {
@@ -39,6 +40,7 @@ export const Feed = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       // isMountedRef.current = true;
 
@@ -47,7 +49,7 @@ export const Feed = () => {
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
       setFeed(sortedFeed);
-
+      setIsLoading(false);
       // const socket = socketIOClient(process.env.REACT_APP_PROJECTS_API);
       // socket.on("newPost", (newPost) => {
       //   if (isMountedRef.current) {
@@ -66,6 +68,29 @@ export const Feed = () => {
       <CreatePost addPost={addPost} />
 
       <section>
+        {isLoading && (
+          <div
+            style={{
+              height: "600px",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: "0.8",
+            }}
+          >
+            <svg className="spinner" viewBox="0 0 50 50">
+              <circle
+                className="path"
+                cx="25"
+                cy="25"
+                r="20"
+                fill="none"
+                stroke-width="5"
+              ></circle>
+            </svg>
+          </div>
+        )}
         {feed &&
           feed.map((post) => {
             return (

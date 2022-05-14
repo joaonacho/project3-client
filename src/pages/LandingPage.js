@@ -63,13 +63,44 @@ export const LandingPage = () => {
           Connect with people who share the passion for the seventh art
         </h1>
       </section>
+
+      {isLoading && (
+        <div
+          style={{
+            height: "600px",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity: "0.8",
+          }}
+        >
+          <svg className="spinner" viewBox="0 0 50 50">
+            <circle
+              className="path"
+              cx="25"
+              cy="25"
+              r="20"
+              fill="none"
+              stroke-width="5"
+            ></circle>
+          </svg>
+        </div>
+      )}
       <section className=" animate__animated animate__fadeIn">
         <div className="container-section">
           <div className="container-carousel">
             {isLoading ? (
-              <div>
-                <span>Loading...</span>
-              </div>
+              <svg className="spinner" viewBox="0 0 50 50">
+                <circle
+                  className="path"
+                  cx="25"
+                  cy="25"
+                  r="20"
+                  fill="none"
+                  stroke-width="5"
+                ></circle>
+              </svg>
             ) : (
               <>
                 {trendingMovies.length >= 1 && (

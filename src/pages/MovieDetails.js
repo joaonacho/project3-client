@@ -37,9 +37,11 @@ export const MovieDetails = () => {
   const [movieCrew, setMovieCrew] = useState([]);
   const [moreCast, setMoreCast] = useState(false);
   const [moreCrew, setMoreCrew] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const userData = await getUser(user.username);
       setUserInSession(userData.data);
 
@@ -48,35 +50,44 @@ export const MovieDetails = () => {
       });
 
       setUserFavourites(favDataId);
+      setIsLoading(false);
     })();
   }, [user]);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const getDetails = await getMovieDetails(movieId);
       setMovie(getDetails.data);
+      setIsLoading(false);
     })();
   }, [movieId]);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const movieReviewsFromDb = await getMovieReviews(movie.id);
       setMovieReviews(movieReviewsFromDb.data.reviews);
+      setIsLoading(false);
     })();
   }, [movie]);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const creditsFromApi = await getMovieCredits(movieId);
       setMovieCast(creditsFromApi.data.cast);
       setMovieCrew(creditsFromApi.data.crew);
+      setIsLoading(false);
     })();
   }, [movieId]);
 
   useEffect(() => {
+    setIsLoading(true);
     (async () => {
       const getSimilar = await getSimilarMovies(movieId);
       setSimilarMovies(getSimilar.data.results);
+      setIsLoading(false);
     })();
   }, [movieId]);
 
@@ -104,6 +115,7 @@ export const MovieDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const fullReview = {
       review,
       rating,
@@ -124,12 +136,37 @@ export const MovieDetails = () => {
     setForm(false);
     setReview();
     setRating();
+    setIsLoading(false);
     toast.success("Your rating was submited");
   };
 
   return (
     <div>
       <section className="animate__animated animate__fadeIn">
+        {isLoading && (
+          <div
+            style={{
+              height: "600px",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: "0.8",
+            }}
+          >
+            <svg className="spinner" viewBox="0 0 50 50">
+              <circle
+                className="path"
+                cx="25"
+                cy="25"
+                r="20"
+                fill="none"
+                stroke-width="5"
+              ></circle>
+            </svg>
+          </div>
+        )}
+
         {movie && (
           <>
             <MovieDetailCard
@@ -153,6 +190,29 @@ export const MovieDetails = () => {
         }}
       />
       <section className="animate__animated animate__fadeInLeft">
+        {isLoading && (
+          <div
+            style={{
+              height: "600px",
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: "0.8",
+            }}
+          >
+            <svg className="spinner" viewBox="0 0 50 50">
+              <circle
+                className="path"
+                cx="25"
+                cy="25"
+                r="20"
+                fill="none"
+                stroke-width="5"
+              ></circle>
+            </svg>
+          </div>
+        )}
         <h3
           className="ff-sans-cond fs-700"
           style={{

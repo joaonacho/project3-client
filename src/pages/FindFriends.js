@@ -14,9 +14,11 @@ export const FindFriends = () => {
   const [randomUsers, setRandomUsers] = useState([]);
   const [query, setQuery] = useState("");
   const [userGenres, setUserGenres] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const usersSameGenres = await getUsersGenres(user.username);
 
       if (usersSameGenres.data.length) {
@@ -29,12 +31,14 @@ export const FindFriends = () => {
           return randomUser.username !== user.username;
         });
         setRandomUsers(filterUsers);
+        setIsLoading(false);
       }
     })();
   }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (query === "") {
       setUsers([]);
     }
@@ -46,15 +50,18 @@ export const FindFriends = () => {
     });
 
     setUsers(filterUser);
+    setIsLoading(false);
   };
 
   const handleQuery = (e) => {
     setQuery(e.target.value);
+    setIsLoading(true);
     if (query === "") {
       setUsers([]);
     }
     setTimeout(() => {
       handleSubmit(e);
+      setIsLoading(false);
     }, 500);
   };
 
@@ -79,6 +86,29 @@ export const FindFriends = () => {
             marginBottom: "4rem ",
           }}
         >
+          {isLoading && (
+            <div
+              style={{
+                height: "600px",
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                opacity: "0.8",
+              }}
+            >
+              <svg className="spinner" viewBox="0 0 50 50">
+                <circle
+                  className="path"
+                  cx="25"
+                  cy="25"
+                  r="20"
+                  fill="none"
+                  stroke-width="5"
+                ></circle>
+              </svg>
+            </div>
+          )}
           {users.length > 0 &&
             users.map((person) => {
               return (

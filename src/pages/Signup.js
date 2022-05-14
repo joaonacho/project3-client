@@ -17,6 +17,7 @@ export const Signup = () => {
   const [image, setImage] = useState();
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const options = [
     { value: "Horror", label: "Horror" },
@@ -44,6 +45,7 @@ export const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     let profileImg;
 
     if (image) {
@@ -64,6 +66,7 @@ export const Signup = () => {
         country,
         profileImg,
       });
+      setIsLoading(false);
       toast.success("A new account was created! Please log in.");
       navigate("/login");
       console.log(accountCreated);
@@ -74,6 +77,29 @@ export const Signup = () => {
 
   return (
     <div id="SignUpForm">
+      {isLoading && (
+        <div
+          style={{
+            height: "600px",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity: "0.8",
+          }}
+        >
+          <svg className="spinner" viewBox="0 0 50 50">
+            <circle
+              className="path"
+              cx="25"
+              cy="25"
+              r="20"
+              fill="none"
+              stroke-width="5"
+            ></circle>
+          </svg>
+        </div>
+      )}
       <h1 id="headerTitle">Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="row">
