@@ -87,7 +87,11 @@ export const SearchMovie = () => {
                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJby-2uSy9qY_gzWp4SeAu3E96d4DEc6EAg&usqp=CAU"
                           }
                           alt="poster"
-                          style={{ width: "100px", padding: "5px" }}
+                          style={{
+                            width: "100px",
+                            padding: "5px",
+                            borderRadius: "1rem",
+                          }}
                         />
                       </>
                     )}
@@ -104,11 +108,11 @@ export const SearchMovie = () => {
                       <h2>
                         <i>{found.title}</i>
                       </h2>
-                      <p>
-                        <small>Rating: {found.vote_average}</small>
+                      <p style={{ color: "gold" }}>
+                        <small>★ {found.vote_average}</small>
                       </p>
                       <p>
-                        <small>Release: {found.release_date}</small>
+                        <small>{found.release_date}</small>
                       </p>
                     </div>
                   </div>

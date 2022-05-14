@@ -8,8 +8,9 @@ import "./Login.scss";
 import React from "react";
 
 export const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(null);
 
   const { storeToken, authenticateUser } = useContext(UserContext);
 
@@ -17,10 +18,14 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await logIn({ username, password });
-    storeToken(response.data.authToken);
-    authenticateUser();
-    navigate(`/profile/${username}`);
+    try {
+      const response = await logIn({ email, password });
+      storeToken(response.data.authToken);
+      authenticateUser();
+      navigate(`/`);
+    } catch (error) {
+      setMessage(error.response.data.message);
+    }
   };
 
   return (
@@ -29,12 +34,12 @@ export const Login = () => {
       <form onSubmit={handleSubmit}>
         <div className="row">
           <input
-            description="Username"
-            placeholder="Enter your username"
+            description="Email"
+            placeholder="Enter your email"
             type="text"
-            value={username}
+            value={email}
             required
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -55,8 +60,14 @@ export const Login = () => {
         </div>
       </form>
 
+      {message && (
+        <p style={{ color: "red", textAlign: "center", fontSize: "1.2rem" }}>
+          {message}
+        </p>
+      )}
+
       <p className="DontHaveAnAccount">
-        Don't have an account?{" "}
+        Don't have an account?
         <Link className="a" to="/signup">
           Sign up
         </Link>

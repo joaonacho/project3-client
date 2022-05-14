@@ -325,6 +325,7 @@ export const MovieDetails = () => {
                 textAlign: "center",
                 color: "grey",
                 marginTop: "5px",
+                marginBottom: "50px",
               }}
             >
               show more...
@@ -343,6 +344,7 @@ export const MovieDetails = () => {
                 textAlign: "center",
                 color: "grey",
                 marginTop: "5px",
+                marginBottom: "50px",
               }}
               onClick={() => setMoreSimilar(!moreSimilar)}
             >
