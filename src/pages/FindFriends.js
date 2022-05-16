@@ -18,11 +18,12 @@ export const FindFriends = () => {
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
       const usersSameGenres = await getUsersGenres(user.username);
 
       if (usersSameGenres.data.length) {
+        setIsLoading(true);
         setUserGenres(usersSameGenres.data.slice(0, 6));
+        setIsLoading(false);
       }
 
       if (!usersSameGenres.data.length) {
@@ -104,7 +105,7 @@ export const FindFriends = () => {
                   cy="25"
                   r="20"
                   fill="none"
-                  stroke-width="5"
+                  strokeWidth="5"
                 ></circle>
               </svg>
             </div>
@@ -115,7 +116,6 @@ export const FindFriends = () => {
                 <Link
                   to={`/profile/${person.username}`}
                   style={{ textDecoration: "none" }}
-                  key={person._id}
                 >
                   <div
                     className="secondary-clr-medium-light"
@@ -128,6 +128,7 @@ export const FindFriends = () => {
                       padding: "0.5rem 0.5rem",
                       margin: "0.3rem 0 ",
                     }}
+                    key={person._id}
                   >
                     <img
                       src={person.profileImg}
@@ -172,15 +173,15 @@ export const FindFriends = () => {
               {userGenres && userGenres.length > 1
                 ? userGenres.map((user) => {
                     return (
-                      <div className="center">
-                        <FriendsSuggestions key={user._id} users={user} />
+                      <div className="center" key={user._id}>
+                        <FriendsSuggestions users={user} />
                       </div>
                     );
                   })
                 : randomUsers.map((user) => {
                     return (
-                      <div className="center">
-                        <FriendsSuggestions key={user._id} users={user} />
+                      <div className="center" key={user._id}>
+                        <FriendsSuggestions users={user} />
                       </div>
                     );
                   })}

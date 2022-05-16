@@ -82,7 +82,7 @@ export const LandingPage = () => {
               cy="25"
               r="20"
               fill="none"
-              stroke-width="5"
+              strokeWidth="5"
             ></circle>
           </svg>
         </div>
@@ -98,7 +98,7 @@ export const LandingPage = () => {
                   cy="25"
                   r="20"
                   fill="none"
-                  stroke-width="5"
+                  strokeWidth="5"
                 ></circle>
               </svg>
             ) : (
