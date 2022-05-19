@@ -40,7 +40,7 @@ export const Explore = () => {
         <main>
           <div className="container-section">
             <div>
-              {topRatedMovies.length && (
+              {topRatedMovies.length >= 1 && (
                 <>
                   <div className="movie-filter">
                     <h2>Top Rated</h2>
@@ -51,7 +51,7 @@ export const Explore = () => {
             </div>
 
             <div>
-              {inTheatres.length && (
+              {inTheatres.length >= 1 && (
                 <>
                   <div
                     className="movie-filter"
@@ -69,7 +69,7 @@ export const Explore = () => {
             </div>
 
             <div>
-              {popularMovies.length && (
+              {popularMovies.length >= 1 && (
                 <>
                   <div
                     className="movie-filter"

@@ -14,7 +14,7 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
         }}
       >
         {movieCast &&
-          movieCast.map((credit) => {
+          movieCast.map((credit, index) => {
             return (
               <article
                 className="animate__animated animate__fadeInLeft card-background"
@@ -24,6 +24,7 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
                   backgroundColor: "purple",
                   borderRadius: "8px 8px 8px 0",
                 }}
+                key={index}
               >
                 {credit.profile_path ? (
                   <img
@@ -70,7 +71,7 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
         }}
       >
         {movieCrew &&
-          movieCrew.map((crew) => {
+          movieCrew.map((crew, index) => {
             return (
               <article
                 className="animate__animated animate__fadeInLeft card-background"
@@ -80,6 +81,7 @@ export const MovieCredits = ({ movieCast, movieCrew }) => {
                   backgroundColor: "purple",
                   borderRadius: "8px 8px 8px 0",
                 }}
+                key={index}
               >
                 {crew.profile_path ? (
                   <img

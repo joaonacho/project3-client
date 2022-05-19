@@ -87,7 +87,10 @@ export const LandingPage = () => {
           </svg>
         </div>
       )}
-      <section className=" animate__animated animate__fadeIn">
+      <section
+        className=" animate__animated animate__fadeIn"
+        style={{ marginTop: "60px" }}
+      >
         <div className="container-section">
           <div className="container-carousel">
             {isLoading ? (
@@ -116,7 +119,7 @@ export const LandingPage = () => {
           </div>
 
           <div className="container-carousel">
-            {upcomingMovies.length && (
+            {upcomingMovies.length >= 1 && (
               <>
                 <div className="movie-filter">
                   <h2>Upcoming Movies</h2>
@@ -128,7 +131,10 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      <section className="bg-secondary-clr-medium-light text-primary-clr-dark container-section background">
+      <section
+        className="bg-secondary-clr-medium-light text-primary-clr-dark container-section background"
+        style={{ marginTop: "60px" }}
+      >
         <div className="container section-container">
           <h1 className="padding center ff-sans-cond fs-800 text-white">
             We love Cinema
@@ -170,13 +176,13 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      <section className=" bg-white">
+      <section className=" bg-dark" style={{ marginTop: "60px" }}>
         <div className="container section-container">
-          <h1 className="fs-800 center text-primary-clr-dark padding ff-sans-cond ">
+          <h1 className="fs-800 center text-white padding ff-sans-cond ">
             And our users too!
           </h1>
-          <div className="container-user">
-            {randomUsers.length &&
+          <div className="container-user" style={{ marginTop: "40px" }}>
+            {randomUsers.length >= 1 &&
               randomUsers.map((user) => {
                 return (
                   <article
@@ -196,7 +202,10 @@ export const LandingPage = () => {
           </div>
         </div>
       </section>
-      <footer className="center text-secondary-clr-light letter-spacing-2 ff-serif">
+      <footer
+        className="center text-secondary-clr-light letter-spacing-2 ff-serif"
+        style={{ marginTop: "60px" }}
+      >
         <h5>Made with tears by JN & AG</h5>
         <a href={"https://developers.themoviedb.org/"} target="blank">
           <img
