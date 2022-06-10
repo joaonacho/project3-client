@@ -53,14 +53,7 @@ export const Explore = () => {
             <div>
               {inTheatres.length >= 1 && (
                 <>
-                  <div
-                    className="movie-filter"
-                    // style={{
-                    //   backgroundColor: "purple",
-                    //   width: "100%",
-                    //   color: "whitesmoke",
-                    // }}
-                  >
+                  <div className="movie-filter">
                     <h2>In theatres</h2>
                   </div>
                   <Carousel movies={inTheatres} />
@@ -71,15 +64,7 @@ export const Explore = () => {
             <div>
               {popularMovies.length >= 1 && (
                 <>
-                  <div
-                    className="movie-filter"
-                    // style={{
-                    //   backgroundColor: "purple",
-                    //   width: "100%",
-                    //   color: "whitesmoke",
-                    //   borderRadius: "0 8px 0 0",
-                    // }}
-                  >
+                  <div className="movie-filter">
                     <h2>Popular Movies</h2>
                   </div>
                   <Carousel movies={popularMovies} />
