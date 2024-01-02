@@ -6,72 +6,77 @@ import { toast } from "react-toastify";
 const UserContext = createContext();
 
 function UserProviderWrapper({ children }) {
-  const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+	const [user, setUser] = useState(null);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
+	const [openUserMenu, setOpenUserMenu] = useState(false);
 
-  const storeToken = (token) => {
-    localStorage.setItem("authToken", token);
-  };
+	const handleOpenUserMenu = () => setOpenUserMenu((prev) => !prev);
 
-  const removeToken = () => {
-    localStorage.removeItem("authToken");
-  };
+	const storeToken = (token) => {
+		localStorage.setItem("authToken", token);
+	};
 
-  const authenticateUser = () => {
-    const storedToken = localStorage.getItem("authToken");
+	const removeToken = () => {
+		localStorage.removeItem("authToken");
+	};
 
-    if (storedToken) {
-      //Verify if the token is still valid
-      (async () => {
-        try {
-          const response = await verify(storedToken);
-          const user = response.data;
-          setUser(user);
-          setIsLoggedIn(true);
-          setIsLoading(false);
-        } catch (e) {
-          setUser(null);
-          setIsLoggedIn(false);
-        } finally {
-          setIsLoading(false);
-        }
-      })();
-    } else {
-      setUser(null);
-      setIsLoggedIn(false);
-      setIsLoading(false);
-    }
-  };
+	const authenticateUser = () => {
+		const storedToken = localStorage.getItem("authToken");
 
-  const navigate = useNavigate();
+		if (storedToken) {
+			//Verify if the token is still valid
+			(async () => {
+				try {
+					const response = await verify(storedToken);
+					const user = response.data;
+					setUser(user);
+					setIsLoggedIn(true);
+					setIsLoading(false);
+				} catch (e) {
+					setUser(null);
+					setIsLoggedIn(false);
+				} finally {
+					setIsLoading(false);
+				}
+			})();
+		} else {
+			setUser(null);
+			setIsLoggedIn(false);
+			setIsLoading(false);
+		}
+	};
 
-  const logoutUser = () => {
-    removeToken();
-    authenticateUser();
-    toast.info("Goodbye for now!");
-    navigate("/");
-  };
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    authenticateUser();
-  }, []);
+	const logoutUser = () => {
+		removeToken();
+		authenticateUser();
+		setOpenUserMenu((prev) => (prev = false));
+		toast.info("Goodbye for now!");
+		navigate("/");
+	};
 
-  return (
-    <UserContext.Provider
-      value={{
-        user,
-        setUser,
-        isLoggedIn,
-        storeToken,
-        authenticateUser,
-        logoutUser,
-        isLoading,
-      }}
-    >
-      {children}
-    </UserContext.Provider>
-  );
+	useEffect(() => {
+		authenticateUser();
+	}, []);
+
+	return (
+		<UserContext.Provider
+			value={{
+				user,
+				setUser,
+				isLoggedIn,
+				storeToken,
+				authenticateUser,
+				logoutUser,
+				isLoading,
+				handleOpenUserMenu,
+				openUserMenu,
+			}}>
+			{children}
+		</UserContext.Provider>
+	);
 }
 
 export { UserProviderWrapper, UserContext };
