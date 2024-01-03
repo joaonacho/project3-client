@@ -11,8 +11,6 @@ function UserProviderWrapper({ children }) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [openUserMenu, setOpenUserMenu] = useState(false);
 
-	const handleOpenUserMenu = () => setOpenUserMenu((prev) => !prev);
-
 	const storeToken = (token) => {
 		localStorage.setItem("authToken", token);
 	};
@@ -71,7 +69,6 @@ function UserProviderWrapper({ children }) {
 				authenticateUser,
 				logoutUser,
 				isLoading,
-				handleOpenUserMenu,
 				openUserMenu,
 			}}>
 			{children}

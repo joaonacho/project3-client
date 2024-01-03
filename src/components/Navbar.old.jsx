@@ -11,7 +11,7 @@ export const Navbar = () => {
 	const { isLoggedIn, user, logoutUser, openUserMenu, handleOpenUserMenu } = useContext(UserContext);
 
 	return (
-		<header id="header" className="navbar bg-base-300/80 w-full bg-base-100 shadow-lg px-8">
+		<header id="header" className="navbar bg-base-300/80 w-full shadow-lg px-8">
 			<div className="flex-1">
 				<NavLink to="/" className=" text-xl">
 					MovieScreen

@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/navbar/Navbar";
 // auth
 import { Signup } from "./pages/auth/Signup";
 import { Login } from "./pages/auth/Login";
@@ -15,42 +16,55 @@ import { UserFollowing } from "./pages/user/UserFollowing";
 // movie
 import { MovieDetails } from "./pages/movie/MovieDetails";
 // feed
-import { SearchMovie } from "./components/SearchMovie";
-import { Explore } from "./pages/feed/Explore";
+import { searchMovie } from "./api";
 import { FindFriends } from "./pages/feed/FindFriends";
 import { Feed } from "./pages/feed/Feed";
 import { CreatePost } from "./components/CreatePost";
 import { Post } from "./components/Post";
 // landing
-import { Carousel } from "./components/Carousel";
 import { LandingPage } from "./pages/LandingPage";
+import Footer from "./components/Footer";
+import MovieSearchModal from "./components/MovieSearchModal";
 
 function App() {
+	const [searchedMovies, setSearchedMovies] = useState([]);
+	const [searchQuery, setSearchQuery] = useState("");
+	const [isLoadingSearch, setIsLoadingSearch] = useState(false);
+
+	const filterMovieList = (e) => {
+		setSearchQuery(e.target.value);
+
+		if (e.target.value === "") {
+			setSearchedMovies([]);
+		}
+		setIsLoadingSearch(true);
+
+		setTimeout(() => {
+			(async () => {
+				let movieFound = await searchMovie(e.target.value);
+				setSearchedMovies(movieFound.data.results);
+				setIsLoadingSearch(false);
+			})();
+		}, 1500);
+	};
+
+	const cleanUp = () => {
+		setSearchedMovies([]);
+		setSearchQuery("");
+	};
 	return (
-		<div className="relative  text-base-content ">
+		<div className={`relative  text-base-content ${searchQuery ? "overflow-hidden h-screen" : ""}`}>
 			<div className="w-screen min-h-screen fixed flex justify-center pt-32 px-6 pb-40 pointer-events-none">
 				<div className="gradient"></div>{" "}
 			</div>
-			<Navbar />
-			<main className="relative z-10 w-full flex flex-col items-center justify-center align-middle">
+			<Navbar filterMovieList={filterMovieList} query={searchQuery} />
+			<main className={` relative  w-full flex flex-col items-center justify-center align-middle`}>
+				{searchQuery && (
+					<MovieSearchModal movie={searchedMovies} cleanUp={cleanUp} isLoadingSearch={isLoadingSearch} />
+				)}
+
 				<Routes>
-					<Route
-						path="/"
-						element={
-							<LandingPage>
-								<Carousel />
-							</LandingPage>
-						}
-					/>
-					<Route
-						path="/explore"
-						element={
-							<Explore>
-								<SearchMovie />
-								<Carousel />
-							</Explore>
-						}
-					/>
+					<Route path="/" element={<LandingPage />} />
 					<Route path="/find-friends" element={<FindFriends />} />
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
@@ -78,6 +92,7 @@ function App() {
 					<Route path="/movies/:movieId" element={<MovieDetails />} />
 				</Routes>
 			</main>
+			<Footer />
 
 			<ToastContainer />
 		</div>
